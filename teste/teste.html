@@ -1,0 +1,480 @@
+
+Destaques da pasta
+Desenho técnico de aula de desenvolvimento de jogo Bacon Quest com foco em configuração de sprites e movimentos básicos.
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Aula 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700&display=swap');
+
+        :root {
+            --primary-cyan: #26C6DA; 
+            --primary-dark: #37474F; 
+            --bg-light: #E0F7FA;     
+            --paper-white: #FFFFFF;
+            --code-bg: #263238;
+            --accent-orange: #FF7043;
+            --concept-purple: #7E57C2;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            background-image: radial-gradient(#B2EBF2 20%, transparent 20%), radial-gradient(#B2EBF2 20%, transparent 20%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        /* CONFIGURAÇÃO DA FOLHA A4 */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--paper-white);
+            box-shadow: 0 10px 25px rgba(38, 198, 218, 0.2);
+            padding: 45px; 
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            page-break-after: always;
+        }
+
+        /* IMPRESSÃO */
+        @media print {
+            @page { margin: 0; size: A4; }
+            body {
+                background: none; margin: 0; padding: 0;
+                zoom: 0.90; 
+                -webkit-print-color-adjust: exact;
+            }
+            .page {
+                margin: 0; border: none; border-radius: 0; box-shadow: none;
+                width: 100%; height: auto; page-break-after: always;
+                overflow: visible;
+            }
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background-image: url('Logo Profia.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header {
+            display: flex; flex-direction: row; align-items: center; justify-content: center;
+            margin-bottom: 20px; position: relative; z-index: 1; gap: 15px;
+        }
+        .header img.mascot { width: 70px; height: auto; }
+        .header img.logotype { height: 60px; width: auto; }
+
+        h1 {
+            color: var(--primary-dark); font-size: 26px; text-align: center;
+            margin-bottom: 10px; border-bottom: 3px solid var(--bg-light);
+            padding-bottom: 10px; width: 100%; position: relative; z-index: 1;
+        }
+
+        h2 {
+            color: var(--primary-cyan); font-size: 20px; 
+            margin-top: 25px; 
+            font-weight: 700; display: flex; align-items: center; gap: 8px;
+            position: relative; z-index: 1;
+        }
+
+        h3 {
+            color: var(--primary-dark); font-size: 16px; 
+            margin-top: 22px; 
+            font-weight: 600; position: relative; z-index: 1;
+            border-left: 4px solid var(--primary-cyan); padding-left: 10px;
+        }
+        
+        p, li {
+            line-height: 1.5; font-size: 14px; color: #546E7A;
+            position: relative; z-index: 1; margin-bottom: 6px;
+        }
+
+        .step-list { counter-reset: step; list-style: none; padding: 0; }
+        .step-list li { position: relative; padding-left: 35px; margin-bottom: 10px; }
+        .step-list li::before {
+            counter-increment: step; content: counter(step);
+            position: absolute; left: 0; top: 0;
+            width: 25px; height: 25px; background: var(--bg-light);
+            color: var(--primary-cyan); border-radius: 50%;
+            text-align: center; line-height: 25px; font-weight: bold; font-size: 12px;
+            border: 1px solid var(--primary-cyan);
+        }
+
+        .code-block {
+            background-color: var(--bg-light); border: 2px solid #B2EBF2;
+            color: var(--primary-dark); padding: 12px; border-radius: 12px;
+            font-family: 'Consolas', 'Courier New', monospace; font-size: 13px;
+            margin: 15px 0; 
+            position: relative; 
+            z-index: 1;
+            /* REMOVIDO O MIN-HEIGHT GLOBAL PARA NÃO ESTICAR OS BLOCOS PEQUENOS */
+        }
+        
+        .code-title {
+            font-size: 10px; text-transform: uppercase;
+            background: var(--primary-cyan); color: white;
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            margin-bottom: 5px; font-weight: bold;
+        }
+
+        .keyword { color: #D81B60; font-weight: bold; }
+        .object { color: #1E88E5; font-weight: bold; }
+        .action { color: #00897B; font-weight: bold; }
+        .value { color: #F57F17; }
+
+        .footer-deco {
+            position: absolute; bottom: 30px; right: 40px;
+            opacity: 0.5; transform: rotate(-10deg); z-index: 1;
+        }
+        
+        .key-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; text-align: center; }
+        .key {
+            border: 2px solid var(--primary-cyan); border-radius: 4px;
+            width: 25px; height: 25px; font-size: 12px; font-weight: bold;
+            color: var(--primary-cyan); display: flex; align-items: center; justify-content: center;
+            background: white;
+        }
+        .key.empty { border: none; background: transparent; }
+
+        .page-number {
+            position: absolute; bottom: 20px; left: 50%;
+            transform: translateX(-50%); font-size: 12px; color: #B0BEC5; z-index: 1;
+        }
+
+        .two-columns { 
+            display: flex; gap: 20px; position: relative; z-index: 1; 
+            align-items: stretch; 
+        }
+        .col { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .col .code-block, .col .note {
+            flex: 1;
+        }
+
+        .concept-box {
+            background-color: #F3E5F5; border-left: 5px solid var(--concept-purple);
+            padding: 15px; border-radius: 8px; margin: 15px 0;
+            position: relative; z-index: 1; font-size: 14px; line-height: 1.5; color: #546E7A;
+        }
+        .concept-title {
+            color: var(--concept-purple); font-weight: bold; font-size: 14px;
+            display: block; margin-bottom: 5px; text-transform: uppercase;
+        }
+
+        .note {
+            background-color: #FFF3E0; border-left: 5px solid var(--accent-orange);
+            padding: 15px; border-radius: 0 10px 10px 0;
+            margin: 15px 0; font-size: 14px; position: relative; z-index: 1;
+        }
+
+        /* --- CAPA LIMPA E CHEIA --- */
+        .cover-main-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 64px; 
+            font-weight: 900;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            position: relative; z-index: 1;
+        }
+        .cover-main-title span { color: var(--primary-cyan); }
+
+        .cover-subtitle-pro {
+            font-size: 22px; color: #546E7A; text-align: center;
+            margin-bottom: 40px; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; position: relative; z-index: 1;
+        }
+
+        .cover-banner {
+            width: 100%;
+            height: 750px; 
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+            position: relative; z-index: 1;
+            background-color: #eee;
+        }
+        .cover-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center;
+        }
+
+        /* PÁGINA 4 - DIÁRIO */
+        .notes-area {
+            width: 100%; height: 450px;
+            background-image: repeating-linear-gradient(transparent, transparent 24px, #E0E0E0 24px, #E0E0E0 25px);
+            border: 2px solid #B2EBF2; border-radius: 10px; margin-top: 10px;
+            position: relative; z-index: 1; background-color: white;
+        }
+
+        .feedback-area {
+            width: 100%; height: 120px; border: 2px dashed #B0BEC5;
+            border-radius: 10px; margin-top: 20px; position: relative;
+            background-color: #FAFAFA; z-index: 1;
+        }
+
+        .score-container {
+            display: flex; justify-content: center; gap: 40px;
+            margin-top: 30px; position: relative; z-index: 1;
+        }
+
+        .score-box {
+            border: 3px solid var(--primary-cyan); border-radius: 15px;
+            padding: 15px; text-align: center; width: 180px; background: white;
+        }
+
+        .score-box h4 {
+            margin: 0 0 10px 0; color: var(--primary-dark);
+            font-size: 16px; text-transform: uppercase;
+        }
+
+        .score-input {
+            font-size: 24px; color: var(--primary-cyan); font-weight: bold;
+            border-bottom: 2px solid #ddd; width: 80px; display: inline-block;
+            margin-right: 5px;
+        }
+        .coin-icon { font-size: 20px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="./Logo Profia.png" alt="Mascote" class="mascot">
+            <img src="./Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Bacon <span>Quest</span>
+        </div>
+        <div class="cover-subtitle-pro">Construct 3</div>
+
+        <div class="cover-banner">
+            <img src="cenario.png" alt="Cenário Bacon Quest">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="Logo Profia.png" alt="Mascote" class="mascot">
+            <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Projeto: Bacon Quest</h1>
+        <p><b>Resumo:</b> Preparação do cenário, configuração de sprites, movimentação e ataque do personagem.</p>
+
+        <h2>Aula 01: Ambiente e Personagem</h2>
+        <p>Vamos organizar as camadas e preparar a física do jogo.</p>
+
+        <h3>1. Configuração de Objetos</h3>
+        <ul class="step-list">
+            <li>No layout, clique com <b>Botão Direito</b> no fundo > <b>Insert New Object</b>. Procure por <b>Sprite</b> e insira.</li>
+            <li>Repita o processo e crie 3 Sprites: chame-os de <b>Cenário, Jogador e Chão.</b></li>
+            <li>Insira o objeto <b>Keyboard</b> para podermos usar os comandos de tecla.</li>
+            <li>No objeto Chão. Adicione o <b>Behaviors</b> de <b>Solid</b>. E no personagem <b>Platform</b>.</li>
+        </ul>
+
+        <h3>2. Ajustes Obrigatórios de Sprite</h3>
+        <p>Para que a animação funcione, precisamos corrigir o ponto onde o computador "segura" o desenho e a área de toque.</p>
+        
+        <div class="two-columns">
+            <div class="col">
+                <div class="note">
+                    <span><b>Ponto de Origem:</b></span>
+                    O padrão é o centro, o que pode desalinhar a troca de animações se o tamanho mudar. Solução: Coloque o Origin Point nos pés em TODAS as imagens.
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="note">
+                    <span><b>Polígono de Colisão</b></span>
+                    Ajuste os pontos vermelhos para ficarem justos ao personagem. Evita bugs visuais, como flutuar em plataformas ou receber dano sem tocar.
+                </div>
+            </div>
+        </div>
+            
+        <h3>3. Configurando Inputs</h3>
+        <p>Para ter controle total (como atacar parado), desligamos o controle automático.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block" style="background: white;">
+                    <span class="code-title">CONFIGURAÇÃO</span>
+                    <ul style="font-size:13px; padding-left:20px;">
+                        <li>Clique no <b>Jogador</b></li>
+                        <li>Behavior: Platform</li>
+                        <li>Default Controls: <b style="color:red">No</b></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block" style="background: white;">
+                    <span class="code-title">TECLAS</span>
+                    <ul style="font-size:13px; padding-left:20px;">
+                        <li><b>A / D</b>: Mover E/D</li>
+                        <li><b>W</b>: Pular</li>
+                        <li><b>Espaço</b>: Atacar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block" style="min-height: 120px;">
+            <img src="000.png" alt="Rei Idle" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 100px; height: 100px; object-fit: contain;">
+
+            <span class="code-title">MOVIMENTAÇÃO BÁSICA (Event Sheet)</span><br>
+            <span class="keyword">Keyboard</span> On Key <span class="value">"D"</span> is down<br>
+            &nbsp;➜ <span class="object">Jogador</span>: Simulate <span class="action">Right</span><br>
+            &nbsp;➜ <span class="object">Jogador</span>: Set <b>Not Mirrored</b> (Olha p/ frente)<br>
+            <br>
+            <span class="keyword">Keyboard</span> On Key <span class="value">"A"</span> is down<br>
+            &nbsp;➜ <span class="object">Jogador</span>: Simulate <span class="action">Left</span><br>
+            &nbsp;➜ <span class="object">Jogador</span>: Set <b>Mirrored</b> (Olha p/ trás)<br>
+            <br>
+            <span class="keyword">Keyboard</span> On Key <span class="value">"W"</span> is down<br>
+            &nbsp;➜ <span class="object">Jogador</span>: Simulate <span class="action">Jump</span>
+        </div>
+
+        <div class="footer-deco">
+            <div class="key-group">
+                <div class="key empty"></div>
+                <div class="key">W</div>
+                <div class="key empty"></div>
+                <div class="key">A</div>
+                <div class="key">S</div>
+                <div class="key">D</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="Logo Profia.png" alt="Mascote" class="mascot">
+            <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h3>4. Sistema de Animações</h3>
+        
+        <div class="concept-box">
+            <span class="concept-title">Lógica de Prioridade (O "X" Invertido)</span>
+            O código roda de cima para baixo. Se dissermos "Se estiver andando, toque animação Correr", ele vai ignorar se estivermos atacando ou tomando dano.
+            Usamos a condição invertida (tecla 'I') para dizer: <b>"Só corra se NÃO estiver atacando"</b>.
+        </div>
+
+        <h3>5. Andar e Parado</h3>
+        <p>Verificamos se o personagem está no chão e se está se movendo.</p>
+
+        <div class="code-block">
+            <span class="code-title">CORRENDO</span><br>
+            <span class="object">Jogador</span>: Platform is moving<br>
+            <span class="keyword">X</span> <span class="object">Jogador</span>: Is animation "Ataque" playing<br>
+            &nbsp;➜ Ação: Set animation to <span class="value">"Correndo"</span>
+        </div>
+
+        <div class="code-block">
+            <span class="code-title">PARADO</span><br>
+            <span class="object">Jogador</span>: Platform is on floor<br>
+            <span class="keyword">X</span> <span class="object">Jogador</span>: Platform is moving<br>
+            <span class="keyword">X</span> <span class="object">Jogador</span>: Is animation "Ataque" playing<br>
+            &nbsp;➜ Ação: Set animation to <span class="value">"Parado"</span>
+        </div>
+
+        <h3>6. Ataque e Pulo</h3>
+        <p>O ataque é uma ação prioritária. Quando apertamos Espaço, a animação deve rodar do começo e impedir outros movimentos.</p>
+
+        <div class="code-block" style="min-height: 120px;">
+            <img src="001.png" alt="Rei Atacando" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 100px; height: 100px; object-fit: contain;">
+
+            <span class="code-title">GATILHO DE ATAQUE</span><br>
+            <span class="keyword">Keyboard</span> On Key <span class="value">Space</span> pressed<br>
+            &nbsp;➜ <span class="object">Jogador</span>: Set animation <span class="value">"Ataque"</span> (From beginning)<br>
+            <br>
+            <span class="code-title">VOLTAR AO NORMAL</span><br>
+            <span class="object">Jogador</span>: On animation <span class="value">"Ataque"</span> finished<br>
+            &nbsp;➜ <span class="object">Jogador</span>: Set animation <span class="value">"Parado"</span>
+        </div>
+
+        <div class="note">
+            💡 <b>Dica:</b> Para o pulo, use a condição <code>Is Jumping</code>. Lembre-se de adicionar a condição "X Is Attack Playing" também, senão ele troca a animação no meio do golpe aéreo!
+        </div>
+
+        <h2>Desafios Extras (Para Casa)</h2>
+        <div class="two-columns">
+            <div class="col">
+                <div class="note" style="background:#E3F2FD; border-color:#2196F3; margin:0;">
+                    <b>Pulo Duplo</b><br>
+                    Não precisa programar! Nas propriedades do Behavior <b>Platform</b> do jogador, apenas ative a caixinha <b>Double Jump</b>.
+                </div>
+            </div>
+            <div class="col">
+                <div class="note" style="background:#FFEBEE; border-color:#F44336; margin:0;">
+                    <b>Ajuste Fino</b><br>
+                    Modifique os valores de <b>Max Speed</b> (velocidade máxima) e <b>Acceleration</b> para que o personagem não pareça estar "escorregando" no gelo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="Logo Profia.png" alt="Mascote" class="mascot">
+            <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <p style="text-align:center; margin-bottom:30px;">Espaço reservado para suas anotações, esboços de lógica e feedback do professor.</p>
+
+        <h2>Anotações:</h2>
+        <div class="notes-area"></div>
+
+        <h2>Observações:</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
