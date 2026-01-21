@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Aula 6</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <div class="cover-main-title">
+            <span>Variáveis</span>
+        <div class="cover-subtitle-pro">Scratch</div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="cover-banner">
+                    <img src="../assets/gatin.jpg" alt="scratch-membership">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Variáveis</h1>
+        
+        <p>Você sabia que o computador tem uma memória meio curta? Se a gente não pedir para ele guardar as coisas, ele esquece tudo na mesma hora! Para resolver isso, usamos as <strong>VARIÁVEIS</strong>.</p>
+
+        <h2>O que é uma Variável?</h2>
+        <div class="concept-box">
+            <span class="concept-title">Conceito Mágico</span>
+            Uma <strong>Variável</strong> é como uma <strong>Caixinha Mágica</strong>.
+            <br>1. Você dá um <strong>NOME</strong> para a caixa (Etiqueta).
+            <br>2. Você guarda algo dentro dela.
+            <br>3. Você pode trocar o que está dentro a qualquer hora (Variação).
+        </div>
+
+        <div class="two-columns">
+            <div class="col">
+                <h3>Como funciona:</h3>
+                <p>Imagine que você pegou uma moeda.</p>
+                <div class="code-block">
+                    <span class="code-title">Memória (Antes)</span><br>
+                    A caixa <span class="s-var">[Pontos]</span> guarda: <span class="s-string">10</span>
+                </div>
+                <p>Agora pegou outra moeda! O 10 sai e entra o 20.</p>
+                <div class="code-block">
+                    <span class="code-title">Memória (Depois)</span><br>
+                    A caixa <span class="s-var">[Pontos]</span> guarda: <span class="s-string">20</span>
+                </div>
+            </div>
+            <div class="col">
+                <h3>No Scratch:</h3>
+                <p>Usamos os blocos laranjas escuros.</p>
+                <div class="code-block">
+                    <span class="code-title">Bloco de Variável</span><br>
+                    <span class="s-var">mude [Pontos] para 0</span><br>
+                    ...<br>
+                    <span class="s-var">adicione 1 a [Pontos]</span>
+                </div>
+                <p>O nome "Pontos" é a etiqueta da caixa!</p>
+            </div>
+        </div>
+
+        <h2>Os Tipos de Tesouros</h2>
+        <p>O que podemos guardar nessas caixinhas? No Scratch, são três coisas principais:</p>
+
+        <ul style="list-style: none; padding: 0;">
+            <li style="background: #E3F2FD; padding: 10px; border-radius: 8px; margin-bottom: 5px; border-left: 5px solid #2196F3">
+                <strong>Números:</strong> Pontos, Vidas, Tempo. <em>Ex: 10, 50, 100.</em>
+            </li>
+            <li style="background: #E3F2FD; padding: 10px; border-radius: 8px; margin-bottom: 5px; border-left: 5px solid #2196F3;">
+                <strong>Palavras (Texto):</strong> Nome do jogador, uma frase. <em>Ex: "Maria", "Game Over".</em>
+            </li>
+            <li style="background: #E3F2FD; padding: 10px; border-radius: 8px; margin-bottom: 5px; border-left: 5px solid #2196F3;">
+                <strong>Booleano (Interruptor):</strong> Só tem dois jeitos: SIM ou NÃO (Verdadeiro ou Falso). <em>Ex: A porta está aberta? Sim.</em>
+            </li>
+        </ul>
+
+        <h2>Entrada e Saída</h2>
+        <p>Agora que o computador já tem memória (as caixinhas), precisamos aprender a conversar com ele!</p>
+
+        <h3>ENTRADA (Input): O Computador Ouve</h3>
+        <p>É quando <strong>VOCÊ</strong> fala algo para o computador. É como se ele tivesse ouvidos.</p>
+        
+        <div class="two-columns">
+            <div class="col">
+                <p>O computador faz uma pergunta e espera você digitar.</p>
+                <div class="code-block" style="border-color: var(--sensing-blue);">
+                    <span class="code-title" style="background: var(--sensing-blue);">Sensores (Azul Claro)</span><br>
+                    <span class="s-sensing">pergunte</span> <span class="s-string">"Qual seu nome?"</span> <span class="s-sensing">e espere</span>
+                </div>
+                <p>O que você digitar vai para uma caixinha especial chamada <strong>"resposta"</strong>.</p>
+            </div>
+            <div class="col">
+                <div style="text-align: center; margin-top: 20px;">
+                    <span style="font-size: 50px;">⌨️</span>
+                    <p><em>Você usa o teclado para "entrar" com os dados.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. SAÍDA (Output): O Computador Fala</h2>
+        <p>É quando o computador responde para você. Ele usa a tela para mostrar o resultado.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <div style="text-align: center; margin-top: 20px;">
+                    <span style="font-size: 50px;">💬</span>
+                    <p><em>O Gatinho mostra um balão de fala.</em></p>
+                </div>
+            </div>
+            <div class="col">
+                <p>Existem dois jeitos do Gato falar:</p>
+                <div class="code-block" style="border-color: var(--looks-purple);">
+                    <span class="code-title" style="background: var(--looks-purple);">Aparência (Roxo)</span><br>
+                    <span class="s-looks">diga</span> <span class="s-string">"Olá!"</span> <span class="s-looks">por 2 segundos</span><br>
+                    <span style="color: #aaa; font-size: 10px;">(Balão de Fala 🗣️)</span>
+                    <br><br>
+                    <span class="s-looks">pense</span> <span class="s-string">"Hummm..."</span> <span class="s-looks">por 2 segundos</span><br>
+                    <span style="color: #aaa; font-size: 10px;">(Balão de Pensamento 💭)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: var(--accent-orange); background: #FFF3E0;">
+            <span class="concept-title" style="color: #E65100;">O Grande Truque</span>
+            Podemos juntar tudo! O computador <strong>PERGUNTA</strong> (Entrada), guarda na <strong>VARIÁVEL</strong> (Memória) e depois <strong>FALA</strong> seu nome (Saída).
+        </div>
+
+        <div class="footer-deco">🐱💻</div>
+        <div class="page-number">Página 2 de 2</div>
+    </div>
+
+</body>
+</html>

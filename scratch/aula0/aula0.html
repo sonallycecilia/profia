@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Aula 0</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Aula 0 - <span>Variáveis de Instância</span>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Variáveis de Instância</h1>
+        <p>Para a aula de hoje, vamos mergulhar no mundo da organização do Scratch! Entender variáveis é o que separa um jogo simples de um jogo profissional e inteligente.</p>
+        
+        <h2>O que é uma variável?</h2>
+        <p>Imagine que você precisa marcar quantos pontos fez ou quanto tempo falta para acabar a fase. Como o computador "lembra" disso? Ele usa uma <b>Variável</b>.
+        Uma variável é como uma caixa onde guardamos uma informação. Nós damos um nome para essa caixa (como "Pontos") e podemos mudar o que está dentro dela a qualquer momento.</p>
+
+        <h2>Tipos de Informação (O que cabe na caixa?)</h2>
+        <ul class="step-list">
+            <li>
+                <p><b>Números (Inteiros e Decimais)</b></p> 
+                Usados para contar pontos, vidas, tempo ou definir a posição (x, y) de um ator. <b>Exemplo: Pontos = 10</b>
+            </li>
+            <li>
+                <p><b>Texto (Strings)</b></p> 
+                Utilizado para guardar palavras, nomes de personagens ou mensagens de diálogo. <b>Exemplo: Nome = "Gato"</b>
+            </li>
+            <li>
+                <p><b>Variáveis Globais</b></p> 
+                Criadas para "Todos os atores". Funcionam como o placar do jogo: todo mundo vê o mesmo valor.
+            </li>
+             <li>
+                <p><b>Variáveis de Instância</b></p> 
+                Criadas "Apenas para este ator". Cada clone ganha sua própria caixa exclusiva.
+            </li>
+        </ul>
+
+        <h2>Visibilidade da Variável</h2>
+        <div class="two-columns">
+            <div class="col">
+                <div class="note">
+                    <span><b>Global (Para todos)</b></span><br><br>
+                    <p>Informações gerais que afetam todos ao mesmo tempo.</p>
+                    <b>Exemplos:</b> Placar, Recorde, Cronômetro.
+                </div>
+            </div>
+            <div class="col">
+                <div class="note">
+                    <span><b>Instância (Privada)</b></span><br><br>
+                    <p>Características individuais de cada clone ou ator.</p>
+                    <b>Exemplos:</b> Vida de cada inimigo, Velocidade, IDs.
+                </div>
+            </div>
+        </div>
+            
+        <h2>Conceitos de Aprofundamento</h2>
+        <ul class="step-list">
+            <li>
+                <strong>Escopo:</strong> É o "alcance" da variável. Define quem pode ver ou mexer na informação.
+            </li>
+            <li>
+                <strong>Clonagem:</strong> Cada clone nasce com sua própria cópia da variável de instância, independente do original.
+            </li>
+            <li>
+                <strong>Encapsulamento:</strong> É proteger a informação. Um ator não consegue "bagunçar" a variável de outro.
+            </li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Vamos explorar? Mãos na massa!</h1>
+        <p>Neste experimento, vamos criar vários clones de um robô para testar a diferença visual entre os dois tipos de variáveis.</p>
+
+        <h2>Parte 1: O Erro (Variável Global)</h2>
+        <p>Se usarmos <b>"Para todos os atores"</b>, todos os robôs compartilham o mesmo "coração".</p>
+
+        <div class="code-block" style="min-height: 140px; position: relative;">
+            <img src="../assets/robot-sad.png" alt="Robô Triste" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 100px; height: 100px; object-fit: contain;">
+            
+            <span class="code-title">CÓDIGO DO ERRO</span><br>
+            <span class="keyword">Quando</span> eu começar como um <span class="value">clone</span><br>
+            &nbsp;➜ <span class="keyword">Sempre</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="keyword">Se</span> tocado por <span class="value">Ponteiro do Mouse</span> então<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="object">Variável</span>: Adicione <span class="value">-1</span> a <span class="keyword">Vida_Global</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="keyword">Se</span> <span class="keyword">Vida_Global</span> < <span class="value">1</span> então<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="object">Controle</span>: <span class="value">Apague este clone</span>
+        </div>
+        <p><b>O que acontece:</b> Ao tocar em UM robô, a vida de TODOS diminui e eles explodem juntos!</p>
+
+        <hr>
+
+        <h2>Parte 2: A Solução (Variável de Instância)</h2>
+        <p>Agora, vamos dar a cada robô sua própria memória individual marcando <b>"Apenas para este ator"</b>.</p>
+
+        <ul class="step-list">
+            <li>
+                <p><b>Configuração:</b> No ator principal, use <code>esconda</code> e <code>mude Minha_Vida para 3</code>.</p>
+            </li>
+            <li>
+                <p><b>Vida Individual:</b> No bloco do clone, garanta que ele use <code>mostre</code> e receba sua própria vida.</p>
+            </li>
+        </ul>
+
+        <div class="code-block" style="min-height: 160px; position: relative;">
+            <img src="../assets/robot-happy.png" alt="Robô Independente" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 100px; height: 100px; object-fit: contain;">
+            
+            <span class="code-title">CÓDIGO DA SOLUÇÃO</span><br>
+            <span class="keyword">Quando</span> eu começar como um <span class="value">clone</span><br>
+            &nbsp;➜ <span class="object">Aparência</span>: <span class="value">Mostre</span><br>
+            &nbsp;➜ <span class="object">Variável</span>: Mude <span class="keyword">Minha_Vida</span> para <span class="value">3</span><br>
+            &nbsp;➜ <span class="keyword">Sempre</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="keyword">Se</span> tocado por <span class="value">Ponteiro do Mouse</span> então<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="object">Variável</span>: Adicione <span class="value">-1</span> a <span class="keyword">Minha_Vida</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="keyword">Se</span> <span class="keyword">Minha_Vida</span> < <span class="value">1</span> então<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="object">Controle</span>: <span class="value">Apague este clone</span>
+        </div>
+
+        <div class="note">
+            <span><b>Dica de Mestre:</b></span><br>
+            Variável de Instância = <b>I</b>ndividualidade. Use-a sempre que quiser que seus clones tenham comportamentos ou estados diferentes uns dos outros!
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h1>Diário de Bordo</h1>
+        <h2>Anotações:</h2>
+        <div class="notes-area"></div>
+
+        <h2>Observações:</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
