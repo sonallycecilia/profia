@@ -36,14 +36,37 @@
         <p>Vamos imaginar que o computador é um cachorro dorminhoco. Se ninguém faz nada, ele continua dormindo. Porém, se alguém toca a campainha <b>(Ding Dong!)</b>, ele acorda e late!</p>
         <p>Na programação, o "Ding Dong" da campainha é o Evento. Programar Orientado a Eventos é só dizer para o computador: "Ei, fique esperando! Quando acontecer X, você faz Y!"</p>
         <p><b>Exemplos do mundo real:</p></b>
-            <ul>
-                <li>Evento: Começou a chover -> Ação: Abrir o guarda-chuva.</li>
-                <li>Evento: Sinal ficou vermelho -> Ação: Os carros param.</li>
-            </ul>
-        <h2>Exemplos de eventos</h2>
+        <p>A nossa vida é cheia de eventos! Veja se você reconhece estes:</p>
 
-        <h3>1. Teclado</h3>
-        <p>O teclado não serve só para escrever o nome. Nos jogos, cada tecla é um botão que dispara um evento (envia um sinal pro computador) diferente!</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+            
+            <div style="background: #fff; border-left: 5px solid #2196F3; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; break-inside: avoid;">
+                <div style="font-weight: bold; color: #1976D2; font-size: 0.9em;">🌧️ O Evento:</div>
+                <div style="font-size: 0.9em;">Começou a chover forte.</div>
+                <div style="margin-top: 5px; font-size: 0.9em;"><b>➜ Ação:</b> Abrir o guarda-chuva ☂️</div>
+            </div>
+
+            <div style="background: #fff; border-left: 5px solid #F44336; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; break-inside: avoid;">
+                <div style="font-weight: bold; color: #D32F2F; font-size: 0.9em;">🚦 O Evento:</div>
+                <div style="font-size: 0.9em;">O sinal ficou vermelho.</div>
+                <div style="margin-top: 5px; font-size: 0.9em;"><b>➜ Ação:</b> Os carros freiam 🚗✋</div>
+            </div>
+
+            <div style="background: #fff; border-left: 5px solid #FF9800; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; break-inside: avoid;">
+                <div style="font-weight: bold; color: #E65100; font-size: 0.9em;">⏰ O Evento:</div>
+                <div style="font-size: 0.9em;">O despertador tocou.</div>
+                <div style="margin-top: 5px; font-size: 0.9em;"><b>➜ Ação:</b> Acordar para a escola! 🎒</div>
+            </div>
+
+            <div style="background: #fff; border-left: 5px solid #4CAF50; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-radius: 0 10px 10px 0; break-inside: avoid;">
+                <div style="font-weight: bold; color: #2E7D32; font-size: 0.9em;">🔋 O Evento:</div>
+                <div style="font-size: 0.9em;">Bateria do celular fraca.</div>
+                <div style="margin-top: 5px; font-size: 0.9em;"><b>➜ Ação:</b> Correr para o carregador ⚡</div>
+            </div>
+
+        </div>
+        <h2>Teclado</h2>
+        <p>O teclado não serve só para escrever o nome. Nos jogos, cada tecla é um botão que dispara um evento (envia um sinal pro computador) de forma diferente!</p>
         <div class="code-block">
             <span class="code-title">MAPEAMENTO DE TECLAS</span><br>
             <span class="keyword">Quando a tecla</span> <span class="value">"Seta para Cima"</span> for pressionada<br>
@@ -52,6 +75,38 @@
             <span class="keyword">Quando a tecla</span> <span class="value">"Espaço"</span> for pressionada<br>
             &nbsp;➜ <span class="object">Poder</span>: Disparar <span class="action">Raio Laser ⚡</span><br>
         </div>
+
+        <h3>O Carro de Corrida (Setas) 🏎️</h3>
+        <p>As setas são as mais usadas para mover coisas. É como dirigir um carro!</p>
+                <div class="two-columns">
+            <div class="col">
+                    <img src="/scratch/assets/ladoA.png" alt="Bloco Seta Direita" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <div class="col">
+                    <img src="/scratch/assets/ladoB.png" alt="Bloco Seta Esquerda" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+        <div class="code-block">
+            <span class="code-title">CONTROLE DE DIREÇÃO</span><br>
+            <span class="keyword">Quando a tecla</span> <span class="value">"Seta Direita ➡"</span> for pressionada<br>
+            &nbsp;➜ <span class="object">Carro</span>: Mude x por <span class="action">5 (Anda pra frente)</span><br>
+            <br>
+            <span class="keyword">Quando a tecla</span> <span class="value">"Seta Esquerda ⬅"</span> for pressionada<br>
+            &nbsp;➜ <span class="object">Carro</span>: Mude x por <span class="action">-5 (Dá ré!)</span><br>
+        </div>
+
+        <h3>O Dj da Festa (Teclas de Letras) 🎧</h3>
+        <p>Podemos usar letras para tocar sons, transformando o teclado em um piano ou bateria.</p>
+        <div class="code-block">
+            <span class="code-title">BATERIA VIRTUAL</span><br>
+            <span class="keyword">Quando a tecla</span> <span class="value">"B"</span> for pressionada<br>
+            &nbsp;➜ <span class="object">Som</span>: Tocar <span class="action">Bumbo 🥁</span><br>
+            <br>
+            <span class="keyword">Quando a tecla</span> <span class="value">"P"</span> for pressionada<br>
+            &nbsp;➜ <span class="object">Som</span>: Tocar <span class="action">Prato (Tshhh!) 📀</span><br>
+        </div>
+
 
         <h3>2. Mouse</h3>
         <p>O mouse é como se fosse o nosso dedo dentro da tela. Ele cria eventos quando a gente encosta nas coisas.</p>
@@ -63,6 +118,38 @@
             <br>
             <span class="keyword">Sempre que</span> <span class="value">Mouse se mover</span><br>
             &nbsp;➜ <span class="object">Personagem</span>: Ir para <span class="action">Posição do Mouse</span> (Hipnotizado) 🌀<br>
+        </div>
+
+<div style="display: flex; align-items: center; gap: 20px; break-inside: avoid;">
+    
+    <div style="flex: 1;"> <h3>3. O Fantasma Tímido (Mouse Over) 👻</h3>
+        <p>Sabe quando você passa o mouse em cima de algo e muda de cor? Isso se chama "Hover" (pairar).</p>
+        
+        <div class="code-block">
+            <span class="code-title">EFEITO DE MOUSE EM CIMA</span><br>
+            <span class="keyword">Se</span> <span class="value">tocando no ponteiro do mouse?</span><br>
+            &nbsp;➜ <span class="object">Fantasma</span>: Defina o efeito <span class="action">Transparencia para 50%</span><br>
+            <span class="keyword">Senão</span><br>
+            &nbsp;➜ <span class="object">Fantasma</span>: Remova os efeitos gráficos<br>
+        </div>
+    </div>
+
+    <br><div style="flex: 0 0 300px;"> <img src="/scratch/assets/bloco-fantasma.png" 
+             alt="Bloco Fantasma" 
+             style="width: 100%; height: auto; display: block; border-radius: 8px;">
+    </div>
+
+</div>
+
+        <b>O Pincel Mágico (Seguir Mouse) 🎨</b>
+        <p>Podemos fazer um objeto ficar "colado" no mouse para desenhar ou mirar.</p>
+        <div class="code-block">
+            <span class="code-title">SISTEMA DE MIRA</span><br>
+            <span class="keyword">Sempre</span> faça:<br>
+            &nbsp;➜ <span class="object">Mira</span>: Vá para <span class="action">ponteiro do mouse</span><br>
+            <br>
+            <span class="keyword">Se</span> <span class="value">mouse pressionado?</span><br>
+            &nbsp;➜ <span class="object">Caneta</span>: <span class="action">Carimbe (Desenhe uma marca) 🖌️</span><br>
         </div>
 
         <h3>3. A Bandeira Verde do Scratch</h3>
@@ -90,7 +177,7 @@
 
         <h2> Aprofundamento</h2>
         
-        <p>Para criar jogos incríveis, você precisa aprender a dar ordens ao computador. Usamos dois ajudantes principais: o <strong>Teclado</strong> e o <strong>Mouse</strong>! Eles são os principais meios de comunicação que temos com o computador.</p>
+        <p>Para criar jogos incríveis, você precisa aprender a dar ordens certas ao computador. <br>Vamos conhecer um pouco melhor os nossos ajudantes principais: o <strong>Teclado</strong> e o <strong>Mouse</strong>! Eles são os principais meios de comunicação que temos com o computador.</p>
 
         <h2>O Teclado: Seu Painel de Comando</h2>
         <p>O teclado é cheio de botões chamados teclas. Quando você aperta uma, ele envia um sinal elétrico veloz que diz ao Scratch exatamente o que fazer.</p>
@@ -131,14 +218,60 @@
             <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        <h2>Eventos de Mouse</h2>
-        <p>O mouse gera "Eventos" toda vez que você interage com ele. Veja os principais que usamos nos blocos:</p>
-
+        
         <ul>
             <li><strong>Clique:</strong> Um toque rápido. Ativa o bloco <span class="keyword">"quando este ator for clicado"</span>.</li>
             <li><strong>Ponteiro:</strong> Apenas encostar o mouse no personagem pode mudar a cor dele!</li>
             <li><strong>Arrastar:</strong> Quando seguramos e movemos (Drag and Drop).</li>
         </ul>
+
+        <h3>4. Colisões (Batidas!) 💥</h3>
+        <p>Nos jogos, saber quando uma coisa encosta na outra é super importante! É assim que a gente perde vida, ganha moedas ou passa de fase.</p>
+
+        <div class="code-block">
+            <span class="code-title">SENSOR DE ENCOSTÃO</span><br>
+            <span class="keyword">Se</span> <span class="object">Personagem</span> <span class="keyword">tocando na cor</span> <span class="value">🔴 Vermelho (Lava)</span><br>
+            &nbsp;➜ <span class="action">Perder 1 Vida 💔</span><br>
+            &nbsp;➜ <span class="action">Voltar para o início 🔙</span><br>
+            <br>
+            <span class="keyword">Se</span> <span class="object">Mario</span> <span class="keyword">tocando em</span> <span class="value">💰 Moeda</span><br>
+            &nbsp;➜ <span class="object">Moeda</span>: <span class="action">Desaparecer ✨</span><br>
+            &nbsp;➜ <span class="object">Placar</span>: <span class="action">Pontos + 10 🆙</span><br>
+        </div>
+
+        <h3>5. Mensagens (O Telefone sem Fio) 📢</h3>
+        <p>Às vezes, um ator precisa "falar" com o outro. No Scratch, chamamos isso de <b>TRANSMITIR MENSAGEM</b>. É como enviar um WhatsApp para todos os personagens do jogo ao mesmo tempo!</p>
+
+        <div class="code-block">
+            <span class="code-title">EVENTO DE MENSAGEM</span><br>
+            <span class="comment">1. O Chefe Morreu:</span><br>
+            <span class="object">Monstro Chefe</span>: <span class="keyword">Transmita a mensagem</span> <span class="value">"VENCEU" 🏆</span><br>
+            <br>
+            <span class="comment">2. O Jogo Ouve:</span><br>
+            <span class="keyword">Quando eu receber</span> <span class="value">"VENCEU"</span><br>
+            &nbsp;➜ <span class="object">Tela de Fundo</span>: Mude para <span class="action">Cenário de Festa 🎉</span><br>
+            &nbsp;➜ <span class="object">Som</span>: Tocar <span class="action">Música da Vitória 🎵</span><br>
+        </div>
+
+        <h3>6. Sensor de Som (Grito!) 🎤</h3>
+        <p>Você sabia que dá para controlar jogos gritando? O computador consegue "ouvir" se o ambiente está barulhento.</p>
+
+        <div class="code-block">
+            <span class="code-title">CONTROLE POR VOZ</span><br>
+            <span class="keyword">Quando</span> <span class="value">Volume do Som</span> > 30 (Palma!) 👏<br>
+            &nbsp;➜ <span class="object">Lâmpada</span>: <span class="action">Acender Luz 💡</span><br>
+        </div>
+</div>
+
+<div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="page-number">Página 3 de 4</div>
+    </div>
+        
         <div class="page-number">Página 5 de 6</div>
     </div>
 </div>

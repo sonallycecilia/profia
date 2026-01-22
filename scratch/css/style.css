@@ -10,6 +10,8 @@
     --concept-purple: #7E57C2;
 }
 
+
+
 body {
     background-color: var(--bg-light);
     background-image: radial-gradient(#B2EBF2 20%, transparent 20%), radial-gradient(#B2EBF2 20%, transparent 20%);
