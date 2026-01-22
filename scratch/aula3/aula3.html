@@ -110,7 +110,12 @@
 
         <h3>2. Mouse</h3>
         <p>O mouse é como se fosse o nosso dedo dentro da tela. Ele cria eventos quando a gente encosta nas coisas.</p>
-
+        <p><b>Tipos de interação</b></p>
+        <ul>
+            <li><strong>Clique:</strong> Um toque rápido. Ativa o bloco <span class="keyword">"quando este ator for clicado"</span>.</li>
+            <li><strong>Ponteiro:</strong> Apenas encostar o mouse no personagem pode mudar a cor dele!</li>
+            <li><strong>Arrastar:</strong> Quando seguramos e movemos (Drag and Drop).</li>
+        </ul>
         <div class="code-block">
             <span class="code-title">INTERAÇÃO COM O MOUSE</span><br>
             <span class="keyword">Quando clicado em</span> <span class="value">Objeto (Gatinho)</span><br>
@@ -218,14 +223,8 @@
             <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        
-        <ul>
-            <li><strong>Clique:</strong> Um toque rápido. Ativa o bloco <span class="keyword">"quando este ator for clicado"</span>.</li>
-            <li><strong>Ponteiro:</strong> Apenas encostar o mouse no personagem pode mudar a cor dele!</li>
-            <li><strong>Arrastar:</strong> Quando seguramos e movemos (Drag and Drop).</li>
-        </ul>
-
-        <h3>4. Colisões (Batidas!) 💥</h3>
+        <h2>+ Tipos de Eventos</h2>
+        <h3>Colisões (Batidas!) 💥</h3>
         <p>Nos jogos, saber quando uma coisa encosta na outra é super importante! É assim que a gente perde vida, ganha moedas ou passa de fase.</p>
 
         <div class="code-block">
@@ -239,7 +238,7 @@
             &nbsp;➜ <span class="object">Placar</span>: <span class="action">Pontos + 10 🆙</span><br>
         </div>
 
-        <h3>5. Mensagens (O Telefone sem Fio) 📢</h3>
+        <h3>Mensagens (O Telefone sem Fio) 📢</h3>
         <p>Às vezes, um ator precisa "falar" com o outro. No Scratch, chamamos isso de <b>TRANSMITIR MENSAGEM</b>. É como enviar um WhatsApp para todos os personagens do jogo ao mesmo tempo!</p>
 
         <div class="code-block">
@@ -253,7 +252,7 @@
             &nbsp;➜ <span class="object">Som</span>: Tocar <span class="action">Música da Vitória 🎵</span><br>
         </div>
 
-        <h3>6. Sensor de Som (Grito!) 🎤</h3>
+        <h3>Sensor de Som (Grito!) 🎤</h3>
         <p>Você sabia que dá para controlar jogos gritando? O computador consegue "ouvir" se o ambiente está barulhento.</p>
 
         <div class="code-block">
@@ -269,11 +268,98 @@
             <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        <div class="page-number">Página 3 de 4</div>
+        <h1>Atividades</h1>
+<p>Agora que conhecemos os eventos, podemos explorar cenas do Scratch. Cenas nada mais são que trechos de jogos onde devemos encaixar os blocos corretos pra completar a lógica do jogo. Explore, jogue e analise os códigos dos projetos abaixo.</p>
+
+<div class="project-section">
+    <h3>Como acessar o código?</h3>
+    <p>Para realizar a atividade, você precisa entrar no modo de edição do Scratch. Siga os passos:</p>
+
+    <ul class="step-list">
+        <li>Clique no link do projeto para abrir a página.</li>
+        <li>Olhe para o <strong>canto superior direito</strong> da tela (na barra azul).</li>
+        <li>Localize e clique no botão <strong>"Ver Interior"</strong> (ícone com duas linhas curvas).</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 15px; background: #fff; padding: 10px; border: 1px solid #B2EBF2; border-radius: 8px;">
+        <img src="cenas.png" alt="Botão Ver Interior no canto direito" style="max-width: 100%; height: auto; border-radius: 4px;">
+        <p style="font-size: 12px; margin-top: 5px; color: #78909C;">Localização do botão na interface do Scratch</p>
     </div>
+    
+    <div class="note" style="margin-top: 20px;">
+        <strong>Dica:</strong> Ao clicar neste botão, você verá todos os blocos coloridos e poderá arrastá-los para resolver o problema.
+    </div>
+</div>
+        <div class="project-section">
+<div class="project-section">
+            <h2>01. Pong</h2>
+                <p>Uma recriação clássica do jogo de arcade. O objetivo é programar a raquete para que o jogador consiga defender a bola.</p>
+            </div>
+            <p><strong>Link:</strong> <a href="https://scratch.mit.edu/projects/1204498730">cena do jogo</a></p>
+            <div class="code-block">
+                <span class="code-title">Dica de Lógica</span><br>
+                Para mover a raquete verticalmente, você precisará alterar o eixo <span class="object">Y</span>.<br><br>
+                <span class="keyword">quando a tecla</span> <span class="value">[seta para cima]</span> <span class="action">for pressionada</span><br>
+                &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">10</span> a <span class="object">y</span>
+            </div>
+        </div>
+
+<div class="project-section">
+    <h2>02. Carro (Racing)</h2>
+    <p>Simulador de direção com vista superior. Atualmente, o carro consegue acelerar, mas o sistema de direção (volante) ainda não foi programado.</p>
+
+
+    <p><strong>Link:</strong> <a href="https://scratch.mit.edu/projects/1202101512">cena do jogo</a></p>
+
+    <div class="code-block">
+        <span class="code-title">Dica de Rotação</span><br>
+        <span class="keyword">se</span> <span class="object">tecla [seta direita]</span> <span class="action">pressionada</span> <span class="keyword">então</span><br>
+        &nbsp;&nbsp;<span class="action">gire</span> <span class="value">5</span> graus (horário)<br>
+        <br>
+        <span style="color: #90A4AE; font-style: italic;">// Repita a lógica para a seta esquerda (anti-horário)</span>
+    </div>
+</div>
+
+<div class="project-section">
+    <h2>03. Dragão</h2>
+    <p>O dragão precisa voar pela floresta encantada, mas ele não está respondendo. Seu objetivo é programar o movimento para que ele mova com as teclas w, a, s, d.</p>
+
+    <p><strong>Link:</strong> <a href="https://scratch.mit.edu/projects/1195939449">cena do jogo</a></p>
+
+    <div class="code-block">
+        <span class="code-title">Dica de Voo</span><br>
+        <span class="keyword">sempre</span><br>
+        &nbsp;&nbsp;<span class="action">vá para</span> <span class="value">[ponteiro do mouse]</span>
+    </div>
+</div>
         
-        <div class="page-number">Página 5 de 6</div>
+        <div class="page-number">Página 1 de 2</div>
     </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Atividades</h1>
+
+<div class="project-section">
+    <h2>04. Dino Chrome</h2>
+    <p>Recriação do famoso jogo do dinossauro. O Dino precisa pular os cactos para sobreviver, mas a tecla de espaço não está funcionando. Programe a lógica do pulo.</p>
+    
+    <p><strong>Link:</strong> <a href="https://scratch.mit.edu/projects/1204745560/">cena do jogo</a></p>
+    
+    <div class="code-block">
+        <span class="code-title">Lógica de Pulo</span><br>
+        <span class="keyword">se</span> <span class="object">tecla [espaço]</span> <span class="action">pressionada</span> <span class="keyword">então</span><br>
+        &nbsp;&nbsp;<span class="action">mude</span> y <span class="keyword">por</span> <span class="value">50</span><br>
+        &nbsp;&nbsp;<span class="action">espere</span> <span class="value">0.5</span> seg<br>
+        &nbsp;&nbsp;<span class="action">mude</span> y <span class="keyword">por</span> <span class="value">-50</span>
+    </div>
+</div>
+
+
 </div>
 
     <div class="page">
