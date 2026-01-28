@@ -309,3 +309,169 @@ p, li {
     margin-right: 5px;
 }
 .coin-icon { font-size: 20px; }
+
+/* =========================================
+   ESTILOS EXTRAS: CENTRAL DE MISSÕES (HUB)
+   Adicione isso ao final do seu style.css
+   ========================================= */
+
+/* Ajuste para o Hub ocupar a tela toda e não parecer uma folha A4 */
+body {
+    min-height: 100vh; /* Garante altura total da tela */
+}
+
+/* Cabeçalho da Central (Diferente do H1 comum) */
+.hub-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.hub-header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem; /* Maior que o padrão */
+    color: var(--primary-dark);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: none; /* Remove a linha do estilo padrão */
+    text-shadow: 4px 4px 0px var(--bg-light);
+}
+
+.hub-header span {
+    color: var(--primary-cyan);
+}
+
+.hub-subtitle {
+    font-size: 1.2rem;
+    color: #546E7A;
+    font-weight: 700;
+    background: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(38, 198, 218, 0.2);
+}
+
+/* O Grid que organiza os cards */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    padding-bottom: 40px;
+}
+
+/* O Cartão da Missão */
+.mission-card {
+    background: var(--paper-white);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid transparent;
+    box-shadow: 0 10px 20px rgba(55, 71, 79, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 320px;
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(38, 198, 218, 0.3);
+    border-color: var(--primary-cyan);
+}
+
+.card-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.mission-card:hover .card-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Textos dentro do Card */
+.mission-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin: 0 0 10px 0;
+}
+
+.mission-card p {
+    font-size: 0.95rem;
+    color: #78909C;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+}
+
+/* Botão de Jogar */
+.play-btn {
+    background-color: var(--primary-cyan);
+    color: white;
+    text-decoration: none;
+    padding: 12px 0;
+    border-radius: 50px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 0 #0097A7;
+    transition: transform 0.1s;
+    width: 100%;
+    display: block;
+}
+
+.play-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+/* Etiqueta de Nível (Canto superior direito) */
+.level-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #E0F7FA;
+    color: var(--primary-cyan);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+/* Estado Bloqueado */
+.mission-card.locked {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    cursor: not-allowed;
+    border: 2px dashed #CFD8DC;
+}
+
+.mission-card.locked:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #CFD8DC;
+}
+
+.mission-card.locked .play-btn {
+    background-color: #B0BEC5;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Animação suave de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
