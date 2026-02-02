@@ -1,67 +1,60 @@
 // BANCO DE QUESTÕES
 const questions = [
-{
-        question: "Qual bloco devemos usar quando o computador precisa tomar decisões?",
-        options: ["Eventos", "Controle", "Aparência", "Movimento"],
-        correct: 1,
-        rationale: "Os blocos de 'Controle' (cor laranja), como o 'SE... ENTÃO', são usados para checar condições e decidir o que fazer."
-    },
     {
-        question: "O que são coordenadas?",
-        options: ["É tipo um endereço", "Útil para combater o inimigo", "Da um dano especial", "Usado para dar pontos de vida"],
-        correct: 0,
-        rationale: "Coordenadas (X e Y) funcionam como um endereço em um mapa (Plano Cartesiano) para dizer exatamente onde o objeto está na tela."
-    },
-    {
-        question: "O que é um ator no Scracth",
-        options: ["A imagem de fundo (Cenário)", "Um personagem ou objeto programável", "O bloco que toca música", "A bandeira verde"],
-        correct: 1,
-        rationale: "Um Ator (ou Sprite) é qualquer objeto, animal ou pessoa que você pode animar e controlar usando blocos de código."
-    },
-    {
-        question: "Para guardar a pontuação do jogo ou o número de vidas, o que precisamos criar?",
-        options: ["Uma Fantasia", "Uma Variável", "Um Cenário", "Um Som"],
-        correct: 1,
-        rationale: "Variáveis são como caixinhas na memória do computador onde guardamos valores que podem mudar, como os pontos."
-    },
-    {
-        question: "No Scratch, qual eixo controla o movimento para a Esquerda e Direita (Horizontal)?",
-        options: ["Eixo Y", "Eixo X", "Eixo Z", "Rotação"],
-        correct: 1,
-        rationale: "O Eixo X é a linha horizontal. Para subir e descer (Vertical), usamos o Eixo Y."
-    },
-    {
-        question: "Como um ator pode 'avisar' outro ator que o jogo acabou?",
-        options: ["Mudando de cor", "Transmitindo uma Mensagem", "Girando 15 graus", "Indo para o mouse"],
-        correct: 1,
-        rationale: "O comando 'Transmitir' envia um sinal invisível que outros atores podem receber para reagir a um evento."
-    },
-    {
-        question: "Para criar a animação de um personagem andando, o que devemos trocar rapidamente?",
-        options: ["O Palco", "A Posição X", "O Tamanho", "A Fantasia"],
-        correct: 3,
-        rationale: "Trocando as fantasias (desenhos diferentes do mesmo ator) em sequência, criamos a ilusão de movimento."
-    },
-    {
-        question: "Se a condição do bloco 'SE' for FALSA, o que o computador faz?",
-        options: ["Executa o bloco 'SENÃO' (se houver) ou pula", "Trava o jogo", "Executa o 'SE' mesmo assim", "Desliga a tela"],
-        correct: 0,
-        rationale: "Se a condição é falsa, ele ignora o que está dentro do 'SE' e busca o 'SENÃO' ou segue para o próximo bloco."
-    },
-    {
-        question: "Qual categoria de blocos usamos para detectar se o personagem encostou na cor vermelha?",
-        options: ["Movimento", "Aparência", "Sensores", "Eventos"],
+        question: "O que o robô precisa fazer PRIMEIRO antes de decidir?",
+        options: ["Sair correndo", "Dormir um pouco", "Perceber (usar sensores)", "Escolher uma ação"],
         correct: 2,
-        rationale: "Os blocos de Sensores (azul claro) são os 'sentidos' do ator, usados para perceber toques, cores e teclas."
+        rationale: "Isso aí! Primeiro usamos os 'olhos' e 'ouvidos' (sensores) para saber o que está acontecendo."
     },
-    // Sugestão para completar a sua pergunta 3 que estava vazia:
     {
-        question: "O que é um 'Ator' (Sprite) no Scratch?",
-        options: ["O fundo da tela", "Um personagem ou objeto interativo", "O bloco de som", "A pontuação"],
+        question: "Se você vê um buraco no chão, qual parte da decisão é essa?",
+        options: ["Percepção (Ver)", "Análise (Pensar)", "Escolha (Agir)", "Sorte"],
+        correct: 0,
+        rationale: "Exato! Percepção é usar os sentidos para notar algo no ambiente."
+    },
+    {
+        question: "Depois de ver o buraco, você pensa: 'Se eu pisar, caio'. Isso é...",
+        options: ["Mágica", "Análise (Pensar)", "Escolha (Agir)", "Um Erro"],
         correct: 1,
-        rationale: "Atores são todos os objetos que podem ter códigos, se mover e interagir no palco."
+        rationale: "Muito bem! Você consultou uma regra de segurança na sua cabeça."
+    },
+    {
+        question: "Quando você decide PULAR o buraco, isso é...",
+        options: ["Uma Dúvida", "A Percepção", "A Escolha (Ação)", "O Pensamento"],
+        correct: 2,
+        rationale: "Correto! A Escolha é a execução física da decisão que você tomou."
+    },
+    {
+        question: "No Scratch, qual bloco usamos para o computador ANALISAR uma regra?",
+        options: ["Mova 10 passos", "Toque o som Miau", "SE ... ENTÃO", "Bandeira Verde"],
+        correct: 2,
+        rationale: "Isso mesmo! O bloco amarelo 'SE' serve para verificar se uma condição é verdadeira."
+    },
+    {
+        question: "Se um robô não tiver câmera nem sensores, o que ele NÃO consegue fazer?",
+        options: ["Perceber o mundo", "Gastar bateria", "Ser desligado", "Ficar parado"],
+        correct: 0,
+        rationale: "Sem sensores, ele é como se fosse 'cego', então não consegue perceber nada."
+    },
+    {
+        question: "Qual é a ordem correta para não fazer bobagem?",
+        options: ["Escolher -> Perceber", "Perceber -> Analisar -> Escolher", "Analisar -> Perceber", "Pular -> Pensar"],
+        correct: 1,
+        rationale: "Primeiro vejo (Percebo), depois penso (Analiso), por fim faço (Escolho)."
+    },
+    {
+        question: "O que são as 'regras' na criação de um mundo?",
+        options: ["As cores do desenho", "O nome do jogo", "Os efeitos sonoros", "Leis de 'Causa e Efeito'"],
+        correct: 3,
+        rationale: "Regras definem: SE acontecer isso, ENTÃO aquilo acontece. Como leis da física!"
+    },
+    {
+        question: "Se a regra é 'SE tocar no AZUL, pule', mas o chão é VERMELHO. O robô pula?",
+        options: ["Sim, ele pula", "Não, ele não faz nada", "Talvez", "Ele explode"],
+        correct: 1,
+        rationale: "O computador é exato. Se a regra diz Azul e o chão é Vermelho, ele ignora!"
     }
-]
+];
 
 // VARIÁVEIS DE CONTROLE
 let currentQuestion = 0;
