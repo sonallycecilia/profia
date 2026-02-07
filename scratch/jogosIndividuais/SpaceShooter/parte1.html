@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Space Shooter - Parte 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Space <span>Shooter</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="space-cover.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Projeto: Space Shooter</h1>
+        <p><b>Resumo:</b> Configuração do início da partida, condições de derrota e sistema de pontuação.</p>
+
+
+<h2>Preparando os Assets do Jogo</h2>
+<p>Antes de programar, precisamos trazer os elementos visuais para dentro do Scratch.</p>
+
+<ul class="step-list">
+    <li><b>Crie o Ator do Jogador:</b> Passe o mouse no ícone de gato (canto inferior direito) e selecione <b>"Enviar Ator"</b>. Escolha a imagem da sua nave.</li>
+    <li><b>Importe os Inimigos:</b> Repita o processo para os arquivos de <b>Meteors</b> e <b>Enemy</b>. Lembre-se de renomeá-los exatamente assim para a lógica funcionar!</li>
+    <li><b>Ajuste o Tamanho:</b> Selecione cada ator e, no campo <b>Tamanho</b> (abaixo da tela de jogo), mude de 100 para um valor menor (ex: 40 ou 50) para que eles caibam no cenário.</li>
+    <li><b>Centro do Ator:</b> Vá na aba <b>Fantasias</b>, selecione o desenho e garanta que o centro da imagem esteja alinhado com o alvo azul no meio da tela de desenho.</li>
+    <li><b>Cenário (Palco):</b> Clique em "Selecionar Cenário" no canto inferior direito e escolha <b>"Stars"</b> ou <b>"Galaxy"</b> na biblioteca do Scratch para dar o clima espacial.</li>
+</ul>
+
+<img src="./assets/sprites.png" alt="atores e cenário">
+
+<h2>Variáveis: O Cérebro do Jogo</h2>
+    <p>As variáveis são caixinhas onde o computador guarda informações que mudam o tempo todo, como pontos e velocidade.</p>
+
+    <h3>Passo a Passo: Criando Variáveis</h3>
+    <ul class="step-list">
+        <li>Clique na categoria <b>Variáveis</b> (Bolinha Laranja Escuro).</li>
+        <li>Clique no botão <b>"Criar uma Variável"</b>.</li>
+        <li>Nomeie exatamente como: <span class="value">Score</span>, <span class="value">speed_meteors</span> e <span class="value">Spawn_time_meteors</span>.</li>
+        <li><b>Regra de Ouro:</b> Selecione sempre <b>"Para todos os atores"</b>. Isso permite que um ator "converse" com o outro.</li>
+    </ul>
+
+    <img src="./assets/variaveis.png" alt="variaveis">
+    
+
+    <h3>Por que essas variáveis são importantes?</h3>
+    
+    <div class="concept-box">
+        <span class="concept-title">1. Score (Pontuação)</span>
+        É o sistema de recompensa. Ela controla a progressão: quando o <b>Score</b> atinge um valor, o jogo "decide" mudar de fase.
+    </div>
+
+    <div class="two-columns">
+        <div class="col">
+            <div class="note" style="background:#E1F5FE; border-color:#03A9F4;">
+                <b>2. speed_meteors</b><br>
+                Define a velocidade. Em vez de criar vários atores, apenas mudamos o valor da variável para 3, 6 ou 9. Todos os meteoros aceleram juntos!
+            </div>
+        </div>
+        <div class="col">
+            <div class="note" style="background:#FFF3E0; border-color:#FF9800;">
+                <b>3. spawn_time_meteors</b><br>
+                Controla o caos. Quanto menor o número (ex: 0.5s), mais rápido os clones são criados, transformando o jogo em uma chuva de meteoros.
+            </div>
+        </div>
+    </div>
+
+    <h3>O Segredo da "Caixinha Azul"</h3>
+    <p>Ao lado do nome da variável no menu, existe um quadrado para marcar:</p>
+    
+    <div class="code-block" style="background: white; border: 2px dashed var(--primary-cyan);">
+        <p><b>[<span style="color:var(--primary-cyan);">✔</span>] Score:</b> Aparece no palco para o jogador acompanhar seus pontos.</p>
+        <p><b>[ &nbsp; ] speed_meteors:</b> Fica oculto. É um cálculo de "bastidor" que o jogador não precisa ver.</p>
+    </div>
+
+    <div class="note">
+        💡 <b>Dica Profia:</b> Se o seu jogo não mudar de fase, verifique se você não criou a variável como "Apenas para este ator". Se isso acontecer, os outros atores não conseguirão ler os pontos do Score!
+    </div>
+
+</div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+<h1>Programando a Nave</h1>
+<div class="two-columns">
+    <div class="col">
+        <h2>Inicialização</h2>
+        <p>Define o estado inicial assim que o jogo começa.</p>
+        <div class="code-block">
+            <span class="code-title">START SCRIPT</span><br>
+            <span class="keyword">Quando bandeira verde for clicada</span><br>
+            &nbsp;➜ vá para x: <span class="value">0</span> y: <span class="value">-140</span><br>
+            &nbsp;➜ mude <span class="object">[Score]</span> para <span class="value">0</span>
+        </div>
+    </div>
+
+<div class="col">
+        <h2>Sistema de Game Over</h2>
+        <p>Monitora colisões para encerrar a partida.</p>
+        
+        <div class="code-block">
+            <span class="code-title">COLLISION CHECK</span><br>
+            <span class="keyword">Quando bandeira verde for clicada</span><br>
+            <span class="action">espere até que</span><br>
+            &nbsp;&nbsp;(tocando em <span class="value">Meteors</span>?) <br>
+            &nbsp;&nbsp;<span class="keyword">ou</span> (tocando em <span class="value">Enemy</span>?)<br>
+            &nbsp;➜ <span class="action">pare [todos]</span>
+        </div>
+        </div>
+</div>
+
+<h3>Dica do game-over</h3>
+<img src="./assets/game-over.png" alt="game over"> 
+
+
+
+<h2>Movimentação do Jogador</h2>
+<p>Este é o bloco principal de controle, permitindo que o jogador mova o personagem usando o teclado.</p>
+
+<div class="code-block">
+    <span class="code-title">CONTROLE DE MOVIMENTO</span><br>
+    <span class="keyword">Quando bandeira verde for clicada</span><br>
+    <span class="action">Sempre</span><br>
+    
+    <div style="margin-left: 20px;">
+        <span class="action">se</span> tecla <span class="value">W</span> pressionada? <span class="action">então</span><br>
+        &nbsp;➜ adicione <span class="value">10</span> a <span class="object">y</span><br>
+        
+        <span class="action">se</span> tecla <span class="value">S</span> pressionada? <span class="action">então</span><br>
+        &nbsp;➜ adicione <span class="value">-10</span> a <span class="object">y</span><br>
+        
+        <span class="action">se</span> tecla <span class="value">A</span> pressionada? <span class="action">então</span><br>
+        &nbsp;➜ adicione <span class="value">-10</span> a <span class="object">x</span><br>
+        
+        <span class="action">se</span> tecla <span class="value">D</span> pressionada? <span class="action">então</span><br>
+        &nbsp;➜ adicione <span class="value">10</span> a <span class="object">x</span>
+    </div>
+</div>
+
+<img src="./assets/movimentando.png" alt="movement">
+
+<div class="note">
+    💡 <b>Dica de Gameplay:</b> Como são blocos "se" independentes, o jogador pode mover-se na <b>diagonal</b> pressionando duas teclas ao mesmo tempo (ex: W + D).
+</div>
+
+        <h2>Progressão de Fases</h2>
+<p>Este script gerencia a dificuldade ou os níveis do jogo com base na pontuação alcançada.</p>
+
+        <div class="concept-box">
+            <span class="concept-title">Gatilhos de Nível</span>
+            Usamos "Espere até" (Wait until) em sequência. O código "trava" em cada linha até a pontuação ser atingida, liberando a próxima fase.
+        </div>
+
+        
+
+
+<div class="code-block">
+    <span class="code-title">GERENCIADOR DE DIFICULDADE</span><br>
+    <span class="keyword">Quando bandeira verde for clicada</span><br>
+    <br>
+    
+    <span class="action">Espere até que</span> <span class="object">Score</span> > <span class="value">24</span><br>
+    &nbsp;➜ Transmita <span class="value">"Phase2"</span><br>
+    <br>
+
+    <span class="action">Espere até que</span> <span class="object">Score</span> > <span class="value">49</span><br>
+    &nbsp;➜ Transmita <span class="value">"Phase3"</span><br>
+    <br>
+
+    <span class="action">Espere até que</span> <span class="object">Score</span> > <span class="value">74</span><br>
+    &nbsp;➜ Transmita <span class="value">"Phase4"</span><br>
+    <br>
+
+    <span class="action">Espere até que</span> <span class="object">Score</span> > <span class="value">299</span><br>
+    &nbsp;➜ Transmita <span class="value">"Phase5"</span>
+</div>
+
+<div class="note">
+    <b>Nota:</b> Essas mensagens (transmissões) geralmente ativam outros scripts no jogo, como fazer os inimigos ficarem mais rápidos ou mudar o cenário.
+</div>
+<img src="./assets/progessao-fases.png" alt="progressao fases">
+        </div>
+    </div>
+
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <h1>Blocos Personalizados</h1>
+
+    <div class="concept-box">
+        <span class="concept-title">O que são blocos cor-de-rosa?</span>
+        São funções que criamos para organizar o código. Em vez de repetir vários blocos, nós "chamamos" o nome da função.
+    </div>
+
+    <h2>Programação do Inimigo (Nave)</h2>
+
+    <div class="two-columns">
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title" style="background: var(--concept-purple);">defina move</span><br>
+                <span class="action">sempre</span><br>
+                &nbsp;➜ <span class="action">repita (aleatório 1 a 10)</span><br>
+                &nbsp;&nbsp;&nbsp;➜ adicione <span class="value">5</span> a <span class="object">x</span><br>
+                &nbsp;➜ <span class="action">repita (aleatório 1 a 10)</span><br>
+                &nbsp;&nbsp;&nbsp;➜ adicione <span class="value">-5</span> a <span class="object">x</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title" style="background: var(--concept-purple);">defina explosion</span><br>
+                &nbsp;➜ mude fantasia para <span class="value">Enemy_exp_spr1</span><br>
+                &nbsp;➜ <span class="action">repita 4 vezes</span><br>
+                &nbsp;&nbsp;&nbsp;➜ <span class="action">próxima fantasia</span><br>
+                &nbsp;&nbsp;&nbsp;➜ <span class="action">espere 0.1 seg</span>
+            </div>
+        </div>
+        
+    </div>
+
+<img src="./assets/bloco-move.png" alt="blocos personalizados">
+    <img src="./assets/bloco-explosion.png" alt="Bloco de explosão">
+        
+    <div class="note">
+        💡 <b>Dica Profia:</b> O bloco <code>pare outros scripts no ator</code> é essencial! Ele garante que o inimigo pare de atirar e de se mover enquanto a animação de explosão acontece.
+    </div>
+    <h2>Gerenciamento de Clones (Spawning)</h2>
+    <div class="code-block">
+        <span class="code-title">LOGICA DO ATOR ORIGINAL</span><br>
+        <span class="keyword">Quando bandeira verde for clicada</span><br>
+        &nbsp;➜ <span class="action">esconda</span><br><br>
+        
+        <span class="keyword">Quando eu receber [Phase4]</span><br>
+        <span class="action">sempre</span><br>
+        &nbsp;➜ <span class="action">crie clone de [este ator]</span><br>
+        &nbsp;➜ <span class="action">espere 6 segundos</span>
+    </div>
+
+    <h2>Comportamento do Clone</h2>
+    <div class="two-columns">
+        <div class="col">
+            <div class="code-block" style="background: white;">
+                <span class="code-title">A. MOVIMENTO E TIRO</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="object">sort_entry</span> <br>
+                &nbsp;➜ <span class="object">move</span><br><br>
+                <span class="action">sempre</span><br>
+                &nbsp;➜ <span class="action">espere 0.5 seg</span><br>
+                &nbsp;➜ <span class="object">shoot</span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="code-block" style="background: white;">
+                <span class="code-title">B. DANO E MORTE</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                <span class="action">espere até que</span> tocando em <span class="value">"Shoot"</span>?<br>
+                &nbsp;➜ <span class="action">pare [outros scripts no ator]</span><br>
+                &nbsp;➜ <span class="object">explosion</span><br>
+                &nbsp;➜ <span class="action">apague este clone</span>
+            </div>
+        </div>
+    </div>    
+            <img src="./assets/blocos-clones.png" alt="blocos de movimento e tiro">
+    
+</div>
+
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <h1>Programação dos Meteoros</h1>
+
+    <h2>Sistema de Dificuldade (Variáveis Globais)</h2>
+    <div class="concept-box">
+        <span class="concept-title">Balanceamento de Jogo</span>
+        As variáveis <b>speed_meteors</b> e <b>Spawn_time_meteors</b> controlam o ritmo do jogo. Note que na Fase 4 a dificuldade dos meteoros cai para compensar a chegada do Chefe!
+    </div>
+
+    <div class="code-block" style="background: white;">
+        <span class="code-title">CONTROLE DE FASES</span><br>
+        <span class="keyword">Quando bandeira verde clicada</span> ➜ <span class="value">Speed: 3 | Spawn: 1s</span><br>
+        <span class="keyword">Quando receber [Phase2]</span> ➜ <span class="value">Speed: 6 | Spawn: 0.8s</span><br>
+        <span class="keyword">Quando receber [Phase3]</span> ➜ <span class="value">Speed: 9 | Spawn: 0.5s</span><br>
+        <span class="keyword">Quando receber [Phase4]</span> ➜ <span class="value">Speed: 3 | Spawn: 1s</span> <i>(Foco no Chefe)</i>
+    </div>
+
+    <div class="two-columns">
+        <div class="col">
+            <h2>Gerador (Spawner)</h2>
+
+            <img src="./assets/spawner.png" alt="bloco de spawn" style="margin-top: 10px;">
+        </div>
+
+        <div class="col">
+            <h2>Movimento "Zigue-Zague"</h2>
+            <img src="./assets/bloco-movement-meteoro.png" alt="bloco de movimento" style="margin-top: 10px;">
+        </div>
+    </div>
+
+    <h2>Colisão e Destruição</h2>
+    <p>O meteoro possui uma variedade visual e recompensa o jogador com pontos ao ser destruído.</p>
+
+    <div class="code-block">
+        <span class="code-title">VIDA DO CLONE</span><br>
+        <span class="keyword">Quando eu começar como um clone</span><br>
+        &nbsp;➜ mude fantasia para <span class="value">(aleatório entre 1 e 2)</span><br>
+        &nbsp;➜ <span class="action">mostre</span><br>
+        &nbsp;➜ <span class="object">Movement</span> <br><br>
+        <span class="keyword">Se</span> tocando em <span class="value">"Shoot"</span>? <span class="action">então</span><br>
+        &nbsp;➜ <span class="action">pare outros scripts no ator</span><br>
+        &nbsp;➜ <span class="object">Explosion</span><br>
+        &nbsp;➜ adicione <span class="value">5</span> a <span class="object">Score</span><br>
+        &nbsp;➜ <span class="action">apague este clone</span>
+    </div>
+<div style="display: flex; gap: 10px; align-items: flex-start;">
+    <img src="./assets/clone-meteoro.png" alt="bloco de colisão" style="width: 50%; height: auto;">
+    <img src="./assets/clones-meteoros.png" alt="bloco de explosão" style="width: 50%; height: auto;">
+</div>
+<div class="note">
+        <b>Diferença Estratégica:</b> Ao contrário do Chefe que é imprevisível, os meteoros seguem um padrão fixo de "escada". Use isso para antecipar onde eles estarão!
+    </div>
+</div>
+
+<div class="page">
+    <div class="header">
+        <img src="Logo Profia.png" alt="Mascote" class="mascot">
+        <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+
+    <h1>Mecânica de Combate: O Laser</h1>
+    <p><b>Resumo:</b> Controle de disparo semi-automático, posicionamento dinâmico e limpeza de memória.</p>
+
+    <div class="two-columns">
+        <div class="col">
+            <h3>1. Mecânica de Disparo</h3>
+            <div class="concept-box">
+                <span class="concept-title">Tiro por Clique</span>
+                O uso do bloco <b>"Espere até que NÃO tecla pressionada"</b> impede que o jogador atire infinitamente apenas segurando o botão. Isso adiciona desafio ao jogo!
+            </div>
+            
+            <div class="code-block" style="background: white;">
+                <span class="code-title">GATILHO DE TIRO</span><br>
+                <span class="keyword">Quando bandeira verde clicada</span><br>
+                &nbsp;➜ <span class="action">esconda</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">espere até que</span> tecla <span class="value">espaço</span> pressionada?<br>
+                    &nbsp;➜ <span class="action">crie clone de [mim]</span><br>
+                    <span class="action">espere até que</span> <span class="keyword">NÃO</span> tecla <span class="value">espaço</span> pressionada?
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h3>2. Vida do Projétil</h3>
+            <div class="code-block" style="background: white;">
+                <span class="code-title">MOVIMENTO DO CLONE</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                &nbsp;➜ <span class="action">vá para [Nave]</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                &nbsp;&nbsp;&nbsp;➜ adicione <span class="value">10</span> a <span class="object">y</span>
+            </div>
+            
+            <div class="note" style="margin-top: 10px;">
+                <b>Dica de Ouro:</b> O bloco <code>vá para Nave</code> deve vir <b>antes</b> do <code>mostre</code> para evitar que o tiro "pisque" no lugar errado antes de sair da nave.
+            </div>
+        </div>
+    </div>
+
+    <h3>3. Colisões e Limpeza de Clones</h3>
+    <p>Para manter o jogo leve e sem erros, precisamos apagar os clones que não são mais necessários.</p>
+
+    <div class="two-columns">
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">ACERTOU O INIMIGO</span><br>
+                <span class="keyword">Se</span> tocando em <span class="value">"Meteors"</span>? <span class="action">então</span><br>
+                &nbsp;➜ <span class="action">espere 0.1 seg</span> <br>
+                &nbsp;➜ <span class="action">apague este clone</span>
+            </div>
+            <p style="font-size: 12px;"><i>*O atraso de 0.1s permite que o Meteoro detecte o impacto antes do tiro sumir.</i></p>
+        </div>
+
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">SAIU DA TELA</span><br>
+                <span class="keyword">Se</span> tocando em <span class="value">"borda"</span>? <span class="action">então</span><br>
+                &nbsp;➜ <span class="action">apague este clone</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="concept-box" style="background-color: #E1F5FE; border-left-color: #03A9F4;">
+        <span class="concept-title" style="color: #0288D1;">🚀 Desafio: Upgrade Metralhadora</span>
+        Substitua o bloco <b>"espere até que NÃO"</b> por um simples <b>"espere 0.2 seg"</b>. O que acontece com a velocidade dos disparos?
+    </div>
+</div>
+
+<div class="page">
+    <div class="header">
+        <img src="Logo Profia.png" alt="Mascote" class="mascot">
+        <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+
+    <h1>Interface e Transições de Fase</h1>
+    <p><b>Resumo:</b> Gerenciamento de avisos visuais e feedback para o jogador sobre a progressão do nível.</p>
+
+    <h3>1. Início do Jogo (Aviso de Fase 1)</h3>
+    <div class="two-columns">
+        <div class="col">
+            <div class="concept-box">
+                <span class="concept-title">O Sprite de Interface</span>
+                Este ator não participa do combate. Ele serve apenas como um "anunciante" que entra em cena, dá o aviso e se retira.
+            </div>
+        </div>
+        <div class="col">
+            <div class="code-block" style="background: white;">
+                <span class="code-title">APRESENTAÇÃO INICIAL</span><br>
+                <span class="keyword">Quando bandeira verde clicada</span><br>
+                &nbsp;➜ mude fantasia para <span class="value">"Phase_spr1"</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">espere 1 seg</span><br>
+                &nbsp;➜ <span class="action">vá para x: 0 y: 0</span><br>
+                &nbsp;➜ <span class="action">espere 1 seg</span><br>
+                &nbsp;➜ <span class="action">esconda</span>
+            </div>
+        </div>
+    </div>
+
+    <h3>2. Transições de Fase (Eventos)</h3>
+    <p>Estes blocos ficam "ouvindo" o jogo e aparecem assim que a pontuação necessária é atingida.</p>
+
+    <div class="two-columns">
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">FASE 2 E 3</span><br>
+                <span class="keyword">Quando receber [Phase2]</span> ou <span class="keyword">[Phase3]</span><br>
+                &nbsp;➜ mude fantasia para <span class="value">correspondente</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">espere 2 seg</span><br>
+                &nbsp;➜ <span class="action">esconda</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">FASE 4 E 5</span><br>
+                <span class="keyword">Quando receber [Phase4]</span> ou <span class="keyword">[Phase5]</span><br>
+                &nbsp;➜ mude fantasia para <span class="value">correspondente</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">espere 2 seg</span><br>
+                &nbsp;➜ <span class="action">esconda</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="note" style="border-left-color: var(--concept-purple); background-color: #F3E5F5;">
+        <h3>🔄 O Ciclo de Lógica do Space Shooter</h3>
+        <ul style="margin-left: -20px;">
+            <li><b>Nave:</b> Destrói inimigos → Ganha pontos → <b>Transmite</b> "Mudei de Fase".</li>
+            <li><b>Placas:</b> Recebem a mensagem → <b>Mostram</b> o aviso na tela.</li>
+            <li><b>Inimigos/Meteoros:</b> Recebem a mensagem → <b>Aumentam</b> a velocidade.</li>
+            <li><b>Chefe:</b> Recebe "Phase 4" → <b>Inicia</b> o combate final.</li>
+        </ul>
+    </div>
+
+    <div class="concept-box" style="background-color: #E8F5E9; border-left-color: #4CAF50;">
+        <span class="concept-title" style="color: #2E7D32;">🏁 Projeto Concluído!</span>
+        Com este sistema de mensagens (Broadcasting), todas as partes do seu jogo agora "conversam" entre si.
+    </div>
+</div>
+
+    <div class="page">
+        <div class="header">
+            <img src="Logo Profia.png" alt="Mascote" class="mascot">
+            <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <p style="text-align:center;">Anote aqui as dificuldades encontradas na lógica dos blocos.</p>
+
+        <h2>Anotações:</h2>
+        <div class="notes-area" style="height: 250px;"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

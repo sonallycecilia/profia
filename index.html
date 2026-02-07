@@ -3,50 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz: Mestre das Decisões</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Central de Missões - Profia</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <div class="quiz-card">
-        <div id="quiz-screen">
-            <div class="header">
-                <span class="mascot-icon">🤖</span>
-                <h1>Desafio de Lógica</h1>
-                <p>Aula 05: Tomada de Decisão</p>
-                
-                <div class="progress-container">
-                    <div class="progress-fill" id="progress"></div>
-                </div>
-            </div>
+    <div class="hub-header">
+        <h1>Central de Quiz <span>Profia</span></h1>
+        <div class="hub-subtitle">Selecione sua Missão</div>
+    </div>
 
-            <div class="question-box" id="question-text">
-                Carregando...
-            </div>
+    <div class="missions-grid">
 
-            <div class="options-grid" id="options-container">
-                </div>
+            <div class="mission-card" style="border: 2px solid var(--primary-cyan);">
+        <span class="level-tag" style="background: var(--primary-cyan); color: white;">Módulo Especial</span>
+        <div class="card-icon">🐱</div>
+        <h2>Universo Scratch</h2>
+        <p>Teste seus conhecimentos sobre a lógica dos nossos jogos principais!</p>
+        
+        <div class="quiz-menu" style="display: flex; flex-direction: column; gap: 8px; margin: 15px 0;">
+            <a href="/scratch/aula5/quiz/index.html" class="play-btn" style="font-size: 12px; padding: 8px;">🎮 Aula 05 (Lógica)</a>
+            <a href="rescues-game/quiz/index.html" class="play-btn" style="font-size: 12px; padding: 8px;">🐕 Rescue's Game</a>
+            <a href="space-shooter/quiz/index.html" class="play-btn" style="font-size: 12px; padding: 8px;">🚀 Space Shooter</a>
+        </div>
+    </div>
 
-            <div class="feedback-area" id="feedback"></div>
-
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()">Próxima ➔</button>
+        <div class="mission-card">
+            <span class="level-tag">Aula 01</span>
+            <div class="card-icon">🚀</div>
+            <h2>Primeiros Passos</h2>
+            <p>Conheça o Scratch e aprenda a movimentar seus personagens.</p>
+            <a href="aula1/quiz/index.html" class="play-btn">Jogar Agora ➔</a>
         </div>
 
-        <div id="result-screen" class="result-screen">
-            <span class="mascot-icon">🏆</span>
-            <h1>Missão Cumprida!</h1>
-            <p>Veja como você se saiu:</p>
-            
-            <div class="big-score" id="final-score">0/0</div>
-            
-            <div class="message-box" id="final-message">
-                Mensagem final...
-            </div>
-
-            <button class="next-btn" style="display:inline-block; background-color: var(--accent-orange); box-shadow: 0 5px 0 #E64A19;" onclick="location.reload()">
-                Jogar Novamente 🔄
-            </button>
+        <div class="mission-card">
+            <span class="level-tag">Aula 02</span>
+            <div class="card-icon">🎨</div>
+            <h2>Cenários e Sons</h2>
+            <p>Como mudar o fundo e adicionar efeitos sonoros incríveis.</p>
+            <a href="aula2/quiz/index.html" class="play-btn">Jogar Agora ➔</a>
         </div>
+
+        <div class="mission-card locked">
+            <span class="level-tag">Em Breve</span>
+            <div class="card-icon">🔒</div>
+            <h2>Animações</h2>
+            <p>Aprenda a fazer o gatinho andar de verdade.</p>
+            <a href="#" class="play-btn locked-btn">Bloqueado</a>
+        </div>
+
+        <div class="mission-card">
+            <span class="level-tag">Aula 05</span>
+            <div class="card-icon">🤔</div>
+            <h2>Mestre das Decisões</h2>
+            <p>Desafio de Lógica: Aprenda sobre condições SE e ENTÃO.</p>
+            <a href="aula5/quiz/index.html" class="play-btn">Jogar Agora ➔</a>
+        </div>
+
+    </div>
+
+    <div class="footer-deco" style="position: relative; margin-top: 50px; bottom: 0;">
+        <p>🐾 Desenvolvido para o curso de Ciência da Computação</p>
     </div>
 
     <script src="script.js"></script>
