@@ -19,7 +19,7 @@
         <div class="cover-subtitle-pro">Scratch</div>
 
         <div class="cover-banner">
-            <img src="space-cover.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+            <img src="./assets/capa-space-shooter.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
         </div>
     </div>
 
@@ -44,7 +44,9 @@
     <li><b>Cenário (Palco):</b> Clique em "Selecionar Cenário" no canto inferior direito e escolha <b>"Stars"</b> ou <b>"Galaxy"</b> na biblioteca do Scratch para dar o clima espacial.</li>
 </ul>
 
-<img src="./assets/sprites.png" alt="atores e cenário">
+<div class="banner", align="center">
+    <img src="./assets/sprites.png" alt="atores e cenário">
+</div>
 
 <h2>Variáveis: O Cérebro do Jogo</h2>
     <p>As variáveis são caixinhas onde o computador guarda informações que mudam o tempo todo, como pontos e velocidade.</p>
@@ -57,8 +59,10 @@
         <li><b>Regra de Ouro:</b> Selecione sempre <b>"Para todos os atores"</b>. Isso permite que um ator "converse" com o outro.</li>
     </ul>
 
+
+<div class="banner", align="center">
     <img src="./assets/variaveis.png" alt="variaveis">
-    
+    </div>
 
     <h3>Por que essas variáveis são importantes?</h3>
     
@@ -349,22 +353,21 @@
     </div>
 </div>
 
-<div class="page">
-    <div class="header">
-        <img src="Logo Profia.png" alt="Mascote" class="mascot">
-        <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
-    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
 
     <h1>Mecânica de Combate: O Laser</h1>
     <p><b>Resumo:</b> Controle de disparo semi-automático, posicionamento dinâmico e limpeza de memória.</p>
-
-    <div class="two-columns">
-        <div class="col">
-            <h3>1. Mecânica de Disparo</h3>
             <div class="concept-box">
                 <span class="concept-title">Tiro por Clique</span>
                 O uso do bloco <b>"Espere até que NÃO tecla pressionada"</b> impede que o jogador atire infinitamente apenas segurando o botão. Isso adiciona desafio ao jogo!
             </div>
+    <div class="two-columns">
+        <div class="col">
+            <h3>1. Mecânica de Disparo</h3>
             
             <div class="code-block" style="background: white;">
                 <span class="code-title">GATILHO DE TIRO</span><br>
@@ -380,7 +383,13 @@
         </div>
 
         <div class="col">
-            <h3>2. Vida do Projétil</h3>
+                            <img src="./assets/clone-laser.png" alt="imagem clone laser">
+
+
+        </div>
+    </div>
+
+                <h3>2. Vida do Projétil</h3>
             <div class="code-block" style="background: white;">
                 <span class="code-title">MOVIMENTO DO CLONE</span><br>
                 <span class="keyword">Quando eu começar como um clone</span><br>
@@ -389,12 +398,10 @@
                 &nbsp;➜ <span class="action">sempre</span><br>
                 &nbsp;&nbsp;&nbsp;➜ adicione <span class="value">10</span> a <span class="object">y</span>
             </div>
-            
+                        
             <div class="note" style="margin-top: 10px;">
                 <b>Dica de Ouro:</b> O bloco <code>vá para Nave</code> deve vir <b>antes</b> do <code>mostre</code> para evitar que o tiro "pisque" no lugar errado antes de sair da nave.
             </div>
-        </div>
-    </div>
 
     <h3>3. Colisões e Limpeza de Clones</h3>
     <p>Para manter o jogo leve e sem erros, precisamos apagar os clones que não são mais necessários.</p>
@@ -419,31 +426,33 @@
         </div>
     </div>
 
+    <div class="banner" align="center">
+        <img src="./assets/inicio-clone-laser.png" alt="colisão laser">
+    </div>
+
     <div class="concept-box" style="background-color: #E1F5FE; border-left-color: #03A9F4;">
         <span class="concept-title" style="color: #0288D1;">🚀 Desafio: Upgrade Metralhadora</span>
         Substitua o bloco <b>"espere até que NÃO"</b> por um simples <b>"espere 0.2 seg"</b>. O que acontece com a velocidade dos disparos?
     </div>
 </div>
 
-<div class="page">
-    <div class="header">
-        <img src="Logo Profia.png" alt="Mascote" class="mascot">
-        <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
-    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
 
     <h1>Interface e Transições de Fase</h1>
-    <p><b>Resumo:</b> Gerenciamento de avisos visuais e feedback para o jogador sobre a progressão do nível.</p>
 
     <h3>1. Início do Jogo (Aviso de Fase 1)</h3>
-    <div class="two-columns">
-        <div class="col">
             <div class="concept-box">
                 <span class="concept-title">O Sprite de Interface</span>
                 Este ator não participa do combate. Ele serve apenas como um "anunciante" que entra em cena, dá o aviso e se retira.
             </div>
-        </div>
+
+    <div class="two-columns">
         <div class="col">
-            <div class="code-block" style="background: white;">
+                        <div class="code-block" style="background: white;">
                 <span class="code-title">APRESENTAÇÃO INICIAL</span><br>
                 <span class="keyword">Quando bandeira verde clicada</span><br>
                 &nbsp;➜ mude fantasia para <span class="value">"Phase_spr1"</span><br>
@@ -453,6 +462,11 @@
                 &nbsp;➜ <span class="action">espere 1 seg</span><br>
                 &nbsp;➜ <span class="action">esconda</span>
             </div>
+
+        </div>
+        <div class="col">
+            <img src="./assets/phases.png" alt="aviso fase 1">
+
         </div>
     </div>
 
@@ -498,17 +512,84 @@
     </div>
 </div>
 
-    <div class="page">
+
+<div class="page">
         <div class="header">
-            <img src="Logo Profia.png" alt="Mascote" class="mascot">
-            <img src="Horizontal sem fundo.png" alt="Logo Texto" class="logotype">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <div class="cover-main-title" style="font-size: 40px;">
+        Atividade: <span>Engenharia Espacial</span>
+    </div>
+    <p style="text-align:center;"><b>Objetivo:</b> Você foi promovido a Engenheiro Chefe. Modifique o código para testar novas tecnologias de defesa.</p>
+
+    <h2 style="color: #4CAF50;">🟢 Nível 1: Personalização Visual</h2>
+    <div class="two-columns">
+        <div class="col">
+            <h3>Tarefa 1: Laser de Plasma</h3>
+            <p>Mude a cor do ator <b>Shoot</b> na aba Fantasias para Verde ou Roxo usando o balde de tinta.</p>
+        </div>
+        <div class="col">
+            <h3>Tarefa 2: Alerta de Perigo</h3>
+            <p>Selecione o ator <b>Meteors</b> e desenhe uma "cara de bravo" ou pinte-o de Vermelho.</p>
+        </div>
+    </div>
+
+    <h2 style="color: #FBC02D;">🟡 Nível 2: Ajuste de Motores</h2>
+    <div class="concept-box" style="border-left-color: #FBC02D;">
+        <span class="concept-title" style="color: #F9A825;">Entendendo o Plano Cartesiano</span>
+        X controla a horizontal (Direita/Esquerda) e Y controla a vertical (Cima/Baixo).
+    </div>
+
+    <h3>Tarefa 3: Turbinando a Nave</h3>
+    <p>A nave está lenta! No código da <b>Nave</b>, altere os valores de movimento:</p>
+    <div class="code-block" style="background: white;">
+        <span class="action">Mude de</span> <span class="value">10</span> <span class="action">para</span> <span class="value">20</span> (e <span class="value">-10</span> para <span class="value">-20</span>).
+    </div>
+    
+    <h3>Tarefa 4: Gravidade Zero</h3>
+    <p>No ator <b>Meteors</b>, mude o valor inicial da variável <span class="value">speed_meteors</span> de <b>3</b> para <b>1</b>. O que acontece com a velocidade de queda?</p>
+
+    <h2 style="color: #F44336;">🔴 Nível 3: Hackeando o Sistema</h2>
+    
+    <div class="two-columns">
+        <div class="col">
+            <div class="note" style="border-color: #F44336; background: #FFEBEE;">
+                <b>Tarefa 5: Metralhadora</b><br>
+                Remova o bloco <i>"espere até que NÃO..."</i> e coloque <b>espere 0.1 seg</b>. Teste segurar o Espaço!
+            </div>
+        </div>
+        <div class="col">
+            <div class="note" style="border-color: #9C27B0; background: #F3E5F5;">
+                <b>Tarefa 6: Chefe Imortal</b><br>
+                No bloco <span class="keyword">defina move</span> do Chefe, mude o tempo para <b>0.0 seg</b>.
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-area" style="height: 180px; margin-top: 30px;">
+        <h3 style="padding: 10px 0 0 15px; margin: 0;">📝 Reflexão Final:</h3>
+        <p style="padding-left: 15px; font-size: 12px;">
+            • Qual mudança deixou o jogo mais divertido?<br>
+            • Por que o jogo fica "quebrado" quando mudamos demais os números?<br>
+            • Para que servem as variáveis Score e Speed que usamos?
+        </p>
+    </div>
+</div>
+
+
+        <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
         <h1>Diário de Bordo</h1>
-        <p style="text-align:center;">Anote aqui as dificuldades encontradas na lógica dos blocos.</p>
+        <div class="notes-area"></div>
 
-        <h2>Anotações:</h2>
-        <div class="notes-area" style="height: 250px;"></div>
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
 
         <div class="score-container">
             <div class="score-box">
@@ -521,8 +602,6 @@
                 <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
             </div>
         </div>
-
-    </div>
 
 </body>
 </html>
