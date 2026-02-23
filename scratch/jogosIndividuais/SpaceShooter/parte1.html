@@ -92,9 +92,7 @@
 
     <h2>Programação dos Meteoros</h2>
 
-    
-
-    <h2>Gerador de Objetos (Clones)</h2>
+    <h3>Gerador de Objetos (Clones)</h3>
     <p> O uso de clones permite que o jogo crie infinitos inimigos sem a necessidade de centenas de atores diferentes.</p>
 
 
@@ -127,7 +125,7 @@
         </div>
     </div>
 
-    <h2>Aparência dos Meteoros</h2>
+    <h3>Aparência dos Meteoros</h3>
     <img src="./assets/clone-meteoro.png" alt="bloco de colisão" style="width: 50%; height: auto;">
 
 </div>
@@ -154,27 +152,50 @@
     <h3>Lógica de Patrulha Descendente</h3>
     <p>O movimento é dividido em quatro etapas principais dentro de um ciclo infinito (loop <b>Sempre</b>).</p>
 
-      <div class="code-block">
-        <span class="code-title">MOVEMENT (bloco cor de rosa) </span><br>
+    <div class="code-block">
+        <span class="code-title">DEFINA MOVE (Bloco Customizado)</span><br>
         <span class="action">sempre</span><br>
         <div style="margin-left: 20px; border-left: 2px solid var(--primary-cyan); padding-left: 10px;">
+            
             <span class="keyword">// Movimento para a Direita</span><br>
-            <span class="action">repita 15 vezes</span> ➜ adicione <span class="value">2</span> a <span class="object">x</span> <small>(desencostar da borda)</small><br>
-            <span class="action">repita até que</span> tocando em <span class="value">borda</span>? ➜ adicione <span class="value">2</span> a <span class="object">x</span><br>
+            <span class="action">repita até que</span> <span class="object">posição x</span> > <span class="value">210</span><br>
+            <div style="margin-left: 20px;">
+                ➜ <span class="action">adicione</span> <span class="value">5</span> a <span class="object">x</span>
+            </div>
             <span class="action">adicione</span> <span class="value">-50</span> a <span class="object">y</span> <small>(descer degrau)</small><br>
+            
             <br>
+            
             <span class="keyword">// Movimento para a Esquerda</span><br>
-            <span class="action">repita 15 vezes</span> ➜ adicione <span class="value">-2</span> a <span class="object">x</span><br>
-            <span class="action">repita até que</span> tocando em <span class="value">borda</span>? ➜ adicione <span class="value">-2</span> a <span class="object">x</span><br>
+            <span class="action">repita até que</span> <span class="object">posição x</span> < <span class="value">-210</span><br>
+            <div style="margin-left: 20px;">
+                ➜ <span class="action">adicione</span> <span class="value">-5</span> a <span class="object">x</span>
+            </div>
             <span class="action">adicione</span> <span class="value">-50</span> a <span class="object">y</span> <small>(descer degrau)</small>
+            
         </div>
     </div>
 
     <div class="note">
-        <b>Diferença Estratégica:</b> Ao contrário do Chefe que é imprevisível, os meteoros seguem um padrão fixo de "escada". Use isso para antecipar onde eles estarão!
+        <strong>Dica:</strong> Os valores <span class="value">210</span> e <span class="value">-210</span> definem as "paredes" laterais invisíveis do seu jogo.
     </div>
+    <div class="concept-box">
+                <span><b>💡 Por que usar o bloco "Move" aqui?</b></span>
+                <p>Imagine que você tem 10 tipos de inimigos diferentes. Se você escrever toda a lógica de movimento dentro de cada um, seu código ficará gigante e difícil de consertar!</p>
+                <p>Ao colocar o <strong>Move</strong> dentro do evento do clone, você diz: <em>"Assim que o clone nascer, ele deve seguir as regras de movimento que eu já defini"</em>.</p>
+            </div>
+        </div>
+   
+</div>
 
-                    <div class="two-columns">
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+            <h2>Programação do Laser</h2>    
+    <div class="two-columns">
         <div class="col">
             <h3>1. Mecânica de Disparo</h3>
             
@@ -194,14 +215,6 @@
         <div class="col">
                             <img src="./assets/clone-laser.png" alt="imagem clone laser">
         </div>
-        </div>
-   
-</div>
-
-<div class="page">
-        <div class="header">
-            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
-            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
  <h3>2. Vida do Projétil</h3>

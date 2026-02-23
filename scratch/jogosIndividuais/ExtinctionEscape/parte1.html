@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila PROF IA - Scratch Aula 05</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <div class="page">
+        <div class="header">
+            <img src="logo-profia.png" alt="Mascote" class="mascot">
+            <img src="horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Scratch <span></span> Intro
+        </div>
+        <div class="cover-subtitle-pro">Aula 05: Extinction Escape </div>
+
+        <div class="cover-banner">
+            <img src="teste.png" alt="Scratch Cat" style="height: 100%; width: 100%; object-fit: contain;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="logo-profia.png" alt="Mascote" class="mascot">
+            <img src="horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Aula 05: Extinction Escape </h1>
+        <p>É um jogo onde temos um Dinossauro e precisamos ajudá-lo a pegar a maior quantidade de maçãs possíveis sem que ele se choque com o meteorito. O principal objetivo é sobreviver o maior tempo possível utilizando atenção e estratégia.</p>
+
+        <h2>1. Criação e Movimentação do Ator</h2>
+        <p>Nesta aula, aprenderemos uma nova forma de programar a movimentação: o ponto de controle será o <b>mouse</b>, que guiará o personagem pelo mapa.</p>
+        
+        <h2>1.1 Criação</h2>
+        <p>O Dinosaur é criado no Scratch através do menu de atores (ícone do gato), onde também podemos editá-lo na aba de Fantasias.</p>
+        
+        <h2>1.2 Movimentação</h2>
+        <p>O Dinosaur segue o ponteiro do mouse. O bloco "mova" faz com que ele se desloque na direção apontada.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li>
+                        <b>Bloco Mova:</b><br>
+                        - Faz o ator andar para frente na direção atual.<br>
+                        - Valores maiores = maior velocidade.<br>
+                        <img src="1.png" alt="Bloco Mova" class="block-img">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>1.3 Fantasias</h2>
+        <p>As fantasias criam a ilusão de animação. Ao alternar entre elas rapidamente enquanto o ator se move, parece que o dinossauro está correndo.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li>
+                        <b>Como funciona a animação:</b><br>
+                        - O código usa o bloco “próxima fantasia” dentro de um loop.<br>
+                        - A troca constante gera o efeito de movimento visual.<br>
+                        <img src="2.png" alt="Bloco Próxima Fantasia" class="block-img">
+                    </li>    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="logo-profia.png" alt="Mascote" class="mascot">
+            <img src="horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>2. Criação do Meteor</h2>
+        <p>O Meteor é o vilão do jogo. O objetivo dele é alcançar o Dinosaur para causar o Game Over.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li>
+                        <b>Configuração:</b><br>
+                        1. Criado como um ator (sprite).<br>
+                        2. Funciona como o obstáculo principal.<br>
+                        <img src="3.png" alt="Bloco Meteor" class="block-img">
+                    </li>    
+                </ul>
+            </div>
+        </div>
+
+        <h2>2.2 Meteor Seguidor</h2>
+        <p>Este inimigo persegue o jogador constantemente, aumentando a dificuldade conforme o tempo passa.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li>
+                        <b>Lógica de Perseguição:</b><br>
+                        - Sempre aponta para o Dinosaur.<br>
+                        - Move-se alguns passos em um loop infinito.<br>
+                        <img src="4.png" alt="Bloco Seguidor" class="block-img">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>2.3 Ângulos e Rotação</h2>
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li><b>Rotação Livre:</b> Gira em qualquer direção (pode ficar de cabeça para baixo). <img src="5.png" alt="Rotação" class="block-img"></li>
+                    <li><b>Esquerda/Direita:</b> Apenas vira para os lados, mantendo-se em pé. <img src="6.png" alt="Esq/Dir" class="block-img"></li>
+                    <li><b>Não Girar:</b> O ator permanece sempre na mesma posição visual. <img src="7.png" alt="Não Girar" class="block-img"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="logo-profia.png" alt="Mascote" class="mascot">
+            <img src="horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>3. Apple (Coletável)</h2>
+        <p>A Apple é o item que garante a pontuação ao jogador.</p>
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li><b>Função:</b> Dar pontos e incentivar a movimentação pelo mapa. <img src="8.png" alt="Apple" class="block-img"></li>
+                    <li><b>Lógica:</b> Se tocar no Dinosaur, some e adiciona +1 ao placar. <img src="9.png" alt="Lógica Pontos" class="block-img"></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="border: 1px solid #B2EBF2; margin: 20px 0;">
+
+        <h2>4. Atividade: Vilão Barulhento</h2>
+        <p>🎯 <b>Desafio:</b> Você será o "ajustador do jogo". Mude os valores do bloco <i>mova () passos</i> para o Dinosaur e para o Meteor. Tente equilibrar a dificuldade!</p>
+        <img src="10.png" alt="Atividade" class="block-img">
+
+        <h1>Diário de Bordo</h1>
+        <h2>Anotações:</h2>
+        <div class="notes-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 20
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
