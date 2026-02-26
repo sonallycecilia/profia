@@ -12,15 +12,15 @@ const questions = [
         rationale: "Isso aí! A Bandeira Verde é como o juiz apitando o início da partida. Sem ela, os personagens ficam dormindo!"
     },
     {
-        question: "O Dino obedece a um 'volante' invisível. O que você precisa fazer para que o computador saiba para onde o Dino deve ir?",
+        question: "O Dino obedece a um 'volante' invisível, podendo ir na diagonal. O que você precisa fazer para que o computador saiba para onde o Dino deve ir?",
         options: [
             "Gritar a direção no microfone.",
-            "Apertar e segurar o botão do mouse.",
-            "Usar as setinhas do teclado.",
+            "Usar as setinhas do teclado, duas ao mesmo tempo.",
+            "Usar as setinhas do teclado, uma por vez.",
             "Ele anda sozinho sem a gente mandar."
         ],
         correct: 1,
-        rationale: "Exato! O bloco 'se mouse pressionado?' é como se o mouse fosse uma cordinha puxando o Dino pela tela."
+        rationale: "Exato! Segurar duas setas ao mesmo tempo é como dirigir um carro: uma seta para frente e outra para a direita, e o Dino vai para a diagonal!"
     },
     {
         question: "O Meteoro nunca cansa! Ele persegue o Dino o jogo inteirinho. Na programação, que bloco a gente usa para mandar o computador repetir algo sem parar nunca?",
