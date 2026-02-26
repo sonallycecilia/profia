@@ -1,107 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Space Shooter - Parte 4</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
-    <h3>2. Transições de Fase (Eventos)</h3>
-    <p>Estes blocos ficam "ouvindo" o jogo e aparecem assim que a pontuação necessária é atingida.</p>
-
-    <div class="two-columns">
-        <div class="col">
-            <div class="code-block">
-                <span class="code-title">FASE 2 E 3</span><br>
-                <span class="keyword">Quando receber [Phase2]</span> ou <span class="keyword">[Phase3]</span><br>
-                &nbsp;➜ mude fantasia para <span class="value">correspondente</span><br>
-                &nbsp;➜ <span class="action">mostre</span><br>
-                &nbsp;➜ <span class="action">espere 2 seg</span><br>
-                &nbsp;➜ <span class="action">esconda</span>
-            </div>
-        </div>
-        <div class="col">
-            <div class="code-block">
-                <span class="code-title">FASE 4 E 5</span><br>
-                <span class="keyword">Quando receber [Phase4]</span> ou <span class="keyword">[Phase5]</span><br>
-                &nbsp;➜ mude fantasia para <span class="value">correspondente</span><br>
-                &nbsp;➜ <span class="action">mostre</span><br>
-                &nbsp;➜ <span class="action">espere 2 seg</span><br>
-                &nbsp;➜ <span class="action">esconda</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="note" style="border-left-color: var(--concept-purple); background-color: #F3E5F5;">
-        <h3>🔄 O Ciclo de Lógica do Space Shooter</h3>
-        <ul style="margin-left: -20px;">
-            <li><b>Nave:</b> Destrói inimigos → Ganha pontos → <b>Transmite</b> "Mudei de Fase".</li>
-            <li><b>Placas:</b> Recebem a mensagem → <b>Mostram</b> o aviso na tela.</li>
-            <li><b>Inimigos/Meteoros:</b> Recebem a mensagem → <b>Aumentam</b> a velocidade.</li>
-            <li><b>Chefe:</b> Recebe "Phase 4" → <b>Inicia</b> o combate final.</li>
-        </ul>
-    </div>
-
-    <div class="concept-box" style="background-color: #E8F5E9; border-left-color: #4CAF50;">
-        <span class="concept-title" style="color: #2E7D32;">🏁 Projeto Concluído!</span>
-        Com este sistema de mensagens (Broadcasting), todas as partes do seu jogo agora "conversam" entre si.
-    </div>
-</div>
-
-
-<div class="page">
+    <div class="page">
         <div class="header">
             <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
             <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-    <div class="cover-main-title" style="font-size: 40px;">
-        Atividade: <span>Engenharia Espacial</span>
-    </div>
-    <p style="text-align:center;"><b>Objetivo:</b> Você foi promovido a Engenheiro Chefe. Modifique o código para testar novas tecnologias de defesa.</p>
-
-    <h2 style="color: #4CAF50;">🟢 Nível 1: Personalização Visual</h2>
-    <div class="two-columns">
-        <div class="col">
-            <h3>Tarefa 1: Laser de Plasma</h3>
-            <p>Mude a cor do ator <b>Shoot</b> na aba Fantasias para Verde ou Roxo usando o balde de tinta.</p>
+        <div class="cover-main-title">
+            Space <span>Shooter</span>
         </div>
-        <div class="col">
-            <h3>Tarefa 2: Alerta de Perigo</h3>
-            <p>Selecione o ator <b>Meteors</b> e desenhe uma "cara de bravo" ou pinte-o de Vermelho.</p>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-space-shooter.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
         </div>
     </div>
 
-    <h2 style="color: #FBC02D;">🟡 Nível 2: Ajuste de Motores</h2>
-    <div class="concept-box" style="border-left-color: #FBC02D;">
-        <span class="concept-title" style="color: #F9A825;">Entendendo o Plano Cartesiano</span>
-        X controla a horizontal (Direita/Esquerda) e Y controla a vertical (Cima/Baixo).
-    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        
+        <h1>Ajustes e Refinamento do Space Shooter</h1>
+        <p>Agora que o jogo está completo, vamos fazer pequenas melhorias para deixá-lo mais atraente e funcional!</p>
 
-    <h3>Tarefa 3: Turbinando a Nave</h3>
-    <p>A nave está lenta! No código da <b>Nave</b>, altere os valores de movimento:</p>
-    <div class="code-block" style="background: white;">
-        <span class="action">Mude de</span> <span class="value">10</span> <span class="action">para</span> <span class="value">20</span> (e <span class="value">-10</span> para <span class="value">-20</span>).
-    </div>
-    
-    <h3>Tarefa 4: Gravidade Zero</h3>
-    <p>No ator <b>Meteors</b>, mude o valor inicial da variável <span class="value">speed_meteors</span> de <b>3</b> para <b>1</b>. O que acontece com a velocidade de queda?</p>
+        <h2>Sistema de Vidas da Nave</h2>
+        <p>No início do projeto, qualquer toque em um meteoro causava Game Over imediato usando o bloco "pare todos". Vamos transformar isso em um sistema de Vidas (HP)!</p>
 
-    <h2 style="color: #F44336;">🔴 Nível 3: Hackeando o Sistema</h2>
-    
-    <div class="two-columns">
-        <div class="col">
-            <div class="note" style="border-color: #F44336; background: #FFEBEE;">
-                <b>Tarefa 5: Metralhadora</b><br>
-                Remova o bloco <i>"espere até que NÃO..."</i> e coloque <b>espere 0.1 seg</b>. Teste segurar o Espaço!
+        <div class="concept-box">
+            <span class="concept-title">Preparação</span>
+            Vá na aba Variáveis e crie uma nova variável chamada <b>Vidas</b> para todos os atores.
+        </div>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">INÍCIO DO JOGO</span><br>
+                    <span class="keyword">quando 🚩 for clicado</span><br>
+                    ➜ Defina <span class="object">Vidas</span> para <span class="value">3</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NOVO COLLISION CHECK</span><br>
+                    <span class="keyword">quando 🚩 for clicado</span><br>
+                    <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--primary-cyan); padding-left: 10px;">
+                        <span class="keyword">se</span> <span class="object">tocando em</span> <span class="value">Meteors?</span> <span class="keyword">ou</span> <span class="object">Enemy?</span> <span class="keyword">então</span><br>
+                        <div style="margin-left: 20px; border-left: 2px solid var(--accent-orange); padding-left: 10px;">
+                            ➜ <span class="action">adicione</span> <span class="value">-1</span> a <span class="object">Vidas</span><br>
+                            ➜ <span class="action">vá para x:</span> <span class="value">0</span> <span class="action">y:</span> <span class="value">-140</span> <span class="keyword">// Volta pro meio</span><br>
+                            ➜ <span class="action">espere</span> <span class="value">1</span> <span class="action">seg</span>
+                        </div>
+                        <span class="keyword">se</span> <span class="object">Vidas</span> <span class="keyword">&lt;</span> <span class="value">1</span> <span class="keyword">então</span><br>
+                        <div style="margin-left: 20px; border-left: 2px solid var(--concept-purple); padding-left: 10px;">
+                            ➜ <span class="action">pare</span> <span class="value">todos</span> <span class="keyword">// Agora sim, Game Over!</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="note" style="border-color: #9C27B0; background: #F3E5F5;">
-                <b>Tarefa 6: Chefe Imortal</b><br>
-                No bloco <span class="keyword">defina move</span> do Chefe, mude o tempo para <b>0.0 seg</b>.
+
+        <div class="note">
+            ⚠️ <b>Atenção:</b> Ao trocar <code>espere até que</code> por <code>sempre > se</code>, nós permitimos que o jogo continue verificando a colisão várias vezes até a vida acabar!
+        </div>
+
+        <h2>Inimigo "Kamikaze" (Rastreador)</h2>
+        <p>Meteoros aparecem em sequência, mas este novo alienígena vai perseguir ativamente a nave do jogador!</p>
+
+        <ul class="step-list">
+            <li>Desenhe ou escolha um novo Ator para ser o Inimigo Rastreador.</li>
+            <li>Use o bloco de repetição <code>sempre</code> para criar o movimento de perseguição.</li>
+        </ul>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">MOVIMENTO RASTREADOR</span><br>
+                    <span class="keyword">quando eu começar como clone</span><br>
+                    <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--primary-cyan); padding-left: 10px;">
+                        ➜ <span class="action">aponte para</span> <span class="value">Nave</span><br>
+                        ➜ <span class="action">mova</span> <span class="value">3</span> <span class="action">passos</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="note" style="border-color: #F44336; background: #FFEBEE; margin-top: 0;">
+                    <b>Cuidado!</b><br>
+                    Como ele aponta para a nave, ele pode girar de cabeça para baixo. Mude o <b>estilo de rotação</b> do ator para "esquerda-direita" se não quiser que ele gire completamente!
+                </div>
             </div>
         </div>
+
+        <h2>Power-Up de Tiro Duplo</h2>
+        <p>Vamos criar um item que, quando coletado, melhora os tiros da nave temporariamente.</p>
     </div>
 
-    <div class="notes-area" style="height: 180px; margin-top: 30px;">
-        <h3 style="padding: 10px 0 0 15px; margin: 0;">📝 Reflexão Final:</h3>
-        <p style="padding-left: 15px; font-size: 12px;">
-            • Qual mudança deixou o jogo mais divertido?<br>
-            • Por que o jogo fica "quebrado" quando mudamos demais os números?<br>
-            • Para que servem as variáveis Score e Speed que usamos?
-        </p>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-title">Lógica de Estado</span>
+            Vamos usar uma variável para "lembrar" se o poder está ativado (1) ou desativado (0).
+        </div>
+
+        <ul class="step-list">
+            <li>Crie uma variável chamada <b>Tiro_Especial</b>.</li>
+            <li>Crie um novo ator chamado <b>PowerUp</b> (pode ser uma estrela ou raio). Faça-o cair do topo da tela igual aos meteoros.</li>
+            <li>No código do <b>PowerUp</b>, adicione: <code>se &lt;tocando em [Nave]&gt; então</code> ➜ <code>transmita [Ativar_Poder]</code> e <code>apague este clone</code>.</li>
+        </ul>
+
+        <div class="code-block" style="margin-top: 15px;">
+            <span class="code-title">CÓDIGO DA NAVE - RECEBENDO O PODER</span><br>
+            <span class="keyword">quando eu receber</span> <span class="value">Ativar_Poder</span><br>
+            <div style="margin-left: 20px; border-left: 2px solid var(--accent-orange); padding-left: 10px;">
+                ➜ <span class="action">mude</span> <span class="object">Tiro_Especial</span> para <span class="value">1</span><br>
+                ➜ <span class="action">toque o som</span> <span class="value">PowerUp</span><br>
+                ➜ <span class="action">espere</span> <span class="value">5</span> <span class="action">seg</span> <span class="keyword">// Duração do poder!</span><br>
+                ➜ <span class="action">mude</span> <span class="object">Tiro_Especial</span> para <span class="value">0</span>
+            </div>
+        </div>
+                <div class="note" style="border-color: #F44336; background: #FFEBEE; margin-top: 0;">
+        <p><b>Desafio:</b> No código do seu Laser, use um bloco <code>se ... senão</code>. Se <b>Tiro_Especial</b> for 1, crie dois clones do laser com posições X diferentes!</p>
+        </div>
+            <p>Além disso, você pode usar sua imaginação e adicionar outros itens com poderes especiais!</p>
+
+<h2>Escudo de Energia (Vidas do Chefe)</h2>
+        <p>O Chefe não deve ser derrotado com apenas um tiro! Vamos dar a ele uma barra de vida (HP) para a batalha durar mais.</p>
+        <ul class="step-list">
+            <li>Vá na aba Variáveis e crie uma nova variável chamada <b>Vida_Boss</b>.</li>
+            <li>No script de entrada do Boss (<code>quando eu receber "Phase4"</code>), adicione o bloco <code>mude [Vida_Boss] para 5</code>.</li>
+            <li>Encontre o script de colisão (onde ele toca no Laser). Em vez de explodir na hora, coloque o bloco <code>adicione -1 a [Vida_Boss]</code>.</li>
+            <li>Adicione um bloco <code>se &lt;(Vida_Boss) &lt; 1&gt; então</code> e mova os blocos de explosão e <code>transmita boss down</code> para dentro dele!</li>
+        </ul>
+
+        <h2>Criando a Tela de Vitória</h2>
+        <ul class="step-list">
+            <li>Crie um novo Ator chamado <b>Victory_Screen</b> e desenhe a tela final.</li>
+            <li>Use o mesmo gatilho do Boss: <code>quando eu receber boss down</code>.</li>
+            <li>Adicione os blocos <code>mostre</code>, <code>toque o som [Win]</code> e, em seguida, <code>pare [todos]</code>.</li>
+        </ul>
+
     </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>🛠️ Atividade de Casa</h1>
+        <p>Um jogo incrível mora nos detalhes! Agora que implementamos Vidas e Explosões, vamos adicionar o toque do mestre.</p>
+
+        <h2>Desafio 1: Som de Disparo</h2>
+        <p>Toda vez que o jogador atirar, queremos ouvir um barulho de laser! Em qual bloco você colocaria o comando <code>toque o som [Laser]</code>?</p>
+        <div class="feedback-area" style="height: 60px;">
+            <p style="padding: 10px; opacity: 0.5;">R: Logo abaixo do bloco: "Quando tecla espaço pressionada..." ________________</p>
+        </div>
+
+        <h2>Desafio 2: Proteção de Nível</h2>
+        <p>Percebeu que quando tocamos em um meteoro, a nave volta para o centro <code>(x: 0, y: -140)</code>? O que aconteceria se não tivéssemos o bloco <code>espere 1 seg</code> logo em seguida?</p>
+        <div class="feedback-area" style="height: 60px;">
+            <p style="padding: 10px; opacity: 0.5;">R: __________________________________________________________________</p>
+        </div>
+
+        <h2>Desafio 3: Tiro Rápido (Metralhadora)</h2>
+        <p>Se você remover o bloco de controle <code>espere até que &lt;não tecla espaço pressionada?&gt;</code> do código do laser e colocar apenas <code>espere 0.1 seg</code>, o que vai acontecer no jogo quando você segurar a barra de espaço?</p>
+        <div class="feedback-area" style="height: 60px;">
+            <p style="padding: 10px; opacity: 0.5;">R: __________________________________________________________________</p>
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+</body>
+</html>

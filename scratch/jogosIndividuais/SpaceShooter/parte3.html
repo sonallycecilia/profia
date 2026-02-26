@@ -48,16 +48,28 @@
     </div>
 
         <h3>Por que essas variáveis são importantes?</h3>
+        <p>As variáveis permitem que o jogo "lembre" informações importantes, como a pontuação do jogador. Isso é essencial para criar um jogo dinâmico e interativo.</p>
     
     <div class="concept-box">
         <span class="concept-title">1. Score (Pontuação)</span>
         É o sistema de recompensa. Ela controla a progressão: quando o <b>Score</b> atinge um valor, o jogo "decide" mudar de fase.
     </div>
     <div class="banner", align="center">
-    <img src="./assets/progessao-fases.png" alt="progressao fases" style="width: 220px; height: auto; margin: 15px 0; border-radius: 8px;">
+    <img src="./assets/progessao-fases.png" alt="progressao fases" style="width: 210px; height: auto; margin: 15px 0; border-radius: 8px;">
+    </div>
+    
+
     </div>
 
-
+    <div class="page">
+    <div class="header">
+        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+<p>Além disso, vamos adicionar a pontuação na colisão entre o jogador e os meteoros.</p>
+        <div class="banner", align="center">
+    <img src="./assets/score-colisao.png" style="width: 220px; height: auto; margin: 15px 0; border-radius: 8px;" alt="score colisao">
+</div>
 <h2>Sistema de Game Over</h2>
     <p>Monitora colisões para encerrar a partida.</p>
     <div class="code-block">
@@ -78,6 +90,15 @@
                 <span class="concept-title">O Sprite de Interface</span>
                 Este ator não participa do combate. Ele serve apenas como um "anunciante" que entra em cena, dá o aviso e se retira.
             </div>       
+    
+</div>
+
+<div class="page">
+    <div class="header">
+        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+
     <div class="two-columns">
         <div class="col">
                         <div class="code-block" style="background: white;">
@@ -98,15 +119,6 @@
 
         </div>
     </div>
-
-    </div>
-
-    <div class="page">
-    <div class="header">
-        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
-        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
-    </div>
-
     
 <h2>Fase 4: O Surgimento do Boss</h2>
     <p>No código do <b>Inimigo</b>, vamos substituir a bandeira verde por uma mensagem. Ele só deve entrar no jogo quando receber o sinal da Fase 4!</p>
@@ -124,52 +136,131 @@
         <b>Importante:</b> Lembre-se de colocar um <code>esconda</code> no bloco da 🚩 Bandeira Verde para o Boss não aparecer antes da hora!
     </div>
 
-    <h2>2. Inimigos Mais Fortes (Refinamento)</h2>
-    <p>Para deixar o jogo mais difícil conforme o tempo passa, vamos fazer os meteoros acelerarem quando a <b>Fase 2</b> e a <b>Fase 3</b> começarem.</p>
+    <h2>Inimigos Mais Fortes (Refinamento)</h2>
+<p>Para deixar o jogo mais difícil conforme o tempo passa, vamos fazer os meteoros acelerarem quando a <b>Fase 2</b> e a <b>Fase 3</b> começarem.</p>
+
+<p>Primeiramente, vamos criar as variáveis <b>"Spawn_time_meteors"</b> (tempo de surgimento) e <b>"Speed_meteors"</b> (velocidade de movimento).</p>
+
+<div class="two-columns">
+    <div class="col">
+        <div class="code-block">
+            <span class="code-title">CONFIGURAÇÃO INICIAL</span><br>
+            <span class="keyword">Quando bandeira verde clicada</span><br>
+            ➜ Defina <span class="object">Spawn_time_meteors</span> para <span class="value">1</span><br>
+            ➜ Defina <span class="object">Speed_meteors</span> para <span class="value">3</span>
+        </div>
+    </div>
+    <div class="col">
+        <div class="code-block">
+            <span class="code-title">UPGRADE FASE 3</span><br>
+            <span class="keyword">Quando eu receber</span> <span class="value">"Phase3"</span><br>
+            ➜ Defina <span class="object">Spawn_time_meteors</span> para <span class="value">0.5</span><br>
+        </div>
+    </div>
+</div>
+
+<p>Agora, no código dos meteoros, substituímos os números fixos pelas variáveis. Assim, o comportamento do jogo muda automaticamente!</p>
+</div>
+<div class="page">  
+    <div class="header">
+        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+<div class="note">
+    💡 <b>Dica:</b> Para o meteoro descer, o valor da velocidade deve ser <b>negativo</b> (ex: -7). Para isso, usamos os operadores (bolinha verde)
+</div>
+<h3>Exemplo:</h3>
+<div class="two-columns" style="align-items: center;">
+    <div class="col" align="center">
+        <img src="./assets/velocidade-meteoro.png" alt="variável spawn" style="width: 220px; height: auto;">
+    </div>
+    <div class="col" align="center">
+        <img src="./assets/speed-meteors.png" alt="speed meteoros" style="width: 220px; height: auto;">
+    </div>
+</div>
+
+<div class="concept-box">
+    <span class="concept-title">O Poder das Variáveis</span>
+    Ao usar <b>Speed_meteors</b> no bloco <code>adicione a y</code> e <b>Spawn_time_meteors</b> no bloco <code>espere</code>, você controla a dificuldade do jogo inteiro em um só lugar!
+</div>
+</div>
+<div class="page">
+    <div class="header">
+        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+
+ <h1>🛠️ Atividade de Casa</h1>
+    <p>Chegou a hora de testar seus conhecimentos sobre Variáveis e Fases! Complete os desafios abaixo com base no que aprendemos.</p>
+
+    <h2>Desafio 1: Caixinhas Mágicas</h2>
+    <p>Nós aprendemos que variáveis são como "caixinhas" que guardam informações. Qual é a <b>Regra de Ouro</b> que não podemos esquecer na hora de criar a variável <code>Score</code>?</p>
+    
+    <div class="feedback-area" style="height: 60px;">
+        <p style="padding: 10px; opacity: 0.5;">R: Sempre selecionar a opção... _______________________________________________</p>
+    </div>
+
+    <h2>Desafio 2: Investigando o Game Over</h2>
+    <p>Observe o script de colisão que fizemos na aula:</p>
+
+    <div class="code-block" style="width: 80%; margin: 15px auto;">
+        <span class="action">espere até que</span><br>
+        <div style="margin-left: 20px;">
+            (tocando em <span class="value">Meteors</span>?) <br>
+            <span class="keyword" style="font-size: 18px; text-decoration: underline;">ou</span><br>
+            (tocando em <span class="value">Enemy</span>?)<br>
+        </div>
+        ➜ <span class="action">pare [todos]</span>
+    </div>
+
+    <p>Por que usamos o operador <b>OU</b> (bolinha verde) neste código em vez do operador <b>E</b>?</p>
+    <div class="feedback-area" style="height: 80px;">
+        <p style="padding: 10px; opacity: 0.5;">R: __________________________________________________________________</p>
+    </div>
+
+    <h2>Desafio 3: Dificuldade Extrema (Mão na Massa)</h2>
+    <p>Você é o mestre do jogo! O Boss acabou de entrar na <b>Fase 4</b> e quer que os meteoros fiquem quase impossíveis de desviar. Complete o código abaixo com valores que deixem o jogo <b>muito difícil</b>:</p>
 
     <div class="two-columns">
         <div class="col">
             <div class="code-block">
-                <span class="code-title">VELOCIDADE FASE 1</span><br>
-                <span class="keyword">Quando bandeira verde clicada</span><br>
-                ➜ Defina <span class="object">Velocidade</span> para <span class="value">-5</span>
+                <span class="code-title" style="background: var(--accent-orange);">MODO HARDCORE FASE 4</span><br>
+                <span class="keyword">Quando eu receber</span> <span class="value">"Phase4"</span><br>
+                ➜ Defina <span class="object">Spawn_time_meteors</span> para <span class="value" style="border-bottom: 2px dashed var(--primary-dark); display: inline-block; width: 40px;">&nbsp;</span> <span class="keyword">// Tempo entre meteoros</span><br>
+                ➜ Defina <span class="object">Speed_meteors</span> para <span class="value" style="border-bottom: 2px dashed var(--primary-dark); display: inline-block; width: 40px;">&nbsp;</span> <span class="keyword">// Velocidade (Lembre do negativo!)</span>
             </div>
         </div>
         <div class="col">
-            <div class="code-block">
-                <span class="code-title">UPGRADE FASE 2</span><br>
-                <span class="keyword">Quando eu receber</span> <span class="value">"Phase2"</span><br>
-                ➜ Defina <span class="object">Velocidade</span> para <span class="value">-8</span>
+            <div class="concept-box" style="margin: 0; height: 100%;">
+                <span class="concept-title">Lembrete</span>
+                Para o jogo ficar mais difícil, o tempo de <i>Spawn</i> (espera) deve ser <b>menor</b> e a velocidade (Speed) deve ser um número negativo <b>maior</b>.
             </div>
         </div>
     </div>
+    </div></div></div>
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
 
-    <div class="concept-box">
-        <span class="concept-title">Variáveis de Progressão</span>
-        Ao usar uma variável chamada <b>Velocidade</b> dentro do bloco <code>adicione (Velocidade) a y</code>, você pode mudar a dificuldade do jogo inteiro apenas mudando um número!
-    </div>
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
 
-    <h3>Atividade de Refinamento:</h3>
-    <p>Agora é sua vez! Crie um script para a <b>Phase3</b> que aumente ainda mais a velocidade dos meteoros ou diminua o tempo de espera entre eles.</p>
-    
-    <div class="feedback-area" style="height: 100px;">
-        <p style="padding: 10px; opacity: 0.5;">Dica: Use <code>Quando eu receber Phase3</code>...</p>
-    </div>
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
 
-    <div class="score-container">
-        <div class="score-box">
-            <h4>Checklist</h4>
-            <div style="text-align: left; font-size: 12px; padding: 5px;">
-                <input type="checkbox"> Boss escondido no início<br>
-                <input type="checkbox"> Boss aparece na Fase 4<br>
-                <input type="checkbox"> Variável Score funcionando
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
             </div>
         </div>
-        <div class="score-box">
-            <h4>Poder de Lógica</h4>
-            <div class="score-input"></div> de 10
-        </div>
-    </div>
 
-    <div class="page-number">Página 4 de 5</div>
-</div>
+</body>
+</html>
