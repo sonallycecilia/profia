@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Flappy Bird- Parte 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Flappy <span>Bird</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-flappy.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+<h1>Flappy Bird: Primeiros Passos</h1>
+
+        <div class="concept-box">
+            <span class="concept-title">Visão Geral do Jogo</span>
+            Flappy Bird é um jogo bidimensional de sobrevivência infinita. O objetivo principal é manter o personagem no ar enquanto navega por uma série de obstáculos gerados continuamente. A tela se move para a esquerda, dando a impressão de que o pássaro está voando para a frente.
+        </div>
+
+      <h2>Importando e Organizando Fantasias</h2>
+
+<p>Como você já domina a criação de jogos, sabe que o segredo do movimento está na organização. Vamos transformar imagens estáticas em personagens vivos usando as <strong>Fantasias</strong>!</p>
+        <h3>Sprites Dinâmicos</h3>
+        <p>Um único <strong>Ator</strong> pode guardar várias "roupas" ou poses dentro dele. Isso facilita muito a sua programação:</p>
+        <ul class="custom-list">
+            <li><strong>Animação de Voo:</strong> No mesmo objeto do passarinho, carregue as fantasias de "asa para cima" e "asa para baixo".</li>
+            <li><strong>Variedade de Obstáculos:</strong> Use o mesmo Ator para os canos, alternando entre as fantasias de "cano para cima" e "cano para baixo".</li>
+        </ul>
+
+    <div class="two-columns" style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
+    <div class="col" style="flex: 0 1 auto; text-align: center;">
+        <h3>Fantasias do Pássaro</h3>
+        <img src="./assets/fantasia-bird.png" alt="Fantasias do pássaro" style="width: 100%; max-width: 90px;">
+    </div>
+
+    <div class="col" style="flex: 0 1 auto; text-align: center;">
+        <h3>Fantasias dos Canos</h3>
+        <img src="./assets/fantasia-canos.png" alt="Fantasias dos canos" style="width: 100%; max-width: 90px;">
+    </div>
+    </div>
+    </div>    
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+            <div class="concept-box">
+    <span class="concept-title">Lembrete: O que é uma Fantasia?</span>
+    É cada imagem diferente que um Ator pode assumir. Alternar entre elas rapidamente é o que cria a magia da animação no seu jogo!
+</div>
+
+<div class="note">
+    <strong>Dica Pro:</strong> Mantenha nomes claros como "voando_1" e "voando_2". Organização é a melhor amiga de um programador experiente!
+</div>
+
+<h2>Arrumando o Cenário</h2>
+        <p>Para o passarinho não voar em um fundo todo branco, precisamos arrumar o céu do nosso mundo.</p>
+        <ul class="custom-list">
+            <li>No cantinho da tela, procure a área especial chamada de Palco ou Cenário.</li>
+            <li>Clique no botão de carregar cenário e escolha a imagem do computador ou crie uma.</li>
+            <li>Pronto! O fundo da tela vai mudar na hora e seu jogo já vai parecer uma aventura completa.</li>
+        </ul>
+
+
+<div class="note">
+    <strong>Dica Importante:</strong> Sempre confira se os nomes dos arquivos dos seus desenhos estão fáceis de entender, como "passarinho_asa_cima" ou "cano_verde". Isso ajuda muito na hora de programar!
+</div>
+
+<h2>Movimentação: A Gravidade e o Pulo</h2>
+
+    <div class="two-columns">
+        <div class="col">
+            <p>Para criar uma queda realista, usamos uma variável que puxa o personagem para baixo o tempo todo:</p>
+            <ul class="custom-list">
+                <li>Defina a posição inicial no eixo X e Y para o herói não começar perdido.</li>
+                <li>Crie a variável <span class="object">YSpeed</span> para controlar a velocidade vertical.</li>
+                <li>Dentro de um laço "sempre", adicione o valor de <span class="object">YSpeed</span> ao eixo Y e depois diminua 1 dessa variável para criar aceleração.</li>
+            </ul>
+        </div>
+        <div class="col">
+            <div class="code-block" style="margin-top: 20px;">
+            <div class="code-title">Posição Inicial</div>
+            <br>
+            <span class="action">quando clicado em bandeira</span><br>
+            <span class="keyword">vá para x:</span> <span class="value">-200</span> <span class="keyword">y:</span> <span class="value">0</span>
+        </div>
+        <div class="code-block">
+            <div class="code-title">Script de Queda</div>
+            <br>
+            <span class="action">quando clicado em bandeira</span><br>
+            <span class="keyword">mude</span> <span class="object">[YSpeed]</span> <span class="keyword">para</span> <span class="value">0</span><br>
+            <span class="action">sempre</span><br>
+            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="object">YSpeed</span> a <span class="value">y</span><br>
+            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">-1</span> a <span class="object">YSpeed</span>
+        </div>
+    </div>
+    </div>
+    
+        <div class="concept-box">
+            <span class="concept-title">Variável de Velocidade (YSpeed)</span>
+            Para criar uma queda suave, utilizamos uma variável que armazena a velocidade atual. A cada ciclo do jogo, um valor negativo é adicionado a essa variável, criando o efeito de aceleração da gravidade antes de atualizar a posição Y do personagem.
+        </div>
+        </div>
+
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <h2>O Mecanismo de Pulo</h2>
+    <div class="two-columns">
+        <div class="col">
+            <p>O pulo precisa ser controlado para evitar que o jogador voe infinitamente apenas segurando o botão:</p>
+            <ul class="custom-list">
+                <li>Use um detector de tecla pressionada para disparar o impulso.</li>
+                <li>Mude o valor de <span class="object">YSpeed</span> para um número positivo (ex: 10) para lançar o personagem para cima.</li>
+                <li>Use o comando "espere até que não tecla pressionada" para garantir um pulo por clique.</li>
+            </ul>
+        </div>
+
+        <div class="col">
+                <div class="image-container">
+                    
+                    <img src="./assets/script-queda.png" alt="Exemplo de geração de canos e vãos aleatórios">
+                </div>
+            </div>
+        
+    </div>
+
+    <div class="concept-box">
+        <span class="concept-title">Dica de Programador</span>
+        Se o jogo estiver muito difícil, tente diminuir o valor da gravidade (ex: -0.5) ou aumentar a força do pulo (ex: 12). Pequenos ajustes mudam tudo!
+    </div>
+
+    
+
+
+        <h2>Geração Contínua de Obstáculos</h2>
+
+        <h3>O que são Clones? A Máquina de Bolhas de Sabão!</h3>
+    
+    <p>Imagine uma máquina de fazer bolhas de sabão. Você não precisa soprar cada bolha uma por uma, certo? Você só coloca a água com sabão lá dentro, liga o botão e a máquina solta centenas de bolhas sozinhas.</p>
+    
+    <p>No Scratch, os <strong>Clones</strong> funcionam exatamente assim! Eles são como cópias automáticas. Veja como a mágica acontece na programação:</p>
+    
+    <ul class="custom-list">
+        <li><strong>A Receita Original:</strong> O Ator que você desenhou fica quietinho, geralmente escondido. Ele é como a água com sabão dentro da máquina, o molde de tudo.</li>
+        <li><strong>A Máquina Ligada:</strong> Quando você usa o bloco "crie clone", o Scratch começa a soprar as bolhas. Você pode programar para soltar uma cópia a cada segundo, ou várias de uma vez.</li>
+        <li><strong>O Estouro (Limpeza):</strong> Cada clone voa pela tela fazendo o que você mandou. Mas, para a tela não ficar cheia e o jogo não travar, usamos o bloco "apague este clone" quando a cópia chega no fim da tela. É exatamente como a bolha estourando quando encosta no chão!</li>
+    </ul>
+    
+    <p>Com os clones, você só precisa ensinar o caminho uma vez, e o computador faz o trabalho de multiplicar os desafios!</p>
+    <h3>Obstáculos no Jogo</h3>        
+    <div class="col">
+                <ul class="custom-list">
+                    <li>Eles são criados fora da tela, à direita, e movem-se a uma velocidade constante para a esquerda.</li>
+                    <li>Eles sempre aparecem em pares (um no teto e um no chão). A distância do vão entre eles é fixa, mas a altura Y em que esse vão aparece é definida aleatoriamente.</li>
+                    <li>Quando saem completamente da tela pela esquerda, os canos são destruídos para não sobrecarregar o processamento.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="page">
+            <div class="header">
+                <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+                <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+            </div>
+        <div class="code-block">
+    <div class="code-title">Gerador de Clones (Obstáculos)</div>
+    <br>
+    <span class="action">quando clicado em bandeira</span><br>
+    <span class="keyword">vá para x:</span> <span class="value">0</span> <span class="keyword">y:</span> <span class="value">0</span><br>
+    <span class="keyword">esconda</span><br>
+    <span class="action">sempre</span><br>
+    &nbsp;&nbsp;<span class="keyword">crie clone de</span> <span class="object">este ator</span><br>
+    &nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">1.3</span> <span class="keyword">seg</span>
+</div>
+
+<div class="code-block" style="margin-top: 20px;">
+    <div class="code-title">Comportamento e Movimento do Clone</div>
+    <br>
+    <span class="action">quando eu começar como um clone</span><br>
+    <span class="keyword">mude para a fantasia</span> <span class="keyword">número aleatório entre</span> <span class="value">1</span> <span class="keyword">e</span> <span class="value">5</span><br>
+    <span class="keyword">mostre</span><br>
+    <span class="keyword">vá para x:</span> <span class="value">300</span> <span class="keyword">y:</span> <span class="value">0</span><br>
+    <span class="action">repita até que</span> <span class="object">posição x</span> <span class="keyword">&lt;</span> <span class="value">-250</span><br>
+    &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">-5</span> <span class="keyword">a x</span><br>
+    <span class="action">apague este clone</span>
+</div>
+
+       
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+<h1>Atividade de Casa: O Voo do Passarinho</h1>
+<p>Chegou a hora de testar seus conhecimentos sobre gravidade e clones! Complete os desafios abaixo com base no que aprendemos.</p>
+
+<h2>Desafio da Gravidade</h2>
+<p>Aprendemos que a gravidade puxa nosso herói para baixo o tempo todo. Qual é o nome da <b>variável</b> que criamos para controlar a velocidade dessa queda livre?</p>
+
+<div class="feedback-area" style="height: 60px; border: 1px dashed #ccc; border-radius: 8px; margin-bottom: 20px;">
+    <p style="padding: 10px; opacity: 0.5;">R: O nome da variável é... _______________________________________________</p>
+</div>
+
+<h2>Desafio do Game Over</h2>
+<p>Observe o script de colisão que analisamos:</p>
+
+<div class="code-block" style="width: 80%; margin: 15px auto; padding: 15px; border-radius: 8px; background-color: #f4f4f4;">
+    <span class="action">se</span><br>
+    <div style="margin-left: 20px;">
+        (tocando em <span class="value">Pipe</span>?) <br>
+        <span class="keyword" style="font-size: 18px; text-decoration: underline;">ou</span><br>
+        (tocando em <span class="value">borda</span>?)<br>
+    </div>
+    ➜ <span class="keyword">mude</span> <span class="object">player state</span> <span class="keyword">para</span> <span class="value">dead</span>
+</div>
+
+<p>Por que usamos o operador <b>OU</b> (bolinha verde) neste código em vez do operador <b>E</b>? O que aconteceria com o passarinho se usássemos o "E"?</p>
+<div class="feedback-area" style="height: 80px; border: 1px dashed #ccc; border-radius: 8px; margin-bottom: 20px;">
+    <p style="padding: 10px; opacity: 0.5;">R: __________________________________________________________________</p>
+</div>
+
+<h2>Desafio dos Clones</h2>
+<p>Você é o mestre do jogo! Queremos que os canos apareçam na tela de forma imprevisível para deixar a aventura mais emocionante. Complete o código abaixo com valores que deixem o jogo bem dinâmico:</p>
+
+<div class="two-columns" style="display: flex; gap: 20px; align-items: stretch; margin-top: 20px;">
+    <div class="col" style="flex: 1;">
+        <div class="code-block" style="height: 100%; padding: 15px; border-radius: 8px; background-color: #f4f4f4;">
+            <span class="code-title" style="background: #ff8c00; color: white; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 14px;">MODO IMPREVISÍVEL</span><br><br>
+            <span class="action">sempre</span><br>
+            <div style="margin-left: 20px;">
+                ➜ <span class="keyword">crie clone de</span> <span class="object">este ator</span><br>
+                ➜ <span class="keyword">espere</span> <span class="action">número aleatório entre</span> <span class="value" style="border-bottom: 2px dashed #333; display: inline-block; width: 40px;">&nbsp;</span> <span class="keyword">e</span> <span class="value" style="border-bottom: 2px dashed #333; display: inline-block; width: 40px;">&nbsp;</span> <span class="keyword">segundos</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col" style="flex: 1;">
+        <div class="concept-box" style="margin: 0; height: 100%; border: 2px solid #ff8c00; padding: 15px; border-radius: 8px;">
+            <span class="concept-title" style="font-weight: bold; color: #ff8c00; display: block; margin-bottom: 10px;">Lembrete</span>
+            Para os canos não ficarem nem muito colados e nem muito distantes, escolha um tempo mínimo (como um segundo) e um tempo máximo (como três ou quatro segundos).
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Flappy Bird- Parte 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Flappy <span>Bird</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-flappy.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>    <h1>Melhorando o Jogo: Telas e Desafios</h1>
+    <p>Um bom jogo precisa ficar mais difícil com o tempo e ter telas bem desenhadas para guiar o jogador. Vamos entender como melhorar o nosso projeto para deixá-lo com cara de jogo profissional!</p>
+
+    <h2>O Problema das Vidas no Código Antigo</h2>
+    <p>Se você tentou colocar uma variável de "Vidas" no nosso antigo código de colisão (aquele do juiz), deve ter notado que o jogo quebrou. Isso acontece por dois motivos muito importantes na lógica de programação:</p>
+    
+    <ul>
+        <li><b>O Efeito Metralhadora:</b> O bloco "sempre" verifica as batidas dezenas de vezes por segundo. Se o personagem encostar no cano por apenas um segundo, o computador vai subtrair 30 vidas de uma vez só! Faltou criar um "tempo de invencibilidade" para ele piscar e se recuperar após o dano.</li>
+        <li><b>O Feitiço de Gelo:</b> O nosso código antigo usa o bloco "pare outros scripts no ator" logo depois que bate. Isso congela as asas e a gravidade na hora. Para um sistema de vidas funcionar, o personagem precisaria perder uma vida, voltar para o ponto de início e continuar voando normalmente.</li>
+    </ul>
+
+    <h2>Adicionando a Tela de Game Over</h2>
+    <p>Em vez de apenas congelar o pássaro, vamos criar uma tela de Fim de Jogo que aparece no momento exato da batida, cobrindo todo o cenário.</p>
+
+    <div class="two-columns">
+        <div class="col">
+            <div class="code-block" style="background: white;">
+                <span class="code-title">TELA DE DERROTA (Novo Ator)</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">esconda</span><br>
+                <br>
+                <span class="keyword">Quando eu receber</span> <span class="value">player dead</span><br>
+                &nbsp;➜ <span class="action">vá para a camada</span> <span class="object">da frente</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">pare</span> <span class="object">todos</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="concept-box" style="background-color: #E0F7FA; border-left-color: #26C6DA;">
+                <span class="concept-title">Como Funciona?</span>
+                <p>Você deve criar um novo Ator desenhando a frase "Game Over". Quando o jogo começa, ele se esconde e fica invisível. Ele fica apenas aguardando o juiz transmitir a mensagem secreta de derrota. Ao ouvir o sinal, ele pula para a frente da tela e encerra todo o jogo de forma elegante.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Deixando os Canos Mais Difíceis</h2>
+    <p>Para deixar o jogo mais desafiador, que tal fazer alguns canos se moverem para cima e para baixo sozinhos enquanto deslizam para a esquerda?</p>
+
+    <div class="two-columns" style="align-items: center;">
+        <div class="col">
+            <div class="code-block" style="background: white;">
+                <span class="code-title">CANOS MÓVEIS (Dificuldade Alta)</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">deslize em</span> <span class="value">1</span> <span class="action">segs para x:</span> <span class="object">posição x</span> <span class="action">y:</span> <span class="value">50</span><br>
+                    <span class="action">deslize em</span> <span class="value">1</span> <span class="action">segs para x:</span> <span class="object">posição x</span> <span class="action">y:</span> <span class="value">-50</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col">
+            <p>Este código é adicionado na parte onde os clones dos canos nascem. O bloco de deslizar faz o cano subir até a altura 50 e depois descer até a altura -50 de forma suave, forçando o jogador a ter muito mais reflexo na hora de passar pelo buraco.</p>
+        </div>
+    </div>
+    
+    <div class="note">
+        <strong>Desafio Criativo:</strong> Em vez de mover os canos, desenhe um inimigo novo, como um morcego ou uma nuvem de tempestade voando pela tela, e adicione ele na lista de batidas do juiz!
+    </div>
+
+</div>

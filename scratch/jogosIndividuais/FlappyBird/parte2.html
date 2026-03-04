@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Flappy Bird- Parte 2</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Flappy <span>Bird</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-flappy.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div> 
+
+<h1>O Cérebro do Jogo: Entendendo o Voo!</h1>
+
+        <h2>Física do Voo</h2>
+        <p>Vamos programar a gravidade! Através da inclinação, decidimos para onde o nariz do personagem está apontando durante o voo.</p>
+
+        <ul>
+            <li><b>O Início:</b> Quando a <span class="keyword">bandeira verde</span> é clicada, a aventura começa! A direção é ajustada para <span class="value">90</span> (olhando retinho para a frente).</li>
+            <li><b>O Motor:</b> O bloco <span class="action">sempre</span> funciona como um motor que nunca desliga, checando o voo a todo milissegundo.</li>
+            <li><b>A Inclinação Mágica:</b> A variável <span class="object">YSpeed</span> é a velocidade do pulo. Se você pula, o nariz aponta para o céu. Se você cai, o nariz aponta para o chão, como num mergulho!</li>
+        </ul>
+
+        <p>Primeiro, vamos criar a variável <span class="object">direcao</span> para controlar a inclinação do personagem.</p>
+        
+        <div class="code-block">
+            <span class="code-title">INCLINAÇÃO NO VOO</span><br>
+            <span class="keyword">Quando bandeira verde for clicado</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">direcao</span> para <span class="value">90</span><br>
+            &nbsp;➜ <span class="action">sempre</span><br>
+            <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                <span class="action">adicione</span> <span class="object">YSpeed</span> a <span class="object">direcao</span><br>
+                <span class="action">aponte para a direção</span> <span class="object">direcao</span> * <span class="value">-0.5</span><br>
+                <br>
+                <span class="keyword">// Limite para não virar para trás</span><br>
+                <span class="action">se</span> <span class="object">direcao</span> > <span class="value">90</span> <span class="action">então</span><br>
+                <div style="margin-left: 20px;">
+                    ➜ <span class="action">mude</span> <span class="object">direcao</span> para <span class="value">90</span>
+                </div>
+                <br>
+                <span class="keyword">// Limite do mergulho</span><br>
+                <span class="action">se</span> <span class="object">direcao</span> < <span class="value">-75</span> <span class="action">então</span><br>
+                <div style="margin-left: 20px;">
+                    ➜ <span class="action">mude</span> <span class="object">direcao</span> para <span class="value">-75</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-title">Freios de Segurança</span>
+            Sabe aqueles blocos <span class="action">se</span> no final? Eles impedem que a inclinação passe de um limite. Sem isso, se ele caísse muito rápido, ia acabar dando uma cambalhota completa e girando igual um pião no ar!
+        </div>
+        
+        <div class="note">
+            💡 <b>Dica de Animação:</b> Os blocos <b>"se"</b> servem como "freios". Eles garantem que o personagem incline de forma realista, sem dar cambalhotas completas no ar!
+        </div>
+
+        <h2>Animação: Batendo as Asas!</h2>
+        <p>Agora vamos cuidar do visual. Ele garante que o personagem apareça bonito na tela e bata as asas sem parar, senão ele cai, né?</p>
+
+        <ul>
+            <li><b>Arrumando o Palco:</b> O personagem recebe três ordens rápidas: <span class="action">mostre</span> (apareça!), deixe o efeito fantasma em <span class="value">0</span> (não fique transparente) e vá para a camada da frente!</li>
+            <li><b>A Mágica do Movimento:</b> O bloco manda trocar para a <span class="action">próxima fantasia</span> bem rapidinho, esperando apenas um piscar de olhos (<span class="value">0.05</span> segundos). Isso cria a ilusão de que ele está batendo as asas de verdade!</li>
+        </ul>
+        
+      
+        </div>
+
+        <div class="page">
+            <div class="header">
+                <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+                <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+                </div>
+<div class="code-block">
+                <span class="code-title">BATENDO AS ASAS</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">defina o efeito</span> <span class="object">fantasma</span> como <span class="value">0</span><br>
+                &nbsp;➜ <span class="action">vá para a camada</span> <span class="object">da frente</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">próxima fantasia</span><br>
+                    <span class="action">espere</span> <span class="value">0.05</span> <span class="action">seg</span>
+                </div>
+            </div>
+
+         <div class="concept-box">
+            <span class="concept-title">Fantasia é Vida</span>
+            A troca rápida entre as fantasias é o segredo para dar vida ao personagem. Se ele ficasse parado, não teria graça nenhuma, né? É como um desenho animado: sem movimento, não tem emoção!
+
+    </div>
+     <h2>O Detetive de Batidas e o Fim de Jogo!</h2>
+    
+            <p>Imagine que o seu personagem tem um escudo invisível ao redor dele chamado Hitbox. O código que vamos montar funciona como um juiz de videogame muito atento, que fica de olho nesse escudo o tempo todo.</p>
+            <p>Primeiro, crie uma variável chamada <span class="object">player state</span>.</p>
+            <div class="code-block">
+                <span class="code-title">DETECÇÃO DE COLISÃO</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">mude</span> <span class="object">player state</span> para <span class="value">alive</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">se</span> tocando em <span class="value">Pipe</span>? <span class="keyword">ou</span> tocando em <span class="value">borda</span>? <span class="action">então</span><br>
+                    <div style="margin-left: 20px;">
+                        ➜ <span class="action">mude</span> <span class="object">player state</span> para <span class="value">dead</span><br>
+                        ➜ <span class="action">transmita</span> <span class="value">player dead</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Explicação do código</h3>
+            <p>Veja como esse juiz trabalha durante a partida:</p>
+            <ul>
+                <li><b>O Apito Inicial:</b> Logo que o jogo começa na bandeira verde, o código avisa para o computador que o jogador está "alive", ou seja, vivinho e pronto para voar.</li>
+                <li><b>Olhos Abertos:</b> O bloco "sempre" garante que o juiz não pisque e não perca nenhum detalhe. Ele vai prestar atenção no voo do início ao fim.</li>
+                <li><b>A Regra Principal:</b> O bloco "se" é a regra de ouro do jogo. O juiz fica verificando a todo instante: "O escudo do jogador encostou no cano ou na borda da tela?".</li>
+                <li><b>O Fim de Partida:</b> Se a resposta for sim, significa que o personagem bateu. Na mesma hora, o juiz muda a situação do jogador para "dead" (derrotado) e avisa aos outros blocos do jogo que a partida acabou. Isso faz com que a fase pare de se mover e a tela de pontuação apareça.</li>
+            </ul>
+
+            <h2>Efeito de Sumiço</h2>
+            <p>Quando o jogador bate, o personagem precisa desaparecer da tela de forma elegante. Para isso, vamos usar um efeito de fantasma que vai deixando ele cada vez mais transparente até sumir completamente.</p>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+         </div>
+ <div class="code-block">
+    <span class="code-title">EFEITO DE SUMIÇO</span><br>
+    <span class="keyword">Quando eu receber</span> <span class="value">player dead</span><br>
+    &nbsp;➜ <span class="action">repita</span> <span class="value">10</span> <span class="action">vezes</span><br>
+    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+        <span class="action">mude</span> <span class="value">10</span> <span class="action">ao efeito</span> <span class="object">fantasma</span>
+    </div>
+    &nbsp;➜ <span class="action">esconda</span>
+</div>
+
+    <h2>Game Over</h2>            
+            <p>Quando o juiz do jogo avisa que o jogador bateu (recebendo a mensagem "player dead"), o personagem não pode continuar batendo as asas. O bloco de parar outros scripts age como um feitiço, congelando todas as outras animações daquele personagem na mesma hora.</p>
+            <div class="code-block">
+                <span class="code-title">FIM DOS MOVIMENTOS</span><br>
+                <span class="keyword">Quando eu receber</span> <span class="value">player dead</span><br>
+                &nbsp;➜ <span class="action">pare</span> <span class="object">outros scripts no ator</span>
+            </div>
+
+            <h2>Score</h2>
+            <p>Antes de tudo, crie uma variável chamada <span class="object">Score</span>. Toda vez que você clica na bandeira verde para começar uma partida nova, a variável do placar (score) precisa voltar para zero. Assim, a nova chance começa limpa para o jogador tentar bater seu próprio recorde!</p>
+            
+            <div class="code-block">
+                <span class="code-title">ZERANDO O PLACAR</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">mude</span> <span class="object">score</span> para <span class="value">0</span>
+            </div>
+
+            <h3>Como fazer os pontos?</h3>
+            <p>Como o computador sabe que você conseguiu passar pelo cano? O cano anda pela tela da direita para a esquerda. O código manda o cano esperar até chegar em uma linha imaginária bem lá atrás (a posição X igual a -199). Se o cano chegou lá inteirinho, é porque o pássaro passou por ele em segurança e você ganha um ponto!</p>
+            
+            <div class="code-block">
+                <span class="code-title">MARCANDO PONTOS</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">espere até que</span> <span class="object">posição x</span> = <span class="value">-199</span><br>
+                    <span class="action">adicione</span> <span class="value">1</span> a <span class="object">score</span>
+                </div>
+            </div>
+
+                <div class="note">
+        <strong>Curiosidade de Game Design:</strong> Usar uma posição específica da tela (como o X em -199) é um truque muito comum nos jogos para criar "linhas de chegada" invisíveis.
+    </div>
+      <div class="concept-box">
+            <span class="concept-title">Como a pontuação funciona:</span> Para o jogo saber que você marcou um ponto, uma hitbox invisível (chamada de sensor) é colocada exatamente no espaço vazio entre os dois canos. Quando o pássaro atravessa esse sensor sem bater, a variável de pontuação ganha +1.
+        </div>
+         </div>
+    <div class="page">
+    <div class="header">
+        <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+        <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+    <h1>Atividade de Casa</h1>
+    <p>Um jogo incrível mora nos detalhes! Agora que entendemos como o voo, as colisões e a pontuação funcionam, vamos testar seus conhecimentos de programação.</p>
+
+    <h2>Desafio: O Segredo da Inclinação</h2>
+    <p>No código de movimento, usamos a variável <code>YSpeed</code> para controlar a direção do personagem. O que acontece com a inclinação do personagem quando a velocidade o puxa para baixo (caindo)?</p>
+    <div class="feedback-area" style="height: 60px;">
+        <p style="padding: 10px; opacity: 0.5;">R: O nariz do personagem aponta para ________________________________</p>
+    </div>
+
+    <h2>Desafio: O Juiz do Jogo</h2>
+    <p>O bloco de colisão verifica se o jogador encostou no cano ou na borda da tela. Qual é a mensagem exata que o código transmite (usando o bloco laranja de evento) assim que o jogador bate?</p>
+    <div class="feedback-area" style="height: 60px;">
+        <p style="padding: 10px; opacity: 0.5;">R: Ele transmite a mensagem: ________________________________________</p>
+    </div>
+
+    <h2>Desafio: A Linha de Chegada Invisível</h2>
+    <p>Para o jogador ganhar um ponto, o clone do cano precisa chegar na posição <code>X igual a -199</code>. Se mudarmos esse valor no código para <code>0</code> (que é o meio da tela), em qual momento o ponto será marcado?</p>
+    <div class="feedback-area" style="height: 60px;">
+        <p style="padding: 10px; opacity: 0.5;">R: __________________________________________________________________</p>
+    </div>
+</div>
+</div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+
+</body>
+</html>
