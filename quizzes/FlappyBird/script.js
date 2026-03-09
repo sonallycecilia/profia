@@ -22,17 +22,17 @@ const questions = [
         correct: 2,
         rationale: "Isso mesmo! Esse pequeno tempo de espera entre as fantasias é o que cria a magia da animação de voo."
     },
-    {
-        question: "O que acontece com a inclinação do pássaro quando a variável YSpeed é negativa (caindo)?",
-        options: [
-            "O nariz aponta para o céu.",
-            "O nariz aponta para o chão, como em um mergulho.",
-            "O pássaro começa a girar 360 graus.",
-            "O pássaro fica parado na horizontal."
-        ],
-        correct: 1,
-        rationale: "Correto! Usamos a velocidade para decidir a direção: se está caindo, o nariz aponta para baixo para ser mais realista."
-    },
+{
+    question: "Para o pássaro não voar infinitamente ao segurar a tecla espaço, qual comando usamos para garantir apenas um pulo por clique?",
+    options: [
+        "O bloco 'Sempre'.",
+        "O bloco 'Espere até que não tecla espaço pressionada?'.",
+        "O bloco 'Adicione 10 a y'.",
+        "O bloco 'Próxima fantasia'."
+    ],
+    correct: 1,
+    rationale: "Isso mesmo! Esse bloco funciona como uma trava: o computador espera você soltar a tecla antes de permitir o próximo pulo[cite: 191, 202, 205]."
+},
     {
         question: "Qual mensagem o juiz transmite quando o pássaro encosta no cano ou na borda?",
         options: [
