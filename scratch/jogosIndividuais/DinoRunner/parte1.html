@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Dino Runner - Parte 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Dino <span>Runner</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-dino.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Introdução ao Dino Runner</h1>
+        <div class="concept-box">
+            <span class="concept-title">Conceito do Jogo</span>
+            <p>Dino Runner é um jogo de corrida infinita onde o jogador controla um dinossauro que deve evitar obstáculos e coletar itens para sobreviver o maior tempo possível. O objetivo é alcançar a maior pontuação possível, correndo sem parar e superando desafios cada vez maiores.</p>
+        </div>
+        <h2>Carregando Assests</h2>
+        <ul class="step-list">
+            <li>Carregue os assets do jogo <b>(dinossauro, chão e cactos)</b></li>
+            <li>Depois, carregue o cenário de fundo.</li>
+        </ul>
+        <div class="note">
+            <strong>Dica:</strong> Certifique-se de carregar as fantasias dos personagens.
+        </div>
+
+    <h2>O Superpoder dos Blocos Cor-de-Rosa</h2>
+    <p>Você já reparou na categoria "Meus Blocos" lá no final da lista do Scratch? Ela é diferente de todas as outras porque vem completamente vazia! Isso acontece porque ela serve para você inventar os seus próprios blocos de programação, também conhecidos como Blocos Personalizados.</p>
+
+    <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+        <span class="concept-title">O Combo de Videogame</span>
+        <p>Imagine que você está jogando um jogo de luta. Para dar um golpe especial, você precisa apertar: Cima, Baixo, Esquerda, Direita e Pulo. É muito botão para lembrar! Criar um bloco personalizado é como inventar um botão novo no seu controle chamado "Golpe Especial". Você usa apenas esse botão, e o computador aperta todos os outros botões do combo sozinho para você.</p>
+    </div>
+
+    <h3>Por que os programadores amam esses blocos?</h3>
+    <p>Quando o nosso jogo começa a ficar muito grande, a tela fica cheia de blocos espalhados. Os blocos cor-de-rosa ajudam a arrumar a bagunça de duas formas principais:</p>
+
+    <ul>
+        <li><b>Organização de Mestre:</b> Em vez de ter uma torre gigante com 50 blocos misturados, você cria um bloco chamado "Andar", outro chamado "Pular" e outro chamado "Atirar". O código principal fica curtinho e fácil de ler, como o sumário de um livro.</li>
+        <li><b>Reaproveitamento (Menos Trabalho):</b> Se você tem três inimigos diferentes que andam do mesmo jeito, você não precisa copiar e colar os blocos de andar três vezes. Você cria um bloco personalizado "Andar Inimigo" e coloca dentro dos três. Se quiser mudar a velocidade deles depois, basta alterar na receita original e todos mudam juntos!</li>
+    </ul>
+    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <div class="two-columns" style="align-items: flex-start; margin-top: 30px;">
+        <div class="col">
+            <p>Veja como o código fica muito mais elegante. O motor principal do jogo fica limpo, chamando apenas o nome do nosso botão novo.</p>
+            
+            <div class="code-block" style="background: white;">
+                <span class="code-title">MOTOR PRINCIPAL (O Controle)</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">se</span> tecla <span class="value">espaço</span> pressionada? <span class="action">então</span><br>
+                    <div style="margin-left: 20px;">
+                        ➜ <span class="keyword" style="color: #E91E63;">Golpe Especial</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <p>E em outro canto da tela, nós criamos a receita, ensinando para o computador o que exatamente esse botão faz.</p>
+            
+            <div class="code-block" style="background: white;">
+                <span class="code-title">A RECEITA DO COMBO</span><br>
+                <span class="keyword" style="color: #E91E63;">defina</span> <span class="keyword" style="color: #E91E63;">Golpe Especial</span><br>
+                &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">Ataque</span><br>
+                &nbsp;➜ <span class="action">toque o som</span> <span class="value">Laser</span><br>
+                &nbsp;➜ <span class="action">crie clone de</span> <span class="object">Bola de Fogo</span><br>
+                &nbsp;➜ <span class="action">espere</span> <span class="value">0.5</span> <span class="action">seg</span><br>
+                &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">Normal</span>
+            </div>
+        </div>
+    </div>
+
+    <h2>O Truque do Chão Infinito</h2>
+    <p>Em jogos de voo, o personagem parece ir para a frente, mas na verdade é o chão que anda para trás! Para o cenário não acabar nunca e não deixar um buraco branco na tela, nós usamos um truque visual com clones.</p>
+    
+    <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
+        <div class="col">
+            <h3>A Esteira Rolante (O Bloco Scroll)</h3>
+            <p>O bloco rosa é o motor do nosso cenário. Ele puxa o chão para trás mudando a posição X em -10. Quando o pedaço de chão chega no limite esquerdo da tela (posição -480) e está prestes a sumir, o código faz uma mágica matemática: ele multiplica a posição por -1. Isso teleporta o chão imediatamente para o outro lado (posição 480 positiva), criando um ciclo sem fim.</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">MOTOR DE MOVIMENTO</span><br>
+                <span class="keyword">defina</span> <span class="action">Scroll</span><br>
+                &nbsp;➜ <span class="action">adicione</span> <span class="value">-10</span> a <span class="object">x</span><br>
+                &nbsp;➜ <span class="action">se</span> <span class="object">posição x</span> &lt; <span class="value">-480</span> <span class="action">então</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    ➜ <span class="action">mude x para</span> <span class="object">posição x</span> * <span class="value">-1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
+        <div class="col">
+            <h3>O Original e seu Clone</h3>
+            <p>Um pedaço de chão não é longo o suficiente para cobrir a tela inteira enquanto anda. Por isso, quando o jogo começa, o chão original vai para o centro e cria um clone exato dele mesmo. Esse clone nasce lá no canto direito da tela, bem coladinho no original. Em seguida, os dois ligam o motor "Scroll" e começam a andar juntos para trás, formando uma estrada perfeita.</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">O CHÃO ORIGINAL</span><br>
+                <span class="keyword">Quando eu receber</span> <span class="value">Start Game</span><br>
+                &nbsp;➜ <span class="action">mostre</span><br>
+                &nbsp;➜ <span class="action">vá para x:</span> <span class="value">0</span> <span class="action">y:</span> <span class="value">-138</span><br>
+                &nbsp;➜ <span class="action">crie clone de</span> <span class="object">este ator</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px;">
+                    ➜ <span class="action">Scroll</span>
+                </div>
+            </div>
+            <div class="code-block">
+                <span class="code-title">A CÓPIA GRUDADA</span><br>
+                <span class="keyword">Quando eu começar como um clone</span><br>
+                &nbsp;➜ <span class="action">vá para x:</span> <span class="value">480</span> <span class="action">y:</span> <span class="value">-138</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px;">
+                    ➜ <span class="action">Scroll</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+    <div class="two-columns">
+        <div class="col">
+            <h3>Regras de Início e Fim</h3>
+            <p>Se você reiniciar a partida e não apagar as cópias velhas, a tela vai ficar cheia de chãos encavalados. O primeiro bloco apaga o clone da rodada anterior para a tela começar limpa. Já o segundo bloco age como um freio de mão: se o jogador bater e o jogo enviar a mensagem de "Game Over", o chão congela imediatamente, parando a esteira rolante.</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">FACHINA DA TELA</span><br>
+                <span class="keyword">Quando eu receber</span> <span class="value">Start Game</span><br>
+                &nbsp;➜ <span class="action">apague este clone</span>
+            </div>
+            <div class="code-block">
+                <span class="code-title">FREIO DE EMERGÊNCIA</span><br>
+                <span class="keyword">Quando eu receber</span> <span class="value">Game Over</span><br>
+                &nbsp;➜ <span class="action">pare</span> <span class="object">outros scripts no ator</span>
+            </div>
+        </div>
+    </div>
+    <h2>A Regra da Gravidade</h2>
+    <p>Dentro do bloco <b>"sempre"</b>, nós colocamos a inteligência do pulo. Vamos usar <b>-1</b> para o peso da gravidade e <b>12</b> para a força do pulo. Vamos quebrar essa lógica em três partes:</p>
+
+    <h3>Criando as Variáveis</h3>
+    <ul class="step-list">
+        <li><b>Y Velocity (Velocidade do Voo):</b> Vá na aba laranja de Variáveis e crie essa caixinha. Ela vai lembrar o computador se o personagem está subindo (número positivo) ou caindo (número negativo). <br><b>Valor inicial = 0</b></li>
+        <li><b>Starting Y Pos (Linha do Chão):</b> Crie essa também. Ela guarda a altura exata do piso do seu cenário, para o personagem bater o pé e não afundar na terra. <br><b>Valor inicial = -138</b></li>
+    </ul>
+    <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
+        <div class="col">
+            <h3>O Radar (Previsão do Futuro)</h3>
+            <p>O bloco <b>"se não"</b> funciona como um radar. Ele tenta adivinhar se o personagem vai passar do chão no próximo passo, somando a posição atual com a velocidade. Se ele não for passar, o código entende que o personagem está solto no ar e continua a queda.</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">PARTE 1: O RADAR</span><br>
+                <span class="keyword">Quando bandeira verde for clicado</span><br>
+                &nbsp;➜ <span class="action">sempre</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">se</span> <span class="keyword">não</span> <span class="object">posição y</span> + <span class="object">Y Velocity</span> &lt; <span class="object">Starting Y Pos</span> <span class="action">então</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
+        <div class="col">
+            <h3>Caindo com a Gravidade</h3>
+            <p>Se o radar avisar que o personagem está no ar, aplicamos a física! O primeiro bloco atualiza a posição dele na tela. O segundo bloco usa o número <b>-1</b> para puxar o personagem para baixo, agindo exatamente como a força da gravidade puxando ele cada vez mais rápido.</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">PARTE 2: CAINDO</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <div style="margin-left: 20px;">
+                        ➜ <span class="action">adicione</span> <span class="object">Y Velocity</span> a <span class="object">y</span><br>
+                        ➜ <span class="action">adicione</span> <span class="value">-1</span> a <span class="object">Y Velocity</span> <small>(Gravidade)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+    </div>
+
+    <div class="two-columns">
+        <div class="col">
+            <h3>Pisando Firme e Pulando</h3>
+            <p>Se o personagem encostar no chão, o bloco <b>"senão"</b> entra em ação. A velocidade zera para ele não afundar e ele é colado firmemente na linha do piso. Com os pés no chão, o jogo libera a tecla espaço. Ao apertar o espaço, usamos o número <b>12</b> para dar um impulso forte para o céu!</p>
+        </div>
+        <div class="col">
+            <div class="code-block">
+                <span class="code-title">PARTE 3: O PULO</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    <span class="action">senão</span><br>
+                    <div style="margin-left: 20px;">
+                        ➜ <span class="action">mude</span> <span class="object">Y Velocity</span> para <span class="value">0</span><br>
+                        ➜ <span class="action">mude y para</span> <span class="object">Starting Y Pos</span><br>
+                        ➜ <span class="action">se</span> tecla <span class="value">espaço</span> pressionada? <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">mude</span> <span class="object">Y Velocity</span> para <span class="value">12</span> <small>(Força do Pulo)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px dashed #B2EBF2;">
+        <p style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">Visão Completa do Bloco Montado</p>
+        <img src="./assets/bloco-gravidade.png" alt="Blocos de gravidade completos no Scratch" style="max-width: 350px; height: auto; border-radius: 8px;">
+    </div>
+    <h2>A Fantasia da Corrida</h2>
+    <p>Vamos criar uma animação para o personagem caminhar!</p>
+        <div class="code-block">
+    <span class="code-title">ANIMAÇÃO DE CAMINHADA</span><br>
+    <span class="action">sempre</span><br>
+    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+        <span class="action">se</span> <span class="object">posição y</span> = <span class="object">Starting Y Pos</span> <span class="action">então</span><br>
+        <div style="margin-left: 20px;">
+            ➜ <span class="action">mude para a fantasia</span> <span class="value">Walk 1</span><br>
+            ➜ <span class="action">espere</span> <span class="value">0.07</span> <span class="action">seg</span><br>
+            ➜ <span class="action">mude para a fantasia</span> <span class="value">Walk 2</span><br>
+            ➜ <span class="action">espere</span> <span class="value">0.07</span> <span class="action">seg</span>
+        </div>
+        <span class="action">senão</span><br>
+        <div style="margin-left: 20px;">
+            ➜ <span class="action">mude para a fantasia</span> <span class="value">Normal</span>
+        </div>
+    </div>
+</div>
+    </div>
+
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+</body>
+</html>
