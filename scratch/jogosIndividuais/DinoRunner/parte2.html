@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Dino Runner - Parte 2</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Dino <span>Runner</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-dino.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>A Mágica da Cópia!</h1>
+        <div class="concept-box">
+            <span class="concept-title">O que é um Clone?</span>
+            <p>Imagine que você precisa colocar 100 inimigos no seu jogo. Dar o comando para cada um deles daria muito trabalho, né? No Scratch, a gente cria um único inimigo e manda o computador tirar um "xerox" dele várias vezes! Cada xerox é o que chamamos de <strong>Clone</strong>.</p>
+        </div>
+
+        <h2>O Chefe da Fábrica</h2>
+        <p>O personagem original do nosso jogo não vai lutar. O trabalho dele é ficar escondido só fabricando os clones! Veja como funciona o motor da fábrica:</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <ul class="step-list">
+                    <li>O Chefe se <b>esconde</b> para ninguém ver ele.</li>
+                    <li>Ele entra num ciclo <b>sempre</b> (trabalha sem parar!).</li>
+                    <li>Ele <b>espera</b> um tempo surpresa (entre 0.5 e 1.8 segundos). Assim, você nunca sabe quando o próximo inimigo vai aparecer!</li>
+                    <li>E plim! Ele <b>cria um clone</b> dele mesmo.</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">LIGANDO A FÁBRICA</span><br>
+                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
+                    &nbsp;➜ <span class="action">esconda</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">espere</span> <span class="object">número aleatório entre</span> <span class="value">0.5</span> <span class="object">e</span> <span class="value">1.8</span> <span class="action">seg</span><br>
+                        ➜ <span class="action">crie clone de</span> <span class="object">[este ator]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Dica Secreta:</strong> Usar o bloco verde de "número aleatório" deixa o jogo muito mais divertido, porque os inimigos não aparecem todos no mesmo ritmo chato de relógio!
+        </div>
+
+        <h2>A Vida de um Clone</h2>
+        <p>Quando o clone nasce, ele precisa saber o que fazer, para onde ir e que roupa vestir!</p>
+
+        <div class="concept-box" style="background-color: #FFF3E0; border-left-color: #FF7043;">
+            <span class="concept-title" style="color: #D84315;">O Guarda-Roupa Surpresa</span>
+            <p>Logo que o clone aparece na tela (lá no canto direito, no <b>X: 260</b>), ele escolhe uma fantasia aleatória de 1 a 5. Isso significa que a nossa fábrica pode criar cactos diferentes, passarinhos de cores diferentes ou monstros variados usando o mesmo código!</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>Correndo e Pulsando!</h2>
+        
+        <div class="two-columns" style="align-items: flex-start;">
+            <div class="col">
+                <p>O clone tem uma missão: atravessar a tela para a esquerda e sumir!</p>
+                <ul class="step-list">
+                    <li>Ele repete o movimento de andar para trás <b>(-10 no X)</b> até chegar no limite esquerdo da tela <b>(-260)</b>.</li>
+                    <li>Enquanto anda, ele fica inflando para <b>150%</b> e murchando para <b>50%</b> bem rápido. Isso cria um efeito muito legal de animação, parecendo que ele está quicando ou respirando!</li>
+                    <li>Quando chega no fim da tela, ele é <b>apagado</b> para não travar o computador.</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O CLONE EM AÇÃO</span><br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">mostre</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">260</span> <span class="action">y:</span> <span class="value">-127</span><br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="object">número aleatório</span> <span class="value">1</span> a <span class="value">5</span><br>
+                    &nbsp;➜ <span class="keyword">repita até que</span> <span class="object">posição x</span> &lt; <span class="value">-260</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">defina o tamanho como</span> <span class="value">150%</span><br>
+                        ➜ <span class="action">adicione</span> <span class="value">-10</span> <span class="action">a x</span><br>
+                        ➜ <span class="action">defina o tamanho como</span> <span class="value">50%</span>
+                    </div>
+                    &nbsp;➜ <span class="action">apague este clone</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Colisão com o cacto</h2>
+        
+        <div class="concept-box">
+            <span class="concept-title">O Radar de Colisão</span>
+            <p>O nosso Dinossauro precisa de um radar super rápido para saber se ele encostou no espinho do cacto. Se ele bater, o jogo precisa avisar todo mundo que acabou, trocar a cara do Dino para uma cara de susto e frear tudo na mesma hora!</p>
+        </div>
+
+        <h2>Como funciona o Game Over?</h2>
+        
+        <div class="two-columns" style="align-items: flex-start; margin-top: 30px;">
+            <div class="col">
+                <p>Vamos entender o passo a passo do que acontece quando o Dino bate:</p>
+                <ul class="step-list">
+                    <li><b>O Radar:</b> O bloco <code>sempre</code> junto com o <code>se tocando em Cactus</code> fica vigiando o jogo inteiro, sem piscar!</li>
+                    <li><b>O Aviso:</b> Se bater, ele muda a nossa variável <i>Game Over?</i> para "yes" e usa o megafone do <code>transmita</code> para gritar "Game Over" para todos os outros atores pararem de se mexer.</li>
+                    <li><b>O Susto:</b> Ele veste a fantasia <i>Scared</i> (Assustado) para a gente ver que ele perdeu.</li>
+                    <li><b>O Freio:</b> Os blocos de <code>pare</code> servem para congelar a animação de corrida do Dino e desligar esse radar, porque o jogo já acabou!</li>
+                </ul>
+                
+            </div>
+
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O DETECTOR DE ESPINHOS</span><br>
+                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
+                    &nbsp;➜ <span class="action">espere</span> <span class="value">0.01</span> <span class="action">seg</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        <span class="action">se</span> <span class="object">tocando em</span> <span class="value">[Cactus]</span> ? <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">mude</span> <span class="object">[Game Over?]</span> para <span class="value">yes</span><br>
+                            ➜ <span class="keyword">transmita</span> <span class="value">[Game Over]</span><br>
+                            ➜ <span class="action">mude para a fantasia</span> <span class="value">Scared</span><br>
+                            ➜ <span class="keyword">pare</span> <span class="object">[outros scripts no ator]</span><br>
+                            ➜ <span class="keyword">pare</span> <span class="object">[este script]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="page">
+                <div class="header">
+                    <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+                    <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+                </div>
+                       <div class="note">
+                    <strong>Pausa rápida:</strong> O bloco de <code>espere 0.01 seg</code> no começo serve só para dar um tempinho pro jogo carregar tudo antes de ligar o radar, evitando que o Dino perca logo no primeiro milissegundo!
+                </div>
+                 <h2>Limpeza de Clones</h2>
+        <p>Um jogo bem feito precisa saber a hora de parar e a hora de limpar a bagunça!</p>
+
+        <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
+            <div class="col">
+                <h3>O Freio de Emergência</h3>
+                <p>Se o jogador perder (Game Over), a gente precisa desligar a fábrica na mesma hora! O comando <b>"pare outros scripts no ator"</b> faz o Chefe parar de produzir novos clones instantaneamente.</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">FIM DE JOGO</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">[Game Over]</span><br>
+                    &nbsp;➜ <span class="action">pare</span> <span class="object">[outros scripts no ator]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+    
+</body>
+</html>
