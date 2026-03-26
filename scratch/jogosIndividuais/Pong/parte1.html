@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Pong Game - Parte 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <br>
+
+        <div class="cover-main-title">
+            Pong <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+<br>
+        <div class="cover-banner">
+            <img src="./assests/capa-pong.png" alt="Cenário Pong" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Primeiros Passos</h1>
+        <p>Prepare-se, programador(a)! Hoje nós vamos dar vida ao nosso jogo de Ping-Pong. <br> Você sabia que o Pong foi um dos <b>primeiros videogames do mundo</b>? Ele foi criado há muito tempo atrás (em 1972!) e é como se fosse uma partida de Ping-Pong ou Tênis de Mesa dentro do computador.
+</p>
+        <div class="concept-box">
+            <span class="concept-title">🎮 Como o Pong funciona?</span>
+            • Temos duas <b>raquetes</b> (uma de cada lado da tela).<br>
+            • Uma <b>bolinha</b> que fica quicando sem parar.<br>
+            • O seu objetivo é rebater a bolinha e fazer ela passar da raquete do seu adversário para marcar um ponto!<br><br>
+        </div>
+
+        <h2>Carregando os Assets:</h2>
+        <p>Vamos começar escolhendo um cenário para o nosso jogo.</p>
+        <ul class="step-list">
+            <li><b>Cenário:</b> Vá na pasta Assets > Scratch > Pong no computador e  carregue cenário.</li>
+            <li><b>Raquete:</b> Agora, escolha um sprite para ser a raquete do jogador (azul) e adversário (vermelho). Defina o tamanho entre 40 e 50 para que fique proporcional.</li>
+            <li><b>Bolinha:</b> Carregue a sprite da bolinha. Defina o tamanho entre 20 e 30 para que fique proporcional.</li>
+        </ul>
+
+        <h2>Programando a Raquete do jogador</h2>
+
+        <ul class="step-list">
+<li>
+                <strong>O Ponto de Partida!</strong>
+                <p>Todo jogo precisa de um começo. Quando clicarmos na bandeira verde, a raquete precisa ir para o seu lugar no campo.</p>
+                <div class="code-block">
+                    <div class="code-title">Início do Jogo</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">vá para x:</span> <span class="value">-210</span> <span class="keyword">y:</span> <span class="value">0</span>
+                </div>
+            </li>
+
+            <li>
+                <strong>O Coração do Jogo (O Bloco Sempre)</strong>
+                <p>Como vimos nas aulas anteriores, o computador é muito rápido! Precisamos pedir para ele checar <i>o tempo todo</i> se estamos apertando algum botão. Para isso, usamos o bloco <b>Sempre</b>.</p>
+            </li>
+
+            <li>
+                <strong>Subindo e Descendo!</strong>
+                <p>Como vocês já são feras no eixo Y, sabem muito bem que ele controla o movimento vertical! O truque agora é conectar essa matemática ao nosso teclado.</p>
+                <ul>
+                    <li><b>Tecla W:</b> Para subir a raquete, precisamos adicionar um número positivo ao eixo Y. Quanto maior o número, mais rápido ela sobe!</li>
+                    <li><b>Tecla S:</b> Para descer a raquete, precisamos adicionar um número negativo ao eixo Y. Quanto menor o número, mais rápido ela desce!</li>
+                </ul>
+            </li>
+                
+                
+    </div>
+
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <div class="two-columns">
+                    <div class="col">
+                        <div class="code-block">
+                            <span class="code-title">Para Subir</span><br>
+                            <span class="keyword">se</span> tecla <span class="value">W</span> pressionada? <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">10</span> a y
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="code-block">
+                            <span class="code-title">Para Descer</span><br>
+                            <span class="keyword">se</span> tecla <span class="value">S</span> pressionada? <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">-10</span> a y
+                        </div>
+                    </div>
+                </div>
+            
+
+                <h2>A Parede Invisível</h2>
+                <p>Se você testar agora, vai ver que a raquete pode fugir da tela se você segurar o botão! Para resolver isso, usamos o bloco verde <b>"E"</b>. Ele cria uma regra dupla: A raquete só sobe <b>SE</b> apertarmos o W <b>E</b> ela ainda não tiver batido no teto!</p>
+    
+
+        <div class="note">
+            💡 <b>Dica de Ouro:</b> No nosso código, o "teto" invisível fica na posição <b>Y menor que 90</b> e o "chão" invisível fica na posição <b>Y maior que -120</b>. Tente mudar esses números no Scratch para ver a mágica (ou a bagunça) acontecer!
+        </div>
+<h3>Resumo do Código da Raquete:</h3>
+<img src="./assests/raquete-jogador.png" alt="Código da Raquete" style="width:50%; height:auto; display:block; margin: 20px auto 0;">
+
+    <h2>Dando Vida à Bolinha</h2>
+
+        <p>Agora que nossa raquete já está pronta, é hora de colocar a bolinha em campo. Mas antes dela começar a quicar loucamente, precisamos organizar a partida definir a velocidade inicial e fazer um "sorteio" de para onde ela vai voar!</p>
+
+        <h3>Velocidade</h3>
+        <ul class="step-list">
+            <li>Primeiramente, vamos criar a variável <b>"ball_speed"</b> (velocidade da bola).</li>
+            <li>
+                <p>Ao clicar na bandeira verde a bola precisa ir para o centro do campo (x: 0, y: 0), o placar deve ser zerado e a bola ganha sua velocidade inicial.</p>
+                
+                <div class="code-block">
+                    <div class="code-title">Zerar e Preparar</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">vá para x:</span> <span class="value">0</span> <span class="keyword">y:</span> <span class="value">0</span><br>
+                    <span class="keyword">mude</span> <span class="object">[ball_speed]</span> <span class="keyword">para</span> <span class="value">5</span><br>
+                </div>
+            </li>
+        </ul>
+</div>
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+             <h3>O Motorzinho da Bola</h3>
+                <p>Nós precisamos que a bolinha ande para frente infinitamente. Usamos o bloco <b>Sempre</b> para ela atualizar os passos baseados na sua velocidade.</p>
+                
+                <div class="code-block">
+                    <div class="code-title">Movimento e GPS</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">sempre</span><br>
+                    &nbsp;&nbsp;<span class="action">mova</span> <span class="object">(ball_speed)</span> <span class="action">passos</span>
+                </div>
+
+            
+                <h3>O Sorteio do Saque!</h3>
+                <p>Se a bolinha fosse sempre para o mesmo lado, o jogo ficaria muito fácil de adivinhar. Então o Scratch vai "jogar um dado" de 4 lados para sortear a direção do primeiro chute! Então vamos criar um código para saber onde a bolinha irá apontar.</p>
+                <ul class="step-list">
+                    <li>Vamos criar uma variável chamada <b>"ball_direction"</b> (direção da bola) para guardar o número sorteado.</li>
+                <div class="code-block">
+                    <div class="code-title">Sorteando o Lado</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">mude</span> <span class="object">[ball_direction]</span> <span class="keyword">para</span> <span class="action">número aleatório entre</span> <span class="value">1</span> <span class="keyword">e</span> <span class="value">4</span>
+                </div>
+            </li>
+
+            <li>
+                <strong>Apontando para a Diagonal! ↗️↘️</strong>
+                <p>Dependendo do número que foi sorteado (1, 2, 3 ou 4 na caixinha <i>ball_direction</i>), a bolinha vai apontar para um ângulo diferente. Assim o jogador nunca sabe para qual diagonal ela vai voar!</p>
+                
+                <div class="two-columns">
+                    <div class="col">
+                        <div class="code-block">
+                            <span class="keyword">se</span> <span class="object">ball_direction</span> = <span class="value">1</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">aponte para a direção</span> <span class="value">60</span>
+                        </div>
+                        <div class="code-block" style="margin-top: 10px;">
+                            <span class="keyword">se</span> <span class="object">ball_direction</span> = <span class="value">2</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">aponte para a direção</span> <span class="value">120</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="code-block">
+                            <span class="keyword">se</span> <span class="object">ball_direction</span> = <span class="value">3</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">aponte para a direção</span> <span class="value">-60</span>
+                        </div>
+                        <div class="code-block" style="margin-top: 10px;">
+                            <span class="keyword">se</span> <span class="object">ball_direction</span> = <span class="value">4</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="action">aponte para a direção</span> <span class="value">-120</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="note">
+            💡 <b>Dica de Ouro:</b> No Scratch, a direção <b>90</b> é reta para a direita e <b>-90</b> é reta para a esquerda. Ao usar números "quebrados" como <b>60</b> ou <b>120</b>, nós forçamos a bolinha a andar na diagonal!
+        </div>
+
+        <div class="note" style="background-color: #FFF9C4; border-left-color: #FBC02D;">
+            <span style="color: #F57F17; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px; text-transform: uppercase;">
+                🕵️‍♂️ Detetive de Bugs: O Mistério do Bloco "Sempre"
+            </span>
+            Você percebeu que os blocos azuis <b>"se... então"</b> ficaram de fora de um bloco <b>"sempre"</b>?
+            Sabe por quê? Se você colocar esses blocos lá dentro, o computador vai <b>forçar</b> a bolinha a apontar para aquela mesma direção o tempo todo, sem parar! <br><br>
+            <b>Imagine só:</b> A bolinha bate na sua raquete e tenta quicar para voltar para o campo. Mas o código dentro do <i>sempre</i> grita: <i>"Não! Volte a apontar para a direção do saque!"</i><br><br>
+            <b>O resultado?</b> A bolinha nunca ia conseguir quicar! Ela ia bater na raquete e ficar patinando lá, tentando atravessar a parede. Esses blocos ficam do lado de fora porque eles só servem para dar o <b>"empurrão inicial"</b>. Depois disso, a bolinha fica livre para rebater e mudar de direção naturalmente!
+        </div>
+        </div>
+
+        <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h3>Resumo do Código da Bolinha:</h3>
+        <img src="./assests/sorteio-inicial-bola.png" alt="Código da Bolinha" style="width:50%; height:auto; display:block; margin: 20px auto 0; size:90%;">
+        
+<h2>O Jogador Adversário (A IA do Jogo)</h2>
+        <p>Você não vai jogar sozinho, né? Chegou a hora de criar a <b>Inteligência Artificial (IA)</b> do jogo! Nós vamos ensinar a raquete do computador a pensar sozinha e a perseguir a bolinha pelo campo.</p>
+
+        <div class="concept-box" style="border-left-color: #9C27B0; background-color: #F3E5F5;">
+            <span class="concept-title" style="color: #7B1FA2;">🧠 Como a IA toma decisões? (O Truque do GPS)</span>
+            Inteligência Artificial é quando programamos o computador para agir sozinho! Mas para o robô saber para onde ir, ele precisa de "olhos". 
+        </div>
+        <ul class="step-list">
+            <li>Para a IA funcionar, precisamos criar uma variável para armazenar a posição da bolinha, vamos chama-la de <b>ball_posY</b>!</li>
+            <li>Junto do nosso bloco de movimentação da bolinha, vamos atualizar a variável <b>ball_posY</b> a cada frame/passo que ela dá!</li>
+        </ul>
+        <img src="./assests/bloco-movimentacao.png" alt="Bloco de Movimentação da Bola" style="width:50%; height:auto; display:block; margin: 20px auto 0;">
+</div>
+<div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+</div>
+        <h2>Como programar o Robô:</h2>
+
+        <ul class="step-list">
+            <li>
+                <strong>Entrando em Campo!</strong>
+                <p>Assim como a sua raquete, o robô também precisa ir para a posição dele quando a bandeira verde for clicada. Só que ele fica do lado direito do campo (X positivo!).</p>
+                <div class="code-block">
+                    <div class="code-title">Posição do Inimigo</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">vá para x:</span> <span class="value">210</span> <span class="keyword">y:</span> <span class="value">0</span>
+                </div>
+            </li>
+
+            <li>
+                <strong>A Perseguição (O Código do Robô) 🏃‍♂️</strong>
+                <p>O robô usa o bloco <b>Sempre</b> para ficar comparando a posição Y dele com a posição Y da bolinha (o nosso GPS). Veja como ele é inteligente:</p>
+                
+                <div class="two-columns">
+                    <div class="col">
+                        <div class="code-block">
+                            <div class="code-title">Se a Bola estiver Embaixo...</div>
+                            <br>
+                            <span class="keyword">se</span> <span class="action">posição y</span> > <span class="object">[ball_posY]</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">-2</span> <span class="keyword">a</span> y
+                        </div>
+                        <p style="font-size: 13px; text-align: center;">Ele percebe que está muito alto, então ele <b>DESCE</b> (usa o -2).</p>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="code-block">
+                            <div class="code-title">Se a Bola estiver no Alto...</div>
+                            <br>
+                            <span class="keyword">se</span> <span class="action">posição y</span> < <span class="object">[ball_posY]</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">2</span> <span class="keyword">a</span> y
+                        </div>
+                        <p style="font-size: 13px; text-align: center;">Ele percebe que está muito baixo, então ele <b>SOBE</b> (usa o 2).</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="note" style="background-color: #FFEBEE; border-left-color: #F44336;">
+            <span style="color: #C62828; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px; text-transform: uppercase;">
+                🕹️ O Segredo dos Games: A Fraqueza do Robô
+            </span>
+            Você reparou que a nossa raquete anda <b>10</b> passos por vez, mas o robô só anda <b>2</b> passos? Sabe por que fizemos o robô ser mais "lento"? <br><br>
+            Se o robô andasse muito rápido, ele alcançaria a bolinha sempre e <b>nunca perderia</b>! Fazer o robô ser um pouco mais devagar garante que, quando a bolinha ficar muito veloz, ele não vai conseguir alcançar e você poderá marcar o gol. É assim que os criadores de jogos ajustam a <b>Dificuldade</b> (Fácil, Médio, Difícil)! Se quiser um desafio maior, tente mudar a velocidade do robô para 3 ou 4!
+        </div>
+
+        <h2>Desafio!!</h2>
+        <p>Na aula, programamos um sistema onde a bolinha sorteia um número entre <b>1 e 4</b> para escolher uma das quatro diagonais iniciais (60, 120, -60, -120).</p>
+
+        <div class="note" style="background-color: #FFF3E0; border-left-color: #FF5722;">
+            <span style="color: #D84315; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px; text-transform: uppercase;">
+                🎯 O Desafio
+            </span>
+            Altere o código do "Sorteio do Saque" para que a bolinha possa sair em <b>6 direções diferentes</b> no início do jogo, em vez de apenas 4. <br><br>
+            Você precisará atualizar o sorteio da variável <b>ball_direction</b> para sortear de 1 a 6 e adicionar novos blocos de condição <i>"se... então"</i> com novos ângulos (lembrando de manter números que forcem a bolinha a andar na diagonal, como 45, 135, -45 ou -135).
+        </div>
+    </div>
+
+
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+
+    </body>
+</html>

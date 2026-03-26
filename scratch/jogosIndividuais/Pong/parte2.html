@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Pong Game - Parte 2</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <br>
+
+        <div class="cover-main-title">
+            Pong <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+<br>
+        <div class="cover-banner">
+            <img src="./assests/capa-pong.png" alt="Cenário Pong" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+ 
+ <h1>A Bolinha ganhando vida!</h1>
+
+        <p>Agora a brincadeira vai ficar séria! Nossa bolinha precisa de um motor para não parar de correr e de um sensor super inteligente para saber a hora exata de quicar na raquete.</p>
+
+      <h2>O Sistema de Sensores da Bolinha</h2>
+        <p>A nossa bolinha já sabe correr, mas ela precisa aprender a bater nas coisas e voltar! Para isso, vamos criar três sensores diferentes que funcionam ao mesmo tempo. Eles são os "olhos" da bolinha!</p>
+
+        <div class="concept-box">
+            <span class="concept-title">👀 Sensores e o Efeito Espelho</span>
+            Na programação, nós podemos usar sensores de <b>toque</b> (como encostar em outro objeto) ou sensores de <b>cor</b> (encostar em uma cor específica do cenário). <br><br>
+            Sempre que a bolinha bater em algo, ela precisa sofrer um "Efeito Espelho", ou seja, inverter a sua direção para criar aquele rebote perfeito!
+        </div>
+
+        <h2>1. O Sensor das Raquetes (Rebote Horizontal)</h2>
+        <p>Esse nós já conhecemos! É o sensor que checa se a bolinha bateu na sua raquete ou na do inimigo. A matemática aqui é simples: multiplicamos a direção por <b>-1</b> para inverter a bola da Esquerda para a Direita (e vice-versa).</p>
+
+        <div class="code-block">
+            <div class="code-title">Colisão com as Raquetes</div>
+            <br>
+            <span class="action">quando a bandeira verde for clicada</span><br>
+            <span class="keyword">sempre</span><br>
+            &nbsp;&nbsp;<span class="keyword">se</span> <span class="action">tocando em</span> <span class="object">[user_racket]</span> <span class="keyword">ou</span> <span class="action">tocando em</span> <span class="object">[rival_racket]</span> <span class="keyword">então</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="action">aponte para a direção</span> ( <span class="action">direção</span> * <span class="value">-1</span> )<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">1</span> <span class="keyword">a</span> <span class="object">[ball_speed]</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">0.2</span> <span class="keyword">seg</span>
+        </div>
+        <div class="note" style="background-color: #E8EAF6; border-left-color: #3F51B5;">
+            <span style="color: #303F9F; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px; text-transform: uppercase;">
+                🧠 Magia Matemática: Como a bola quica?
+            </span>
+            Você reparou no bloquinho verde com o <b>* -1</b>? Isso é pura magia matemática! <br><br>
+            Quando multiplicamos a direção da bolinha por <b>-1</b>, nós criamos um <b>Efeito Espelho</b>. Se ela estava indo para a direita (como o número 60), ela vira e vai exatamente para a esquerda (como o número -60). É assim que criamos o rebote perfeito! <br><br>
+            <b>E para que serve o espere 0.2 seg?</b> É o nosso "Escudo Anti-Bug"! Ele dá um tempinho rápido para a bola conseguir desgrudar da raquete. Sem isso, o computador ia achar que a bola bateu mil vezes na raquete ao mesmo tempo e ela ia ficar presa!
+        </div>
+
+        <h2>2. O Sensor do Chão e do Teto (Rebote Vertical)</h2>
+        <p>Se a bolinha tentar fugir por cima ou por baixo, ela precisa bater e voltar. Para isso, usamos um <b>Sensor de Cor</b> (você vai usar a cor exata da linha desenhada no seu cenário).</p>
+        
+        <p>A matemática aqui é um truque ninja: dependendo se a bola está indo para a esquerda (direção menor que 0) ou direita, nós somamos ou subtraímos <b>60</b> do ângulo dela!</p>
+        </div>
+        <div class="page">
+
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <div class="code-title">Bateu no Chão (Inferior)</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">sempre</span><br>
+                    &nbsp;&nbsp;<span class="keyword">se</span> <span class="action">tocando na cor</span> 🔵 <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">se</span> <span class="action">direção</span> < <span class="value">0</span> <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="action">aponte para a direção</span> (<span class="action">direção</span> + <span class="value">60</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">senão</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="action">aponte para a direção</span> (<span class="action">direção</span> - <span class="value">60</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">1</span> <span class="keyword">a</span> <span class="object">[ball_speed]</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">0.2</span> <span class="keyword">seg</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="code-block">
+                    <div class="code-title">Bateu no Teto (Superior)</div>
+                    <br>
+                    <span class="action">quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">sempre</span><br>
+                    &nbsp;&nbsp;<span class="keyword">se</span> <span class="action">tocando na cor</span> 🔵 <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">se</span> <span class="action">direção</span> < <span class="value">0</span> <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="action">aponte para a direção</span> (<span class="action">direção</span> - <span class="value">60</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">senão</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="action">aponte para a direção</span> (<span class="action">direção</span> + <span class="value">60</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">1</span> <span class="keyword">a</span> <span class="object">[ball_speed]</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">0.2</span> <span class="keyword">seg</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="note" style="background-color: #FFF3E0; border-left-color: #FF7043;">
+            <span style="color: #E64A19; font-weight: bold; font-size: 14px; display: block; margin-bottom: 8px; text-transform: uppercase;">
+                🪄 O Truque do Número 60
+            </span>
+            Por que somamos ou subtraímos 60? Imagine que a bola está descendo para a direita no ângulo <b>120</b>. Ela bate no chão. Pelo código do chão, se a direção for maior que zero (120), nós fazemos: <b>120 - 60</b>. <br><br>
+            Qual é o resultado? <b>60!</b> Que é exatamente o ângulo para fazer a bolinha subir para a direita. O mesmo truque funciona para todos os cantos. É matemática pura criando física dentro do jogo! E veja que em todos eles a velocidade (<i>ball_speed</i>) aumenta para o jogo ficar mais difícil!
+        </div>
+
+        <h2>Placar</h2>
+
+        <p>O que seria de um jogo sem saber quem está ganhando? Vamos entender como o computador se transforma em um juiz e atualiza o placar toda vez que sai um gol!</p>
+
+        <div class="concept-box" style="border-left-color: #FFB300; background-color: #FFF8E1;">
+            <span class="concept-title" style="color: #FF8F00;">🥅 A Linha do Gol</span>
+            No Scratch, a tela termina no eixo X nos valores <b>240</b> (extrema direita) e <b>-240</b> (extrema esquerda). <br><br>
+            Se a posição X da bolinha for <b>maior que 220</b>, significa que ela conseguiu passar da raquete da direita. Se for <b>menor que -220</b>, ela passou da raquete da esquerda. É assim que o nosso "juiz" sabe que foi gol!
+        </div>
+
+        <ul class="step-list">
+            <li>Primeiramente, vamos criar as variáveis para armazenar os pontos de cada jogador: <b>Pontos_player</b> e <b>Pontos_rival</b></li>
+            <li>
+                <strong>O Juiz de Olho no Jogo! 👀</strong>
+                <p>O bloco laranja <b>Sempre</b> garante que o computador fique vigiando a posição X da bolinha o tempo todo, sem piscar!</p>
+            </li>
+            
+            <li>
+                <strong>Atualizando as Variáveis (O Placar)</strong>
+                <p>Quando a bolinha cruza a linha, nós adicionamos 1 ponto na caixinha certa: <b>Pontos_player</b> se o gol foi seu, ou <b>Pontos_rival</b> se o computador marcou o gol.</p>
+            </li>
+
+            <li>
+                <strong>Preparando o Novo Saque! ⚽</strong>
+                <p>Depois do gol, não podemos deixar a bolinha presa lá no fundo da rede. Precisamos fazer 3 coisas ao mesmo tempo:</p>
+                
+                </li>
+        </ul>
+        </div>
+        <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto"
+                class="logotype">
+        </div>
+                    <div class="two-columns">
+                    <div class="col">
+                        <div class="code-block">
+                            <div class="code-title">Gol na Direita (Ponto Seu!)</div>
+                            <br>
+                            <span class="keyword">se</span> <span class="action">posição x</span> > <span class="value">220</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">1</span> <span class="keyword">a</span> <span class="object">[Pontos_player]</span><br>
+                            &nbsp;&nbsp;<span class="keyword">vá para x:</span> <span class="value">0</span> <span class="keyword">y:</span> <span class="value">0</span><br>
+                            &nbsp;&nbsp;<span class="keyword">mude</span> <span class="object">[ball_speed]</span> <span class="keyword">para</span> <span class="value">5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="code-block">
+                            <div class="code-title">Gol na Esquerda (Ponto do Rival!)</div>
+                            <br>
+                            <span class="keyword">se</span> <span class="action">posição x</span> < <span class="value">-220</span> <span class="keyword">então</span><br>
+                            &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">1</span> <span class="keyword">a</span> <span class="object">[Pontos_rival]</span><br>
+                            &nbsp;&nbsp;<span class="keyword">vá para x:</span> <span class="value">0</span> <span class="keyword">y:</span> <span class="value">0</span><br>
+                            &nbsp;&nbsp;<span class="keyword">mude</span> <span class="object">[ball_speed]</span> <span class="keyword">para</span> <span class="value">5</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="note">
+            💡 <b>Dica de Ouro:</b> Reparou que nós mandamos a velocidade (<i>ball_speed</i>) voltar para 5 depois do gol? Se não fizermos isso, o próximo saque começaria super rápido (com a velocidade acumulada da jogada anterior) e seria impossível defender!
+        </div>
+        
+        <h2>Desafio: Modo Multi-jogador (Co-op)!</h2>
+        <p>Que tal chamar um colega para jogar com você no mesmo teclado? Sua missão agora é transformar a raquete do robô em um <b>Jogador 2</b>!</p>
+
+        <div class="concept-box" style="border-left-color: #FF9800; background-color: #FFF3E0;">
+            <span class="concept-title" style="color: #E65100;">🤝 Jogando com um Amigo!</span>
+            Para isso, você precisará <b>apagar</b> o código da Inteligência Artificial que fizemos e criar um novo controle de movimento. O Jogador 1 continuará usando <b>W</b> e <b>S</b>, mas o Jogador 2 usará as <b>Setas do Teclado</b>!
+        </div>
+
+        <ul class="step-list">
+            <li>Vá para o código da <b>Raquete Inimiga (Vermelha)</b>.</li>
+            <li>Remova os blocos de perseguição (onde ela comparava a posição Y com o `ball_posY`).</li>
+            <li>Adicione os blocos de controle para a <b>Seta para Cima</b> e <b>Seta para Baixo</b>, usando a mesma lógica que fizemos para a raquete principal.</li>
+        </ul>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">Jogador 2 - Subir</span><br>
+                    <span class="keyword">se</span> tecla <span class="value">seta para cima</span> pressionada? <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">10</span> a y
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">Jogador 2 - Descer</span><br>
+                    <span class="keyword">se</span> tecla <span class="value">seta para baixo</span> pressionada? <span class="keyword">então</span><br>
+                    &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">-10</span> a y
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            💡 <b>Não se esqueça da Parede Invisível!</b><br>
+            Lembre-se de adicionar o bloco verde <b>"E"</b> para criar o limite e impedir que a raquete do Jogador 2 fuja da tela. O limite do eixo Y é o mesmo da sua raquete (Y menor que 90 para subir, Y maior que -120 para descer)!
+        </div>
+    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+</body>
+</html>

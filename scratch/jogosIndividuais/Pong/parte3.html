@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Pong Game - Parte 3</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <br>
+
+        <div class="cover-main-title">
+            Pong <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div>
+<br>
+        <div class="cover-banner">
+            <img src="./assests/capa-pong.png" alt="Cenário Pong" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h1>Ajustes Finais</h1>
+ 
+<h2>Placar</h2>
+        <p>Aprenda como o computador entende quando um jogador faz um ponto e como resetar o jogo para a próxima rodada!</p>
+
+        <h3>Placar do jogador</h3>
+        <p>`Primeiramente, vamos criar uma variável para armazenar os pontos do jogador chamada <b>`Pontos_player`</b>.</p>
+
+        <div class="code-block">
+            <span class="code-title">Sistema de Gol</span><br>
+            <span class="keyword">se</span> <span class="object">posição x</span> > <span class="value">220</span> <span class="keyword">então</span><br>
+            &nbsp;&nbsp;<span class="action">adicione</span> <span class="value">1</span> a <span class="object">Pontos_player</span><br>
+            &nbsp;&nbsp;<span class="action">vá para</span> x: <span class="value">0</span> y: <span class="value">0</span><br>
+            &nbsp;&nbsp;<span class="keyword">mude</span> <span class="object">ball_speed</span> para <span class="value">5</span><br>
+
+        </div>
+
+        <h3>Explicação passo a passo: </h3>
+        <ul class="step-list">
+            <li><strong>O Radar (posição x > 220):</strong> O computador fica vigiando se a bola passou da linha de fundo da direita. É como um juiz de futebol olhando a linha do gol!</li>
+            <li><strong>O Placar (adicione 1):</strong> Toda vez que a bola passa dali, o computador grita "GOL!" e coloca mais um ponto na sua conta.</li>
+            <li><strong>O Teletransporte (vá para x:0 y:0):</strong> Para o jogo não acabar, a bola é teletransportada de volta para o meio do campo instantaneamente.</li>
+            <li><strong>O Freio (ball_speed para 5):</strong> Se a bola estiver rápida demais, aqui nós damos uma "segurada" nela para a nova rodada começar justa.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Dica de Ouro:</strong> O bloco "Sempre" é como um motor que nunca desliga. Se você esquecer dele, o computador só vai checar o ponto uma única vez e depois vai tirar um cochilo! 😴
+        </div>
+
+        <h3>Placar do Adversário</h3>
+        <p>Agora é com você! Seguindo a mesma lógica, crie uma variável para o placar do adversário e implemente o sistema de pontos para ele.</p>
+
+        <h2>Transformando em um Jogo Completo</h2>
+        <p>Agora que você já domina o radar de pontos, é hora de transformar seu projeto em um jogo completo! Marque cada conquista:</p>
+
+    <ul class="step-list">
+        <li>
+            <strong>O Grande Campeão (Vitória/Derrota):</strong> 
+            Crie uma regra: <span class="keyword">SE</span> <span class="object">Pontos_player</span> = <span class="value">5</span>, 
+            <span class="keyword">ENTÃO</span> transmita a mensagem <span class="value">"Vitoria"</span> e pare todos os sons! 
+            <em>Dica: Use um novo "Apoio" (Sprite) para escrever "VOCÊ VENCEU!" na tela.</em>
+        </li>
+        
+        <li>
+            <strong>O Portal de Início (Tela Inicial):</strong> 
+            O jogo não pode começar "do nada"! Crie um botão de <strong>JOGAR</strong>. 
+            A bola e as raquetes só devem aparecer quando o botão for clicado. 
+            <em>Desafio: Use o bloco "quando este ator for clicado".</em>
+        </li>
+
+        <li>
+            <strong>Modo Cooperativo (Co-op):</strong> 
+            Que tal jogarem em dupla contra o computador? 
+            Adicione uma segunda raquete que se move com as teclas <strong>W</strong> (para subir) e <strong>S</strong> (para descer). 
+            <em>Dica: Vocês precisam proteger o mesmo lado do campo!</em>
+        </li>
+    </ul>
+
+    </div>
+    <div class="page">
+        <div class="header">
+            <img src="/scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="/scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+            
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+</body>
+</html>
