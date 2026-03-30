@@ -19,7 +19,7 @@ const questions = [
         rationale: "O eixo Y controla o movimento vertical; números positivos fazem o ator subir[cite: 206, 211]."
     },
     {
-        question: "Como o 'Juiz' sabe que a bola passou da raquete da DIREITA (Golo seu)?",
+        question: "Como o 'Juiz' sabe que a bola passou da raquete da DIREITA (Gol seu)?",
         options: ["Posição X > 220", "Posição Y < -120", "Tocando na cor azul", "Posição X < -220"],
         correct: 0,
         rationale: "O limite da tela termina em 240; se X for maior que 220, a bola passou da raquete direita[cite: 66, 67]."
@@ -43,7 +43,7 @@ const questions = [
         rationale: "Ângulos quebrados forçam a bolinha a andar na diagonal, tornando o jogo menos previsível[cite: 276]."
     },
     {
-        question: "O que acontece com a 'ball_speed' logo após um golo?",
+        question: "O que acontece com a 'ball_speed' logo após um gol?",
         options: ["Aumenta para 20", "Fica em zero", "Volta para a velocidade inicial (5)", "A bola desaparece"],
         correct: 2,
         rationale: "Resetar a velocidade para 5 impede que o próximo saque comece rápido demais e seja impossível de defender[cite: 86, 87]."
