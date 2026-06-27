@@ -1,0 +1,6 @@
+# Configurações de editor / sistema operacional
+./vscode
+./claude
+./github
+.DS_Store
+Thumbs.db

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  MODELO DE GUIA DE ESTUDO - PROFIA
+  ============================================================================
+  Copie este arquivo para criar um guia novo. Ele demonstra TODOS os blocos
+  visuais disponiveis (capa, conceito, passos, codigo, colunas, notas, etc).
+
+  COMO USAR:
+  1. Copie esta pasta/arquivo para o lugar certo (ex: scratch/aulas/aula7/).
+  2. Renomeie o arquivo (ex: aula7.html).
+  3. Ajuste os CAMINHOS de css e imagens (veja o aviso logo abaixo).
+  4. Apague os blocos que nao for usar e preencha o conteudo.
+
+  >>> REGRA DOS CAMINHOS (../) - LEIA COM ATENCAO <<<
+  Todo caminho aqui e RELATIVO. A quantidade de "../" depende de quantas
+  pastas o seu arquivo esta ABAIXO da raiz do projeto (a pasta "profia").
+
+    - Arquivo em template/         -> 1 pasta abaixo  -> use ../
+    - Arquivo em scratch/aula6/     -> 2 pastas abaixo -> use ../../
+    - Arquivo em scratch/aulas/aula7/ -> 3 pastas abaixo -> use ../../../
+
+  Este modelo esta em template/ (1 nivel), entao usa "../".
+  Se mover para um nivel mais fundo, adicione um "../" para cada pasta.
+  ============================================================================
+-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch - Aula X - Titulo do Guia</title>
+
+    <!-- O CSS e compartilhado por TODOS os guias. Nunca edite estilo aqui;
+         edite em css/style.css para manter a identidade visual igual. -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         PAGINA 1 - CAPA
+         Cada <div class="page"> = 1 folha A4 (vira 1 pagina na impressao).
+         ====================================================================== -->
+    <div class="page">
+
+        <!-- Cabecalho com a logo. Repita este bloco no topo de cada pagina. -->
+        <div class="header">
+            <img src="../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <!-- Titulo grande da capa. O <span> fica na cor ciano (destaque). -->
+        <div class="cover-main-title">Titulo <span>do Jogo</span></div>
+        <div class="cover-subtitle-pro">Scratch</div>
+
+        <!-- Imagem de capa (troque pela capa do seu jogo/tema). -->
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div class="cover-banner">
+                <img src="../scratch/assets/gatin.jpg" alt="Imagem de capa">
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         PAGINA 2 - CONTEUDO (introducao, conceito, passos)
+         ====================================================================== -->
+    <div class="page">
+        <div class="header">
+            <img src="../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <!-- h1 = titulo principal da pagina | h2 = secao | h3 = subsecao -->
+        <h1>Aula X: Titulo do Guia</h1>
+        <p>Paragrafo de introducao. Explique o que o aluno vai aprender.</p>
+
+        <!-- CAIXA DE CONCEITO (roxa): para definicoes e ideias importantes. -->
+        <div class="concept-box">
+            <span class="concept-title">Conceito</span>
+            <p>Use para explicar uma ideia central (ex: "o que e um laco de repeticao").</p>
+        </div>
+
+        <h2>Passo a passo</h2>
+        <!-- LISTA NUMERADA AUTOMATICA: cada <li> recebe um numero em bolinha. -->
+        <ul class="step-list">
+            <li>Primeiro passo da atividade.</li>
+            <li>Segundo passo. Use <b>negrito</b> para destacar termos.</li>
+            <li>Terceiro passo.</li>
+        </ul>
+
+        <!-- CAIXA DE AVISO/DICA (laranja): para lembretes e dicas. -->
+        <div class="note">
+            <b>Dica:</b> texto curto de atencao ou lembrete para a turma.
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         PAGINA 3 - CODIGO E IMAGEM
+         ====================================================================== -->
+    <div class="page">
+        <div class="header">
+            <img src="../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>Exemplo de codigo (blocos do Scratch)</h2>
+        <!-- BLOCO DE CODIGO: simula os blocos do Scratch em texto.
+             As classes de cor ajudam o aluno a ler:
+               .keyword (rosa)  = comandos de controle (quando, sempre, se...)
+               .object  (azul)  = objetos/sprites
+               .action  (verde) = acoes (mova, mude, toque...)
+               .value   (laranja) = numeros e valores -->
+        <div class="code-block">
+            <span class="code-title">Codigo</span>
+            <div><span class="keyword">quando</span> a bandeira verde for clicada</div>
+            <div><span class="keyword">sempre</span></div>
+            <div>&nbsp;&nbsp;<span class="action">mova</span> <span class="value">10</span> passos</div>
+            <div>&nbsp;&nbsp;<span class="keyword">se</span> tocar na <span class="object">borda</span>, volte</div>
+        </div>
+
+        <!-- IMAGEM (ex: print de um bloco). Guarde a imagem na pasta assets/
+             ao lado do seu guia e referencie com ./assets/nome.png -->
+        <!-- <img src="./assets/print-do-bloco.png" alt="Print do bloco"
+                 style="width:60%; display:block; margin:20px auto;"> -->
+
+        <h2>Duas colunas lado a lado</h2>
+        <!-- DUAS COLUNAS: util para comparar (ex: Windows x Mac, antes x depois). -->
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">Coluna A</span>
+                    <p>Conteudo da esquerda.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">Coluna B</span>
+                    <p>Conteudo da direita.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         PAGINA 4 - ESPACO PARA ANOTACOES (opcional)
+         ====================================================================== -->
+    <div class="page">
+        <div class="header">
+            <img src="../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h1>Anotações:</h1>
+        <!-- Area pautada para o aluno escrever a mao apos imprimir. -->
+        <div class="notes-area"></div>
+
+        <!-- SECAO DE OBSERVACOES: o professor escreve um comentario aqui. -->
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <!-- PONTOS / NOTAS: dois boxes lado a lado (igual aos outros guias).
+             O segundo (Profia Coin) usa cor dourada como destaque. -->
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

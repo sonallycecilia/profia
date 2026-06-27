@@ -62,90 +62,10 @@ const questions = [
     }
 ];
 
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
 
-const questionText = document.getElementById("question-text");
-const optionsContainer = document.getElementById("options-container");
-const nextBtn = document.getElementById("next-btn");
-const feedback = document.getElementById("feedback");
-const progressBar = document.getElementById("progress");
-const quizScreen = document.getElementById("quiz-screen");
-const resultScreen = document.getElementById("result-screen");
-
-function loadQuestion() {
-    answered = false;
-    feedback.style.display = "none";
-    nextBtn.style.display = "none";
-    
-    const progressPercent = (currentQuestion / questions.length) * 100;
-    progressBar.style.width = progressPercent + "%";
-
-    const q = questions[currentQuestion];
-    questionText.textContent = (currentQuestion + 1) + ". " + q.question;
-    optionsContainer.innerHTML = "";
-
-    q.options.forEach((opt, index) => {
-        const btn = document.createElement("button");
-        btn.classList.add("option-btn");
-        btn.textContent = opt;
-        btn.onclick = () => checkAnswer(index, btn);
-        optionsContainer.appendChild(btn);
-    });
-}
-
-function checkAnswer(selectedIndex, btnElement) {
-    if (answered) return; 
-    answered = true;
-
-    const q = questions[currentQuestion];
-    const buttons = document.querySelectorAll(".option-btn");
-
-    buttons.forEach(b => b.disabled = true);
-
-    if (selectedIndex === q.correct) {
-        score++;
-        btnElement.classList.add("correct");
-        showFeedback(true, "✅ Acertou! " + q.rationale);
-    } else {
-        btnElement.classList.add("wrong");
-        buttons[q.correct].classList.add("correct");
-        showFeedback(false, "❌ " + q.rationale);
-    }
-
-    nextBtn.style.display = "inline-block";
-}
-
-function showFeedback(isCorrect, text) {
-    feedback.textContent = text;
-    feedback.className = "feedback-area " + (isCorrect ? "success" : "error");
-    feedback.style.display = "block";
-}
-
-function nextQuestion() {
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } else {
-        showResults();
-    }
-}
-
-function showResults() {
-    quizScreen.style.display = "none";
-    resultScreen.style.display = "block";
-    
-    document.getElementById("final-score").textContent = score + "/" + questions.length;
-    const finalMessage = document.getElementById("final-message");
-    
-    if (score === questions.length) {
-        finalMessage.textContent = "Uau! Você é um Desenvolvedor de Jogos Pro! 🚀";
-    } else if (score >= 7) {
-        finalMessage.textContent = "Parabéns! Sua lógica de jogo está muito forte! 🏓";
-    } else {
-        finalMessage.textContent = "Bom esforço! Que tal revisar os sensores e tentar de novo? 🧠";
-    }
-}
-
-loadQuestion();
+// MENSAGENS FINAIS (usadas pelo motor ../quiz.js)
+const resultMessages = {
+    perfect: "Uau! Você é um Desenvolvedor de Jogos Pro! 🚀",
+    good: "Parabéns! Sua lógica de jogo está muito forte! 🏓",
+    tryAgain: "Bom esforço! Que tal revisar os sensores e tentar de novo? 🧠"
+};
