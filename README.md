@@ -15,34 +15,36 @@ Não há etapa de build: basta abrir os arquivos no navegador ou editá-los no V
 
 ```
 profia/
-├── index.html                  → Central de Missões (página inicial)
-├── css/style.css               → estilo único usado por todos os guias
-├── script.js                   → script da página inicial
+├── index.html                      → Central de Missões (página inicial)
+├── css/style.css                   → estilo único usado por todos os guias
+├── script.js                       → script da página inicial
 │
-├── template/
-│   └── modelo-guia.html        → modelo para criar um guia novo
+├── guias/                          → todos os guias de estudo em HTML
+│   ├── template/
+│   │   ├── modelo-guia.html        → modelo para criar um guia novo
+│   │   └── template_sinddy.html
+│   │
+│   ├── pensamento computacional/
+│   │   └── overcooked+pc.html
+│   │
+│   └── scratch/
+│       ├── assets/                 → imagens compartilhadas (logo, mascote, blocos)
+│       ├── aulas/                  → guias das aulas (aula0 a aula6)
+│       └── jogosIndividuais/       → guias passo a passo de cada jogo
+│           ├── DinoRunner/         → parte1.html, parte2.html, ... + assets/ do jogo
+│           ├── FlappyBird/
+│           ├── Pong/
+│           └── SpaceShooter/
 │
-├── scratch/
-│   ├── assets/                 → imagens compartilhadas (logo, mascote, blocos)
-│   ├── aulas/                  → guias das aulas (aula0 a aula6)
-│   └── jogosIndividuais/       → guias passo a passo de cada jogo
-│       ├── DinoRunner/         → parte1.html, parte2.html, ... + assets/ do jogo
-│       ├── FlappyBird/
-│       ├── Pong/
-│       ├── SpaceShooter/
-│       └── ExtinctionEscape/
-│
-├── quizzes/                    → quizzes interativos (ver seção "Quizzes")
-│   ├── style.css               → estilo único de todos os quizzes
-│   ├── quiz.js                 → motor único (lógica compartilhada)
-│   └── <Jogo>/                 → uma pasta por quiz: index.html + script.js (dados)
-│
-└── roblox studio/              → material de Roblox
+└── quizzes/                        → quizzes interativos (ver seção "Quizzes")
+    ├── style.css                   → estilo único de todos os quizzes
+    ├── quiz.js                     → motor único (lógica compartilhada)
+    └── <Jogo>/                     → uma pasta por quiz: index.html + script.js (dados)
 ```
 
 **Regra de imagens:** imagens usadas por **vários** guias ficam em
-`scratch/assets/`. Imagens de **um único jogo** ficam na pasta `assets/` ao lado
-daquele jogo (por exemplo, `scratch/jogosIndividuais/Pong/assets/`).
+`guias/scratch/assets/`. Imagens de **um único jogo** ficam na pasta `assets/` ao
+lado daquele jogo (por exemplo, `guias/scratch/jogosIndividuais/Pong/assets/`).
 
 ---
 
@@ -67,15 +69,18 @@ Os caminhos para o CSS e para as imagens são **relativos**, usando `../` para
 subir um nível de pasta. A quantidade de `../` depende de **quantas pastas o
 arquivo está abaixo da raiz** (`profia/`):
 
-| Onde está o arquivo               | Níveis | Caminho do CSS              |
-|-----------------------------------|:------:|-----------------------------|
-| `template/modelo-guia.html`       |   1    | `../css/style.css`          |
-| `quizzes/DinoRunner/index.html`   |   2    | `../style.css` (CSS dos quizzes) |
-| `scratch/aulas/aula1/aula1.html`  |   3    | `../../../css/style.css`    |
-| `scratch/jogosIndividuais/Pong/parte1.html` | 3 | `../../../css/style.css`  |
+| Onde está o arquivo                              | Níveis | Caminho do CSS              |
+|--------------------------------------------------|:------:|-----------------------------|
+| `guias/template/modelo-guia.html`                |   2    | `../../css/style.css`       |
+| `guias/pensamento computacional/overcooked+pc.html` | 2   | `../../css/style.css`       |
+| `quizzes/DinoRunner/index.html`                  |   2    | `../style.css` (CSS dos quizzes) |
+| `guias/scratch/aulas/aula1/aula1.html`           |   4    | `../../../../css/style.css` |
+| `guias/scratch/jogosIndividuais/Pong/parte1.html` |  4    | `../../../../css/style.css` |
 
-A mesma contagem vale para `scratch/assets/`. Por exemplo, em um arquivo três
-níveis abaixo da raiz: `../../../scratch/assets/logo-profia.png`.
+As imagens compartilhadas ficam **dentro** de `guias/scratch/assets/`. Como as
+aulas e os jogos também estão dentro de `guias/scratch/`, o caminho até elas é
+mais curto: a partir de uma aula (`guias/scratch/aulas/aulaN/`) use
+`../../assets/logo-profia.png` (sobe até `guias/scratch/` e entra em `assets/`).
 
 > **Não utilize caminhos absolutos** (iniciados com `/`, como `/css/style.css`).
 > Eles funcionam apenas no Live Server e quebram ao abrir o arquivo diretamente
@@ -85,11 +90,12 @@ níveis abaixo da raiz: `../../../scratch/assets/logo-profia.png`.
 
 ## Como criar um guia novo
 
-1. **Copie o modelo:** duplique `template/modelo-guia.html` para a pasta de
-   destino (por exemplo, `scratch/aulas/aula7/aula7.html`).
-2. **Ajuste os `../`:** o modelo está um nível abaixo da raiz (`../`). Ao
-   movê-lo três níveis abaixo, substitua todo `../` por `../../../` (consulte a
-   tabela acima). Faça o ajuste no `<link>` do CSS e em todas as imagens.
+1. **Copie o modelo:** duplique `guias/template/modelo-guia.html` para a pasta de
+   destino (por exemplo, `guias/scratch/aulas/aula7/aula7.html`).
+2. **Ajuste os `../`:** o modelo está dois níveis abaixo da raiz (`../../`). Ao
+   movê-lo quatro níveis abaixo, substitua o `../../` do CSS por `../../../../`
+   (consulte a tabela acima). Faça o ajuste no `<link>` do CSS e em todas as
+   imagens.
 3. **Substitua o conteúdo:** título, textos, passos e imagens. Remova os blocos
    que não forem utilizados.
 4. **Imagens do guia:** se forem exclusivas desse guia, crie uma pasta `assets/`
@@ -209,12 +215,12 @@ Basta executar `git push`.
 
 ## Pendências conhecidas
 
-- **`scratch/aulas/aula0/aula0.html`** referencia `robot-happy.png` e
-  `robot-sad.png`, que não existem em `scratch/assets/`. Adicione as imagens ou
-  substitua a referência.
+- **`guias/scratch/aulas/aula0/aula0.html`** referencia `robot-happy.png` e
+  `robot-sad.png`, que não existem em `guias/scratch/assets/`. Adicione as imagens
+  ou substitua a referência.
 - **Marca d'água do CSS:** `css/style.css` utiliza `url('Logo Profia.png')` como
   fundo das páginas, mas esse arquivo não existe na pasta `css/`. O fundo é
   exibido sem a logo, sem prejuízo ao layout. Para ativá-lo, adicione a imagem em
-  `css/` ou ajuste o caminho para `../scratch/assets/logo-profia.png`.
+  `css/` ou ajuste o caminho para `../guias/scratch/assets/logo-profia.png`.
 - **`index.html`** referencia os quizzes da pasta `quizzes/`. Ao adicionar um
   quiz novo, crie o card e o link correspondentes.
