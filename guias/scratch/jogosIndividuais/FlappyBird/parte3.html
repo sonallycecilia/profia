@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Scratch - Flappy Bird- Parte 3</title>
     <link rel="stylesheet" href="../../../../css/style.css">
 </head>
+
 <body>
 
     <div class="page">
@@ -19,7 +21,8 @@
         <div class="cover-subtitle-pro">Scratch</div>
 
         <div class="cover-banner">
-            <img src="./assets/capa-flappy.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+            <img src="./assets/capa-flappy.png" alt="Cenário Space Shooter"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
         </div>
     </div>
     <div class="page">
@@ -27,84 +30,233 @@
             <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
-        <h1>Sistema de Vidas e Recompensas</h1>
+        <h1>Sistema de Pontos e Desafios</h1>
 
-        <h2>Vidas</h2>
-        <p>Para o jogo não acabar na primeira batida, vamos criar um sistema de corações. Mas cuidado: sem um "tempo de respiro", o pássaro perderia todas as vidas em um milissegundo!</p>
+        <p>Até aqui, você já tem um pássaro que voa e canos que aparecem para desviar. Mas todo jogo precisa de um
+            objetivo: uma forma de saber se estamos indo bem ou mal! Nesta parte, vamos transformar o nosso Flappy Bird
+            em um jogo de verdade, com <b>placar</b> para contar seus acertos e sugerir alguns outros desafios.</p>
 
-        <div class="two-columns">
-            <div class="col">
-                <div class="code-block" style="background: white;">
-                    <span class="code-title">CONTROLE DE DANO (No Pássaro)</span><br>
-                    <span class="keyword">Se</span> <span class="action">tocando em</span> <span class="object">Canos</span> <span class="keyword">então</span><br>
-                    <div style="margin-left: 20px; border-left: 2px solid #FF5252; padding-left: 10px;">
-                        ➜ <span class="action">adicione</span> <span class="value">-1</span> <span class="action">a</span> <span class="keyword">Vidas</span><br>
-                        ➜ <span class="action">repita</span> <span class="value">5</span> <span class="action">vezes</span><br>
-                        <div style="margin-left: 20px; border-left: 2px solid #ddd; padding-left: 10px;">
-                            <span class="action">esconda</span><br>
-                            <span class="action">espere</span> <span class="value">0.2</span> <span class="action">segs</span><br>
-                            <span class="action">mostre</span><br>
-                            <span class="action">espere</span> <span class="value">0.2</span> <span class="action">segs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="concept-box" style="background-color: #FFF3E0; border-left-color: #FFB74D;">
-                    <span class="concept-title">O Truque do Piscar</span>
-                    <p>O bloco <b>Repita</b> cria o "Tempo de Invencibilidade". Enquanto o pássaro pisca, o código está ocupado e não consegue tirar mais vidas, dando tempo para o jogador se recuperar do susto!</p>
-                </div>
-            </div>
+        <h2>Score</h2>
+        <p>Antes de tudo, crie uma variável chamada <span class="object">Score</span>. Toda vez que você clica na
+            bandeira verde para começar uma partida nova, a variável do placar (score) precisa voltar para zero.</p>
+
+        <div class="code-block">
+            <span class="code-title">ZERANDO O PLACAR</span><br>
+            <span class="keyword">Quando bandeira verde for clicado</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">score</span> para <span class="value">0</span>
         </div>
+        <h3>Como fazer os pontos?</h3>
+        <p>Como o computador sabe que você conseguiu passar pelo cano? O cano anda pela tela da direita para a esquerda.
+            O código manda o cano esperar até chegar em uma linha imaginária bem lá atrás (a posição X igual a -200). Se
+            o cano chegou lá inteirinho, é porque o pássaro passou por ele em segurança e você ganha um ponto!</p>
 
-        <h3>O Juiz das Vidas</h3>
-        <p>Agora o nosso Juiz (ou o próprio Pássaro) precisa vigiar se o estoque de vidas chegou ao fim:</p>
-        <div class="code-block" style="background: #f9f9f9; border: 1px dashed #ccc;">
-            <span class="keyword">Sempre</span><br>
-            &nbsp;➜ <span class="keyword">Se</span> <span class="value">Vidas</span> <span class="action"><</span> <span class="value">1</span> <span class="keyword">então</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;➜ <span class="action">transmita</span> <span class="value">player dead</span>
-        </div>
-
-        <h2>Recompensas: Moedas Brilhantes</h2>
-        <p>Um jogo fica muito mais divertido quando temos algo para coletar! Vamos criar moedas que surgem entre os canos para aumentar nossa pontuação.</p>
-
-        <div class="two-columns">
-            <div class="col">
-                <p>As moedas devem se mover exatamente na mesma velocidade que os canos. Se o cano anda <b>-5 passos</b>, a moeda também deve andar!</p>
-                <div class="code-block" style="background: white;">
-                    <span class="code-title">LÓGICA DA MOEDA (Clone)</span><br>
-                    <span class="keyword">Quando eu começar como um clone</span><br>
-                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">240</span> <span class="action">y:</span> <span class="value">sorteie entre -100 e 100</span><br>
-                    &nbsp;➜ <span class="keyword">sempre</span><br>
-                    <div style="margin-left: 20px; border-left: 2px solid #FFD700; padding-left: 10px;">
-                        <span class="action">adicione</span> <span class="value">-5</span> <span class="action">a x</span><br>
-                        <span class="keyword">Se</span> <span class="action">tocando em</span> <span class="object">Pássaro</span> <span class="keyword">então</span><br>
-                        <div style="margin-left: 20px;">
-                            ➜ <span class="action">adicione</span> <span class="value">1</span> <span class="action">a</span> <span class="keyword">Pontos</span><br>
-                            ➜ <span class="action">toque o som</span> <span class="value">Collect</span><br>
-                            ➜ <span class="action">apague este clone</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="./assets/coin.png" alt="Exemplo de Moeda" style="width: 150px; margin-top: 20px; filter: drop-shadow(0 0 10px gold);">
-                <div class="note" style="margin-top: 30px; text-align: left;">
-                    <strong>Dica de Ouro:</strong> Não esqueça de colocar um bloco para apagar o clone caso a moeda toque na borda esquerda, senão o jogo vai ficar lento com tantas moedas escondidas!
-                </div>
+        <div class="code-block">
+            <span class="code-title">MARCANDO PONTOS</span><br>
+            <span class="keyword">Quando eu começar como um clone</span><br>
+            &nbsp;➜ <span class="action">sempre</span><br>
+            <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                <span class="action">espere até que</span> <span class="object">posição x</span> = <span
+                    class="value">-200</span><br>
+                <span class="action">adicione</span> <span class="value">1</span> a <span class="object">score</span>
             </div>
         </div>
+        <div class="note">
+            <strong>Curiosidade de Game Design:</strong> Usar uma posição específica da tela (como o X em -200) é um
+            truque muito comum nos jogos para criar "linhas de chegada" invisíveis.
+        </div>
+        <h2>Desafio 3: Telas de Início e de Derrota</h2>
+        <p>Todo jogo profissional tem uma <b>tela de início</b> (aquela que espera você apertar "Jogar") e uma <b>tela
+                de
+                derrota</b> (o famoso "Game Over"). Para fazer isso no Scratch, usamos dois truques poderosos: um
+            <b>botão</b>
+            que o jogador clica e a <b>troca de cenário</b>, que avisa todos os personagens em qual "momento" do jogo
+            estamos.</p>
 
-        <div class="note" style="background-color: #E8F5E9; border-left: 5px solid #4CAF50;">
-            <strong>Missão Extra:</strong> Crie uma "Moeda de Ouro" rara que vale 5 pontos, mas que aparece muito menos vezes que a moeda comum!
+        <div class="concept-box">
+            <span class="concept-title">Quando o Cenário Mudar Para...</span>
+            <p>Pense no cenário como o <b>palco</b> da peça: quando ele troca, todo mundo sabe que a cena mudou. No
+                Scratch, cada sprite pode usar o bloco de evento <b>quando o cenário mudar para</b> para reagir na hora
+                certa. Assim, ao trocar o cenário para "Jogo", o pássaro começa a jogar; ao trocar para "Game Over", a
+                tela de derrota aparece. É esse bloco que liga o botão ao jogo inteiro!</p>
         </div>
 
-<p><strong>Link do Quiz:</strong> <a href="https://sonallycecilia.github.io/profia/quizzes/FlappyBird/index.html">Clique aqui para abrir o desafio interativo.</a></p>    </div>
-<div class="page">
+        <h3>1. Botão "Jogar"</h3>
+        <p>Crie um sprite de botão. Ele aparece na tela de início e, quando clicado, troca o cenário para "Jogo": o
+            aviso de que a partida vai começar.</p>
+
+
+
+    </div>
+
+    </div>
+    <div class="page">
         <div class="header">
             <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
+        <div class="code-block">
+            <span class="code-title">SPRITE DO BOTÃO</span><br>
+            <span class="keyword">Quando bandeira verde for clicado</span><br>
+            &nbsp;➜ <span class="action">mude o cenário para</span> <span class="value">Início</span><br>
+            &nbsp;➜ <span class="action">mostre</span><br>
+            <br>
+            <span class="keyword">Quando este sprite for clicado</span><br>
+            &nbsp;➜ <span class="action">mude o cenário para</span> <span class="value">Jogo</span><br>
+            &nbsp;➜ <span class="action">esconda</span>
+        </div>
+
+        <h3>Começando o Jogo</h3>
+        <p>O pássaro e os canos ficam parados/escondidos até receberem o aviso do botão. Só aí o jogo ganha vida!</p>
+
+        <div class="code-block">
+            <span class="code-title">SPRITE DO PÁSSARO</span><br>
+            <span class="keyword">Quando bandeira verde for clicado</span><br>
+            &nbsp;➜ <span class="action">esconda</span><br>
+            <br>
+            <span class="keyword">Quando o cenário mudar para</span> <span class="value">Jogo</span><br>
+            &nbsp;➜ <span class="action">mostre</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">vidas</span> para <span
+                class="value">3</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">score</span> para <span class="value">0</span>
+        </div>
+
+        <h3>Tela de Derrota (Game Over)</h3>
+        <p>Quando as vidas chegarem a zero, o pássaro troca o cenário para <span class="value">Game Over</span>. A tela
+            de derrota reage a essa mudança e aparece na hora.</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">QUANDO AS VIDAS ACABAM (Pássaro)</span><br>
+                    <span class="keyword">Se</span> <span class="object">vidas</span> = <span class="value">0</span>
+                    <span class="keyword">então</span><br>
+                    <div style="margin-left: 20px; padding-left: 10px;">
+                        ➜ <span class="action">mude o cenário para</span> <span class="value">Game Over</span><br>
+                        ➜ <span class="action">esconda</span><br>
+                        ➜ <span class="action">pare</span> <span class="value">outros scripts do sprite</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">TELA DE DERROTA (Sprite do botão)</span><br>
+                    <span class="keyword">Quando o cenário mudar para</span> <span class="value">Game Over</span><br>
+                    &nbsp;➜ <span class="action">mostre</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Dica:</strong> Repare que é o <b>mesmo botão</b> que reaparece no Game Over! Como ele já está
+            programado para trocar o cenário para "Jogo" quando clicado, o jogador pode tentar de novo na hora — sem
+            precisar apertar a bandeira verde de novo.
+        </div>
+
+        <div class="note" style="background-color: #E8F5E9; border-left: 5px solid #4CAF50;">
+            <strong>Missão Extra:</strong> Na tela de derrota, mostre o texto "Recorde: " junto com a variável <span
+                class="object">Recorde</span> do Desafio 2. Assim o jogador vê se bateu o próprio recorde!
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h2>Hora dos Desafios!</h2>
+        <p>Agora que o seu jogo já conta pontos, que tal deixá-lo ainda mais completo? A seguir vêm alguns desafios para
+            você turbinar o seu Flappy Bird. Escolha um, tente sozinho e, se travar, fale com o professor. Bora lá?</p>
+
+        <h3>Desafio 1: Vidas</h3>
+        <p>Para o jogo não acabar na primeira batida, vamos criar um sistema de corações. Mas cuidado: sem um "tempo de
+            respiro", o pássaro perderia todas as vidas em um milissegundo!</p>
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CONTROLE DE DANO (No Pássaro)</span><br>
+                    <span class="keyword">Se</span> <span class="action">tocando em</span> <span
+                        class="object">Canos</span> <span class="keyword">então</span><br>
+                    <div style="margin-left: 20px; padding-left: 10px;">
+                        ➜ <span class="action">adicione</span> <span class="value">-1</span> <span
+                            class="action">a</span> <span class="keyword">Vidas</span><br>
+                        ➜ <span class="action">repita</span> <span class="value">5</span> <span
+                            class="action">vezes</span><br>
+                        <div style="margin-left: 20px; padding-left: 10px;">
+                            <span class="action">esconda</span><br>
+                            <span class="action">espere</span> <span class="value">0.2</span> <span
+                                class="action">segs</span><br>
+                            <span class="action">mostre</span><br>
+                            <span class="action">espere</span> <span class="value">0.2</span> <span
+                                class="action">segs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="concept-box">
+                    <span class="concept-title">O Truque do Piscar</span>
+                    <p>O bloco <b>Repita</b> cria o "Tempo de Invencibilidade". Enquanto o pássaro pisca, o código está
+                        ocupado e não consegue tirar mais vidas, dando tempo para o jogador se recuperar do susto!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>+ Sugestões:</strong> Crie um efeito sonoro de "batida" quando o pássaro perde uma vida, adicione
+            uma verficação quando a vida do pássaro chegar em 0 mudar para um cenário de derrota.
+        </div>
+        <h3>Desafio 2: Variável Recorde</h2>
+            <p>Sabe aquele "melhor placar" que os jogos guardam? Vamos criar uma variável <span
+                    class="object">Recorde</span> que só aumenta quando você faz uma pontuação maior do que a sua melhor
+                marca. Diferente do <span class="object">score</span>, o recorde <b>não volta para zero</b> quando
+                começa
+                uma
+                partida nova — ele fica guardado!</p>
+
+            <div class="code-block">
+                <span class="code-title">GUARDANDO O RECORDE</span><br>
+                <span class="keyword">Se</span> <span class="object">score</span> &gt; <span
+                    class="object">recorde</span>
+                <span class="keyword">então</span><br>
+                <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                    ➜ <span class="action">mude</span> <span class="object">recorde</span> para <span
+                        class="object">score</span>
+                </div>
+            </div>
+            <div class="note">
+                <strong>Dica:</strong> Coloque essa verificação no momento em que o jogo termina (quando o pássaro perde
+                todas as vidas). Assim o jogo compara o seu placar final com o recorde antigo e só troca se você foi
+                melhor!
+            </div>
+
+
+            <h3>Desafio 3: Recompensas</h3>
+            <p>Um jogo fica muito mais divertido quando temos algo para coletar! Que tal criar <b>moedas</b> que surgem
+                entre os canos e dão pontos extras? A ideia é usar <b>clones</b>, igual fizemos com os canos. Pense na
+                lógica:</p>
+
+            <ul>
+                <li>Uma "moeda mãe" fica escondida e vai <b>criando clones</b> de tempos em tempos, lá na direita da
+                    tela.</li>
+                <li>Cada clone anda para a esquerda na <b>mesma velocidade dos canos</b> (se o cano anda -5, a moeda
+                    também).</li>
+                <li>O resto é com você! Use a criatividade e lógica aprendida nas aulas.</li>
+            </ul>
+
+            <div class="note" style="background-color: #E8F5E9; border-left: 5px solid #4CAF50;">
+                <strong>Missão Extra:</strong> Crie uma "Moeda de Ouro" rara que vale 5 pontos, mas que aparece muito
+                menos
+                vezes que a moeda comum!
+            </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
 
         <h1>Diário de Bordo</h1>
         <div class="notes-area"></div>
@@ -117,11 +269,12 @@
                 <h4>Nota</h4>
                 <span class="score-input">&nbsp;</span> / 10
             </div>
-            
+
             <div class="score-box" style="border-color: #FFD700;">
                 <h4>Profia Coin</h4>
                 <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
             </div>
         </div>
 </body>
+
 </html>
