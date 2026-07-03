@@ -74,29 +74,47 @@
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        <h2>Arrumando o Cenário</h2>
-        <p>Para o passarinho não voar em um fundo todo branco, precisamos arrumar o céu do nosso mundo.</p>
-        <ul class="step-list">
-            <li>No cantinho da tela, procure a área especial chamada de Palco ou Cenário.</li>
-            <li>Clique no botão de carregar cenário e escolha a imagem do computador ou crie uma.</li>
-            <li>Pronto! O fundo da tela vai mudar na hora e seu jogo já vai parecer uma aventura completa.</li>
-        </ul>
-
-
         <div class="note">
             <strong>Dica Importante:</strong> Sempre confira se os nomes dos arquivos dos seus desenhos estão fáceis de
-            entender, como "passarinho_asa_cima" ou "cano_verde". Isso ajuda muito na hora de programar!
+            entender, como "passaro_sprite1" ou "cano_verde". Isso ajuda muito na hora de programar e definir a ordem
+            das fantasias!
         </div>
+        <h2>Dando vida ao Pássaro</h2>
+        <p>Agora que o temos as fantasias, vamos fazer com que ele bata a suas asinhas!</p>
+        <div class="code-block">
+            <div class="code-title">Animação do Pássaro</div>
+            <br>
+            <span class="action">sempre</span><br>
+            &nbsp;&nbsp;<span class="keyword">mude para a </span> <span class="keyword">próxima fantasia </span><br>
+            &nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">1.3</span> <span
+                class="keyword">segundos</span>
+        </div>
+        <p>O bloco de código acima faz com que o pássaro mude de fantasia a cada 1.3 segundos, criando a ilusão de bater as asas.</p>
 
         <h2>Movimentação: A Gravidade e o Pulo</h2>
 
+        <div class="concept-box">
+            No mundo real, quando você solta um objeto no ar, ele não cai com velocidade constante: ele vai ficando
+            <strong>cada vez mais rápido</strong> conforme despenca. Isso acontece por causa da gravidade, que empurra
+            tudo para baixo o tempo todo. É exatamente essa sensação que queremos recriar no nosso pássaro!
+        </div>
+        <p>Para simular a gravidade no Scratch, usamos duas ideias trabalhando juntas dentro de um laço
+            <span class="object">sempre</span>:
+        </p>
+        <ul class="custom-list">
+            <li><strong>Velocidade:</strong> uma variável que diz o quanto o pássaro se move para cima ou para baixo a
+                cada instante.</li>
+            <li><strong>Aceleração:</strong> a cada repetição do laço, tornamos essa velocidade um pouquinho mais
+                negativa. Assim a queda começa lenta e vai ganhando força, igualzinho na vida real.</li>
+        </ul>
+
         <div class="two-columns">
             <div class="col">
-                <p>Para criar uma queda realista, usamos uma variável que puxa o personagem para baixo o tempo todo:</p>
+                <p>Veja como montar esse comportamento passo a passo:</p>
                 <ul class="custom-list">
                     <li>Defina a posição inicial no eixo X e Y para o herói não começar perdido.</li>
-                    <li>Crie a variável <span class="object">YSpeed</span> para controlar a velocidade vertical.</li>
-                    <li>Dentro de um laço "sempre", adicione o valor de <span class="object">YSpeed</span> ao eixo Y e
+                    <li>Crie a variável <span class="object">velocidadeY</span> para controlar a velocidade vertical.</li>
+                    <li>Dentro de um laço "sempre", adicione o valor de <span class="object">velocidadeY</span> ao eixo Y e
                         depois diminua 1 dessa variável para criar aceleração.</li>
                     <li>Use o bloco <span class="object">aponte para direção</span> para inclinar o personagem para
                         baixo, simulando a queda.</li>
@@ -114,37 +132,19 @@
                     <div class="code-title">Script de Queda</div>
                     <br>
                     <span class="action">quando clicado em bandeira</span><br>
-                    <span class="keyword">mude</span> <span class="object">[YSpeed]</span> <span
+                    <span class="keyword">mude</span> <span class="object">[velocidadeY]</span> <span
                         class="keyword">para</span> <span class="value">0</span><br>
                     <span class="action">sempre</span><br>
-                    &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="object">YSpeed</span> a <span
+                    &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="object">velocidadeY</span> a <span
                         class="value">y</span><br>
                     &nbsp;&nbsp;<span class="keyword">adicione</span> <span class="value">-1</span> a <span
-                        class="object">YSpeed</span><br>
+                        class="object">velocidadeY</span><br>
                     &nbsp;&nbsp;<span class="keyword">aponte para direção</span> <span class="value">-15</span>
 
                 </div>
             </div>
         </div>
 
-        <div class="concept-box">
-            <span class="concept-title">Variável de Velocidade (YSpeed)</span>
-            Para criar uma queda suave, utilizamos uma variável que armazena a velocidade atual. A cada ciclo do jogo,
-            um valor negativo é adicionado a essa variável, criando o efeito de aceleração da gravidade antes de
-            atualizar a posição Y do personagem.
-        </div>
-
-        
-    <h2>Dando vida ao Pássaro</h2>
-    <p>Agora que o nosso pássaro se movimenta, vamos fazer com que ele bata a suas asinhas!</p>
-    <div class="code-block">
-        <div class="code-title">Animação do Pássaro</div>
-        <br>
-        <span class="action">sempre</span><br>
-        &nbsp;&nbsp;<span class="keyword">mude para a </span> <span class="keyword">próxima fantasia </span><br>
-        &nbsp;&nbsp;<span class="keyword">espere</span> <span class="value">1.3</span> <span
-            class="keyword">segundos</span>
-    </div>
     </div>
 
     <div class="page">
@@ -153,7 +153,42 @@
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
- <h2>O Pulo do Pássaro</h2>
+        <h2>Da Física para o Código</h2>
+
+        <p>O legal é que a gravidade não empurra o pássaro direto para baixo. Ela faz assim, em dois passinhos que se
+            repetem sem parar:</p>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 12px 0; font-size: 12px;">
+            <!-- Passo 1: a gravidade freia a velocidade -->
+            <div style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 5px;">
+                <span style="background: #1E88E5; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">velocidade</span>
+                <span style="color: #90A4AE; font-weight: bold;">=</span>
+                <span style="background: #1E88E5; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">velocidade</span>
+                <span style="color: #90A4AE; font-weight: bold;">−</span>
+                <span style="background: #F57F17; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">gravidade</span>
+            </div>
+            <div class="note">
+                A cada instante, a <strong>velocidade</strong> é diminuída um pouquinho pela <strong>gravidade</strong>,
+                por isso o pássaro vai perdendo o impulso de subida. Como a velocidade vai ficando cada
+            vez mais forte para baixo, o passarinho cai cada vez mais rápido, igualzinho na vida real!
+            </div>
+
+            <span style="color: var(--concept-purple); font-size: 16px; font-weight: bold;">↓</span>
+
+            <!-- Passo 2: a velocidade move a posição -->
+            <div style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 5px;">
+                <span style="background: #00897B; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">posição Y</span>
+                <span style="color: #90A4AE; font-weight: bold;">=</span>
+                <span style="background: #00897B; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">posição Y</span>
+                <span style="color: #90A4AE; font-weight: bold;">+</span>
+                <span style="background: #1E88E5; color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: bold;">velocidade</span>
+            </div>
+            <div class="note">
+                Só depois a <strong>posição</strong> do pássaro é atualizada, somando essa <strong>velocidade</strong>,
+                é ela que faz o pássaro realmente subir ou cair na tela. 
+            </div>
+        </div>
+
+        <h2>O Pulo do Pássaro</h2>
         <p>Imagine que o passarinho é um foguetinho! Toda vez que você aperta a tecla <strong>espaço</strong>, é como
             se ele ganhasse um empurrão para o céu. E quando você <strong>solta</strong> a tecla? A gravidade que
             criamos antes assume o comando e puxa o passarinho de volta para baixo. É essa briga entre o pulo e a
@@ -162,7 +197,8 @@
         <div class="two-columns" style="align-items: flex-start; margin-top: 20px;">
             <div class="col">
                 <ul class="custom-list">
-                    <li><strong>aponte para direção -45:</strong> o pássaro levanta a cabecinha e olha para cima na hora do pulo!</li>
+                    <li><strong>aponte para direção -45:</strong> o pássaro levanta a cabecinha e olha para cima na hora
+                        do pulo!</li>
                     <li><strong>mude velocidadeY para 5:</strong> essa é a força do pulo. O número 5 é o "tamanho" do
                         empurrão que joga o passarinho para cima. Quanto maior o número, mais alto ele voa!</li>
                     <li><strong>adicione velocidadeY a y:</strong> aqui o passarinho realmente <em>sobe</em> na tela,
@@ -177,22 +213,30 @@
                     <br>
                     <span class="action">quando clicado em bandeira</span><br>
                     <span class="action">sempre</span><br>
-                    &nbsp;&nbsp;<span class="action">se</span> <span class="keyword">tecla</span> <span class="value">espaço</span> <span class="keyword">pressionada?</span> <span class="action">então</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">aponte para direção</span> <span class="value">-45</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">mude</span> <span class="object">velocidadeY</span> <span class="keyword">para</span> <span class="value">5</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">adicione</span> <span class="object">velocidadeY</span> a <span class="value">y</span>
+                    &nbsp;&nbsp;<span class="action">se</span> <span class="keyword">tecla</span> <span
+                        class="value">espaço</span> <span class="keyword">pressionada?</span> <span
+                        class="action">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">aponte para direção</span> <span
+                        class="value">-45</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">mude</span> <span class="object">velocidadeY</span>
+                    <span class="keyword">para</span> <span class="value">5</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">adicione</span> <span
+                        class="object">velocidadeY</span> a <span class="value">y</span>
                 </div>
                 <div class="code-block" style="margin-top: 20px;">
                     <div class="code-title">A Cabecinha Levantada</div>
                     <br>
                     <span class="action">quando clicado em bandeira</span><br>
                     <span class="action">sempre</span><br>
-                    &nbsp;&nbsp;<span class="action">se</span> <span class="keyword">tecla</span> <span class="value">espaço</span> <span class="keyword">pressionada?</span> <span class="action">então</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">aponte para direção</span> <span class="value">-15</span>
+                    &nbsp;&nbsp;<span class="action">se</span> <span class="keyword">tecla</span> <span
+                        class="value">espaço</span> <span class="keyword">pressionada?</span> <span
+                        class="action">então</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">aponte para direção</span> <span
+                        class="value">-15</span>
                 </div>
             </div>
         </div>
-       
+
     </div>
 
     </div>
