@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Scratch - Dino Runner - Parte 3</title>
     <link rel="stylesheet" href="../../../../css/style.css">
 </head>
+
 <body>
 
     <div class="page">
@@ -19,7 +21,8 @@
         <div class="cover-subtitle-pro">Scratch</div>
 
         <div class="cover-banner">
-            <img src="./assets/capa-dino.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+            <img src="./assets/capa-dino.png" alt="Cenário Dino Runner"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
         </div>
     </div>
 
@@ -29,8 +32,238 @@
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
+        <h1>As colisões</h1>
+
+        <p>Nas aulas anteriores o jogo já ganhou movimento: o dino corre, o chão passa e os cactos aparecem da
+            direita. Mas ainda falta uma coisa importante. Nada acontece quando o dino encosta num cacto! Chegou a
+            hora de dar um fim à partida.</p>
+
+        <h2>O Dino de Olho no Perigo</h2>
+        <p>O dino fica o tempo todo verificando uma coisa só: será que encostei num cacto? Para isso ele usa um bloco
+            <b>sempre</b> com uma pergunta dentro. No instante em que a resposta é sim, três coisas acontecem em
+            seguida:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Ele muda para a fantasia <b>Scared</b>, com aquela carinha de susto.</li>
+                    <li>Ele <b>transmite</b> o recado <b>Game Over</b> para o jogo inteiro.</li>
+                    <li>O jogo <b>congela</b> e a partida acaba.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CHECANDO A COLISÃO</span><br>
+                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        <span class="action">se</span> <span class="object">tocando em cactos?</span> <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">mude para a fantasia</span> <span class="value">Scared</span><br>
+                            ➜ <span class="action">transmita</span> <span class="value">Game Over</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <h3>Recados que Comandam o Jogo</h3>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title" style="color: #5E35B1;">Transmitir uma mensagem</span>
+            <p>A ideia é simples: um sprite <strong>manda um recado</strong> e os outros ficam <strong>esperando
+                esse recado para agir</strong>. Ninguém precisa ficar vigiando ninguém, todos ouvem o mesmo aviso e
+                reagem juntos. O legal é que um único recado pode disparar vários sprites/eventos ao mesmo tempo!</p>
+        </div>
+        
+        <p>No Dino Runner são <b>dois recados</b> que comandam o jogo inteiro:</p>
+        <ul class="custom-list">
+            <li><b>Start Game:</b> disparado pelo botão <b>Iniciar</b> quando é clicado. De uma vez só, ele faz o
+                dino começar a correr e a checar colisão, o chão rolar, os cactos e as nuvens nascerem, e a
+                pontuação zerar e começar a contar.</li>
+            <li><b>Game Over:</b> disparado pelo dino quando ele bate. Ele congela o jogo, faz o botão Iniciar
+                reaparecer e manda checar o recorde.</li>
+        </ul>
+
+        <h2>As Três Telas do Jogo</h2>
+        <p>Dá pra pensar no jogo como três momentos, quase três telas diferentes, e são os recados que fazem a gente
+            passar de uma para a outra:</p>
+            
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li><b>Tela inicial:</b> só o botão <b>Iniciar</b> aparece (com uma leve animação quando o mouse
+                        passa por cima). Nada se move ainda.</li>
+                    <li><b>Jogo rolando:</b> ao clicar em Iniciar, o botão some e tudo começa.</li>
+                    <li><b>Tela de fim:</b> quando o dino bate, o jogo para e o botão <b>Iniciar</b> reaparece,
+                        pronto para uma nova partida.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O BOTÃO INICIAR</span><br>
+                    <span class="keyword">Quando este ator for clicado</span><br>
+                    &nbsp;➜ <span class="action">esconda</span><br>
+                    &nbsp;➜ <span class="action">transmita</span> <span class="value">Start Game</span><br>
+                    <br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">Game Over</span><br>
+                    &nbsp;➜ <span class="action">mostre</span>
+                </div>
+            </div>
+        </div>
     </div>
-<div class="page">
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="note">
+            <strong>Sacada:</strong> repare que quase todos os scripts das outras partes que começavam com a bandeira
+            verde agora podem começar com <b>Quando eu receber Start Game</b>. Assim tudo espera o clique no botão
+            para acordar junto!
+        </div>
+
+        <h2>A Animação do Botão</h2>
+        <p>Você reparou que o botão Iniciar dá uma "respirada" quando o mouse chega perto dele? É um detalhe simples
+            que deixa o jogo com cara de profissional. O truque é o botão ficar sempre se perguntando "o mouse está
+            em cima de mim?" e ir crescendo ou encolhendo de pouquinho em pouquinho, criando um efeito de zoom bem
+            suave.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Quando o jogo liga, o botão vai para a <b>camada da frente</b>, começa no tamanho <b>100%</b>
+                        e se posiciona no centro da tela.</li>
+                    <li>Dentro de um ciclo <b>sempre</b>, ele fica de olho no mouse o tempo todo.</li>
+                    <li>Se o mouse está <b>em cima</b> e ele ainda não chegou no máximo, o botão <b>cresce de 1 em
+                        1</b> até <b>120%</b>.</li>
+                    <li>Se o mouse <b>saiu</b> e ele ainda está grandão, o botão <b>encolhe de 1 em 1</b> de volta
+                        para <b>110%</b>.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O EFEITO DE ZOOM</span><br>
+                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
+                    &nbsp;➜ <span class="action">vá para a camada</span> <span class="value">da frente</span><br>
+                    &nbsp;➜ <span class="action">defina o tamanho como</span> <span class="value">100</span> <span
+                        class="action">%</span><br>
+                    &nbsp;➜ <span class="action">mostre</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                        class="action">y:</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        <span class="action">se</span> <span class="object">tocando em ponteiro do mouse?</span> <span
+                            class="action">e</span> <span class="object">tamanho</span> &lt; <span
+                            class="value">120</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">mude</span> <span class="value">1</span> <span class="action">no
+                                tamanho</span>
+                        </div>
+                        <span class="action">se</span> <span class="keyword">não</span> <span class="object">tocando em
+                            ponteiro do mouse?</span> <span class="action">e</span> <span class="object">tamanho</span>
+                        &gt; <span class="value">110</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">mude</span> <span class="value">-1</span> <span class="action">no
+                                tamanho</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Contando o Tempo de Sobrevivência</h2>
+        <p>A pontuação aqui é bem justa: quanto mais tempo o dino sobrevive, mais pontos ele faz. A variável
+            <span class="object">pontos</span> começa em <b>0</b> e ganha <b>+1</b> a cada segundo enquanto a
+            partida rola. Simples e eficaz!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Vá na aba laranja de Variáveis e crie <span class="object">pontos</span>.</li>
+                    <li>Ao receber <b>Start Game</b>, zere ela (afinal, é uma partida nova).</li>
+                    <li>Depois, num ciclo <b>sempre</b>, espere 1 segundo e adicione 1 aos pontos.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CONTANDO OS PONTOS</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">Start Game</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">pontos</span> <span
+                        class="action">para</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">espere</span> <span class="value">1</span> <span
+                            class="action">seg</span><br>
+                        ➜ <span class="action">adicione</span> <span class="value">1</span> <span class="action">a</span>
+                        <span class="object">pontos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Guardando o Melhor Resultado</h2>
+        <p>E se a gente quiser lembrar da melhor partida de todas? Para isso existe a variável
+            <span class="object">Recorde</span>. Quando a partida termina, o jogo faz uma comparação: se os
+            <span class="object">pontos</span> desta partida forem <b>maiores</b> que o <span
+                class="object">Recorde</span> guardado, o recorde é atualizado.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <p>Como essa checagem acontece só no fim, ela mora dentro do recado <b>Game Over</b>. Assim o melhor
+                    resultado fica guardado de uma partida para a outra.</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CHECANDO O RECORDE</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">Game Over</span><br>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">pontos</span> &gt; <span
+                        class="object">Recorde</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mude</span> <span class="object">Recorde</span> <span
+                            class="action">para</span> <span class="object">pontos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Hora do Desafio</h1>
+            <p>Aqui a gente dá só o <strong>caminho geral</strong>, sem o passo a passo pronto. A ideia é você usar
+                tudo que aprendeu nos três guias (clones, aleatoriedade, física, variáveis e recados) para deixar o
+                jogo do seu jeito. Escolha um desafio e mãos à obra!</p>
+
+        <h2>1. Deixar o jogo mais rápido com o tempo</h2>
+        <p>Hoje os cactos andam sempre na mesma velocidade (aquele <b>-10</b> fixo). E se essa velocidade fosse
+            crescendo conforme os pontos sobem? Pense em usar uma <b>variável de velocidade</b> no lugar do número
+            fixo, e em como aumentá-la aos poucos. <i>Reflexão: o que muda no pulo e na dificuldade quando o mundo
+            acelera?</i></p>
+
+        <h2>2. Criar um novo obstáculo: um pássaro que voa</h2>
+        <p>Assim como o cacto, ele pode nascer de <b>clones</b>. A diferença é que o pássaro vem <b>lá no alto</b>,
+            não no chão. Você já domina clones e aleatoriedade, então o desafio é adaptar essas ideias para um
+            obstáculo que exige outra reação do jogador.</p>
+
+        <h2>3. Fazer o dino abaixar para desviar do pássaro</h2>
+        <p>Se o pássaro voa alto, pular não resolve. Talvez o dino precise <b>abaixar</b>. Que tecla faria isso? Que
+            fantasia e que mudança de posição representariam o dino agachado? E como garantir que ele só abaixa
+            estando no chão, do mesmo jeito que só pula no chão?</p>
+
+        <h2>4. Adicionar sons</h2>
+        <p>Um som no <b>pulo</b> e um som na <b>batida</b> deixam o jogo muito mais vivo. Pensando no fluxo que a
+            gente já montou, onde seria o lugar certo para tocar cada um?</p>
+    </div>
+
+    <div class="page">
         <div class="header">
             <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
@@ -47,13 +280,14 @@
                 <h4>Nota</h4>
                 <span class="score-input">&nbsp;</span> / 10
             </div>
-            
+
             <div class="score-box" style="border-color: #FFD700;">
                 <h4>Profia Coin</h4>
                 <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
             </div>
         </div>
+    </div>
 
-    
 </body>
+
 </html>

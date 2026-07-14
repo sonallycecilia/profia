@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Scratch - Dino Runner - Parte 2</title>
     <link rel="stylesheet" href="../../../../css/style.css">
 </head>
+
 <body>
 
     <div class="page">
@@ -19,7 +21,8 @@
         <div class="cover-subtitle-pro">Scratch</div>
 
         <div class="cover-banner">
-            <img src="./assets/capa-dino.png" alt="Cenário Space Shooter" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+            <img src="./assets/capa-dino.png" alt="Cenário Dino Runner"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
         </div>
     </div>
 
@@ -29,21 +32,37 @@
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        <h1>A Mágica da Cópia!</h1>
+        <h1>Os clones</h1>
+
+        <p>Na <b>aula anterior</b> a gente montou o cenário e fez o dino ganhar vida. Ele <b>corre</b> no lugar trocando
+            entre as fantasias Walk 1 e Walk 2, o <b>chão</b> rola para trás sem parar com dois pedaços que se
+            revezam, e o <b>pulo</b> funciona pela física da gravidade, usando a <span class="object">velocidade de
+                pulo</span> e a <span class="object">linha do chão</span>. Agora o deserto já se mexe. Só falta uma
+            coisa:
+            encher a tela de obstáculos. E é para isso que servem os <strong>clones</strong>.</p>
+
         <div class="concept-box">
             <span class="concept-title">O que é um Clone?</span>
-            <p>Imagine que você precisa colocar 100 inimigos no seu jogo. Dar o comando para cada um deles daria muito trabalho, né? No Scratch, a gente cria um único inimigo e manda o computador tirar um "xerox" dele várias vezes! Cada xerox é o que chamamos de <strong>Clone</strong>.</p>
+            <p>Um <strong>clone</strong> é uma cópia de um sprite feita durante o jogo. Pense numa máquina de
+                xerox: existe um desenho original e a máquina vai soltando cópias iguaizinhas dele. No Scratch a
+                ideia é a mesma, mas com um detalhe importante: cada cópia sai "viva", ou seja, aparece na tela e
+                roda o próprio código sozinha.</p>
+            <p>É isso que vai resolver o nosso problema. Para encher o deserto de cactos, a gente não precisa
+                desenhar um sprite para cada um. Basta ter <strong>um cacto só</strong> e pedir para o Scratch ir
+                criando clones dele.</p>
         </div>
 
         <h2>O Chefe da Fábrica</h2>
-        <p>O personagem original do nosso jogo não vai lutar. O trabalho dele é ficar escondido só fabricando os clones! Veja como funciona o motor da fábrica:</p>
+        <p>O cacto original <strong>nunca aparece no jogo</strong> e nunca colide com nada. O trabalho dele é ficar
+            escondido só fabricando clones! Veja como funciona o motor da fábrica:</p>
 
         <div class="two-columns">
             <div class="col">
                 <ul class="step-list">
                     <li>O Chefe se <b>esconde</b> para ninguém ver ele.</li>
                     <li>Ele entra num ciclo <b>sempre</b> (trabalha sem parar!).</li>
-                    <li>Ele <b>espera</b> um tempo surpresa (entre 0.5 e 1.8 segundos). Assim, você nunca sabe quando o próximo inimigo vai aparecer!</li>
+                    <li>Ele <b>espera</b> um tempo surpresa (entre 0.7 e 1.8 segundos). Assim, você nunca sabe quando
+                        o próximo cacto vai aparecer!</li>
                     <li>E plim! Ele <b>cria um clone</b> dele mesmo.</li>
                 </ul>
             </div>
@@ -51,27 +70,33 @@
             <div class="col">
                 <div class="code-block">
                     <span class="code-title">LIGANDO A FÁBRICA</span><br>
-                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
                     &nbsp;➜ <span class="action">esconda</span><br>
                     &nbsp;➜ <span class="keyword">sempre</span><br>
                     <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
-                        ➜ <span class="action">espere</span> <span class="object">número aleatório entre</span> <span class="value">0.5</span> <span class="object">e</span> <span class="value">1.8</span> <span class="action">seg</span><br>
-                        ➜ <span class="action">crie clone de</span> <span class="object">[este ator]</span>
+                        ➜ <span class="action">espere</span> <span class="object">número aleatório entre</span> <span
+                            class="value">0.7</span> <span class="object">e</span> <span class="value">1.8</span> <span
+                            class="action">seg</span><br>
+                        ➜ <span class="action">crie clone de</span> <span class="object">este ator</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="note">
-            <strong>Dica Secreta:</strong> Usar o bloco verde de "número aleatório" deixa o jogo muito mais divertido, porque os inimigos não aparecem todos no mesmo ritmo chato de relógio!
+            <strong>Dica Secreta:</strong> Usar o bloco verde de "número aleatório" deixa o jogo muito mais divertido,
+            porque os cactos não aparecem todos no mesmo ritmo chato de relógio!
         </div>
 
-        <h2>A Vida de um Clone</h2>
-        <p>Quando o clone nasce, ele precisa saber o que fazer, para onde ir e que roupa vestir!</p>
-
-        <div class="concept-box" style="background-color: #FFF3E0; border-left-color: #FF7043;">
-            <span class="concept-title" style="color: #D84315;">O Guarda-Roupa Surpresa</span>
-            <p>Logo que o clone aparece na tela (lá no canto direito, no <b>X: 260</b>), ele escolhe uma fantasia aleatória de 1 a 5. Isso significa que a nossa fábrica pode criar cactos diferentes, passarinhos de cores diferentes ou monstros variados usando o mesmo código!</p>
+        <h2>Modelo x Cópias</h2>
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title" style="color: #5E35B1;">Dois papéis bem diferentes</span>
+            <p>Vale separar bem quem é quem: o <b>modelo</b> é o cacto original, escondido, que só serve pra
+                <strong>criar cópias</strong>, e ele nunca corre nem bate. As <b>cópias (clones)</b> são os cactos que
+                de fato aparecem, andam e desviam. E a melhor parte: <strong>cada clone tem vida própria</strong>.
+                Eles não precisam saber uns dos outros, então dá pra ter vários cactos na tela ao mesmo tempo usando
+                um sprite só!
+            </p>
         </div>
     </div>
 
@@ -81,15 +106,18 @@
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
         </div>
 
-        <h2>Correndo e Pulsando!</h2>
-        
+        <h2>A Vida de um Clone</h2>
+        <p>Quando o clone nasce, ele precisa saber onde aparecer, que roupa vestir e para onde ir!</p>
+
         <div class="two-columns" style="align-items: flex-start;">
             <div class="col">
-                <p>O clone tem uma missão: atravessar a tela para a esquerda e sumir!</p>
+                <p>Depois de vestir a fantasia, o clone tem uma missão só: atravessar a tela para a esquerda e sumir!
+                </p>
                 <ul class="step-list">
-                    <li>Ele repete o movimento de andar para trás <b>(-10 no X)</b> até chegar no limite esquerdo da tela <b>(-260)</b>.</li>
-                    <li>Enquanto anda, ele fica inflando para <b>150%</b> e murchando para <b>50%</b> bem rápido. Isso cria um efeito muito legal de animação, parecendo que ele está quicando ou respirando!</li>
-                    <li>Quando chega no fim da tela, ele é <b>apagado</b> para não travar o computador.</li>
+                    <li>Ele <b>anda para trás</b> um pouquinho por vez <b>(-10 no X)</b>, no mesmo ritmo do chão.</li>
+                    <li>Ele repete isso <b>até chegar bem no limite esquerdo</b> da tela <b>(X menor que -230)</b>.</li>
+                    <li>Quando passa da borda, ele é <b>apagado</b>. Assim os clones não vão se acumulando e travando
+                        o computador.</li>
                 </ul>
             </div>
 
@@ -98,87 +126,91 @@
                     <span class="code-title">O CLONE EM AÇÃO</span><br>
                     <span class="keyword">Quando eu começar como um clone</span><br>
                     &nbsp;➜ <span class="action">mostre</span><br>
-                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">260</span> <span class="action">y:</span> <span class="value">-127</span><br>
-                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="object">número aleatório</span> <span class="value">1</span> a <span class="value">5</span><br>
-                    &nbsp;➜ <span class="keyword">repita até que</span> <span class="object">posição x</span> &lt; <span class="value">-260</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">260</span> <span
+                        class="action">y:</span> <span class="value">-127</span><br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="object">número aleatório
+                        entre</span> <span class="value">1</span> <span class="object">e</span> <span
+                        class="value">5</span><br>
+                    &nbsp;➜ <span class="keyword">repita até que</span> <span class="object">posição x</span> &lt; <span
+                        class="value">-230</span><br>
                     <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
-                        ➜ <span class="action">defina o tamanho como</span> <span class="value">150%</span><br>
-                        ➜ <span class="action">adicione</span> <span class="value">-10</span> <span class="action">a x</span><br>
-                        ➜ <span class="action">defina o tamanho como</span> <span class="value">50%</span>
+                        ➜ <span class="action">adicione</span> <span class="value">-10</span> <span class="action">a
+                            x</span>
                     </div>
                     &nbsp;➜ <span class="action">apague este clone</span>
                 </div>
             </div>
         </div>
 
-        <h2>Colisão com o cacto</h2>
-        
+        <div class="note">
+            <strong>Lembra do chão?</strong> Os cactos andam <b>-10</b> por vez, exatamente na mesma velocidade do
+            chão que você montou anteriormente. Por isso parece que eles estão "grudados" no piso, correndo junto com o
+            cenário!
+        </div>
+
+        <h3>O Jogo da Aleatoriedade</h3>
         <div class="concept-box">
-            <span class="concept-title">O Radar de Colisão</span>
-            <p>O nosso Dinossauro precisa de um radar super rápido para saber se ele encostou no espinho do cacto. Se ele bater, o jogo precisa avisar todo mundo que acabou, trocar a cara do Dino para uma cara de susto e frear tudo na mesma hora!</p>
+            <span class="concept-title">Cada cacto é um sorteio</span>
+            <p>Repara que a nossa fábrica joga <strong>aleatoriedade</strong> a cada cacto: um decide
+                <b>quando</b> o próximo nasce (o tempo de espera entre <b>0.7</b> e <b>1.8</b> segundos) e o outro
+                decide <b>qual a aparência</b> dele (a fantasia de <b>1</b> a <b>5</b>). É essa dupla de sorteios que
+                impede o jogo de ficar decorável e faz <strong>cada partida ser diferente</strong> da anterior!
+            </p>
         </div>
-
-        <h2>Como funciona o Game Over?</h2>
-        
-        <div class="two-columns" style="align-items: flex-start; margin-top: 30px;">
+        <h2>As Nuvens</h2>
+        <p>As nuvens funcionam quase igual aos cactos: também nascem de <strong>clones</strong>. Mas elas têm dois
+            detalhes especiais que dão charme ao cenário.</p>
+            <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
             <div class="col">
-                <p>Vamos entender o passo a passo do que acontece quando o Dino bate:</p>
-                <ul class="step-list">
-                    <li><b>O Radar:</b> O bloco <code>sempre</code> junto com o <code>se tocando em Cactus</code> fica vigiando o jogo inteiro, sem piscar!</li>
-                    <li><b>O Aviso:</b> Se bater, ele muda a nossa variável <i>Game Over?</i> para "yes" e usa o megafone do <code>transmita</code> para gritar "Game Over" para todos os outros atores pararem de se mexer.</li>
-                    <li><b>O Susto:</b> Ele veste a fantasia <i>Scared</i> (Assustado) para a gente ver que ele perdeu.</li>
-                    <li><b>O Freio:</b> Os blocos de <code>pare</code> servem para congelar a animação de corrida do Dino e desligar esse radar, porque o jogo já acabou!</li>
-                </ul>
-                
+                <h3>1. Ficam lá atrás</h3>
+                <p>As nuvens vão para a <b>camada de trás</b>, atrás de tudo. Assim o dino e os cactos passam na
+                    frente delas, como num cenário de verdade.</p>
+                <h3>2. São bem preguiçosas</h3>
+                <p>Enquanto o chão anda <b>-10</b> por vez, a nuvem anda só <b>-1</b>. Ela se arrasta pelo céu bem
+                    devagarinho.</p>
             </div>
-
             <div class="col">
                 <div class="code-block">
-                    <span class="code-title">O DETECTOR DE ESPINHOS</span><br>
-                    <span class="keyword">Quando a bandeira verde for clicada</span><br>
-                    &nbsp;➜ <span class="action">espere</span> <span class="value">0.01</span> <span class="action">seg</span><br>
-                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <span class="code-title">A NUVEM PREGUIÇOSA</span><br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">vá para camada de trás</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">240</span> <span
+                        class="action">y:</span> <span class="object">número aleatório entre</span> <span
+                        class="value">60</span> <span class="object">e</span> <span class="value">150</span><br>
+                    &nbsp;➜ <span class="keyword">repita até que</span> <span class="object">posição x</span> &lt; <span
+                        class="value">-230</span><br>
                     <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
-                        <span class="action">se</span> <span class="object">tocando em</span> <span class="value">[Cactus]</span> ? <span class="action">então</span><br>
-                        <div style="margin-left: 20px;">
-                            ➜ <span class="action">mude</span> <span class="object">[Game Over?]</span> para <span class="value">yes</span><br>
-                            ➜ <span class="keyword">transmita</span> <span class="value">[Game Over]</span><br>
-                            ➜ <span class="action">mude para a fantasia</span> <span class="value">Scared</span><br>
-                            ➜ <span class="keyword">pare</span> <span class="object">[outros scripts no ator]</span><br>
-                            ➜ <span class="keyword">pare</span> <span class="object">[este script]</span>
-                        </div>
+                        ➜ <span class="action">adicione</span> <span class="value">-1</span> <span class="action">a
+                            x</span>
                     </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="page">
-                <div class="header">
-                    <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
-                    <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
-                </div>
-                       <div class="note">
-                    <strong>Pausa rápida:</strong> O bloco de <code>espere 0.01 seg</code> no começo serve só para dar um tempinho pro jogo carregar tudo antes de ligar o radar, evitando que o Dino perca logo no primeiro milissegundo!
-                </div>
-                 <h2>Limpeza de Clones</h2>
-        <p>Um jogo bem feito precisa saber a hora de parar e a hora de limpar a bagunça!</p>
-
-        <div class="two-columns" style="align-items: center; margin-bottom: 25px;">
-            <div class="col">
-                <h3>O Freio de Emergência</h3>
-                <p>Se o jogador perder (Game Over), a gente precisa desligar a fábrica na mesma hora! O comando <b>"pare outros scripts no ator"</b> faz o Chefe parar de produzir novos clones instantaneamente.</p>
-            </div>
-            <div class="col">
-                <div class="code-block">
-                    <span class="code-title">FIM DE JOGO</span><br>
-                    <span class="keyword">Quando eu receber</span> <span class="value">[Game Over]</span><br>
-                    &nbsp;➜ <span class="action">pare</span> <span class="object">[outros scripts no ator]</span>
+                    &nbsp;➜ <span class="action">apague este clone</span>
                 </div>
             </div>
         </div>
     </div>
-<div class="page">
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-title">A Sensação de Profundidade</span>
+            <p>Repara no truque: o que está <b>perto</b> (chão e cactos) se move rápido, e o que está <b>longe</b>
+                (nuvens) se move devagar. Nossos olhos entendem esse contraste como <strong>distância</strong>! É o
+                mesmo efeito de olhar pela janela do carro: os postes na beira da estrada passam voando, mas a lua
+                lá longe parece quase parada.</p>
+        </div>
+
+        <div class="note">
+            <strong>Fábrica de nuvens:</strong> igual à dos cactos, o modelo da nuvem fica escondido criando clones
+            num ciclo <b>sempre</b>, só que com uma pausa maior entre um e outro (a cada <b>4 segundos</b>), porque
+            o céu não precisa ficar lotado.
+        </div>
+    </div>
+
+    <div class="page">
         <div class="header">
             <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
             <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
@@ -195,13 +227,14 @@
                 <h4>Nota</h4>
                 <span class="score-input">&nbsp;</span> / 10
             </div>
-            
+
             <div class="score-box" style="border-color: #FFD700;">
                 <h4>Profia Coin</h4>
                 <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
             </div>
         </div>
+    </div>
 
-    
 </body>
+
 </html>
