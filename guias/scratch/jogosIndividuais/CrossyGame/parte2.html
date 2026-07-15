@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Prepare to Attack - Parte 2</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Prepare to <span><br>Attack</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-crossy.png" alt="Cenário Prepare to Attack"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Os Obstáculos do Jogo</h1>
+
+        <p>Na <b>aula anterior</b> a gente montou a avenida, fez o goblin subir e descer, e ensinou ele a
+            <strong>transmitir</strong> a mensagem <span class="value">travessia</span> para o exército ir se formando
+            lá no topo. Só que tem um problema: essa avenida está <strong>vazia</strong>! Atravessar assim não tem
+            graça nenhuma. Hoje a gente enche a pista de <b>carros</b> e dá o perigo que faltava.</p>
+
+        <h2>A Fábrica de Carros</h2>
+        <p>Você não vai carregar um sprite para cada carro que passa na tela. Lembra do que a gente conversou na
+            parte 1? Existe <strong>um carro só</strong>, o <b>modelo</b>, e o trabalho dele é ficar escondido
+            <strong>fabricando cópias de si mesmo</strong> sem parar.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>O modelo se <b>esconde</b>: ninguém pode vê-lo, e ele nunca atropela o goblin.</li>
+                    <li>Ele entra num ciclo <b>sempre</b>, porque a avenida nunca para.</li>
+                    <li>Ele <b>espera um tempo surpresa</b> entre um carro e outro, assim o trânsito não vira um
+                        relógio previsível.</li>
+                    <li>E então <b>cria um clone</b> de si mesmo. Esse clone, sim, é o carro que aparece na pista.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">LIGANDO A FÁBRICA</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">esconda</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">espere</span> <span class="object">número aleatório entre</span> <span
+                            class="value">0.5</span> <span class="object">e</span> <span class="value">1.5</span> <span
+                            class="action">seg</span><br>
+                        ➜ <span class="action">crie clone de</span> <span class="object">este ator</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title" style="color: #5E35B1;">Modelo x Cópias</span>
+            <p>Vale separar bem quem é quem: o <b>modelo</b> é o carro original, escondido, que só serve para
+                <strong>criar cópias</strong> e nunca sai do lugar. As <b>cópias (clones)</b> são os carros que de fato
+                aparecem, atravessam a tela e ameaçam o goblin. E a melhor parte: <strong>cada clone tem vida
+                    própria</strong> e roda o próprio código sozinho, então dá para ter a avenida inteira lotada
+                usando <strong>um sprite só</strong>.</p>
+        </div>
+
+        <div class="note">
+            <strong>Guarde essa ideia:</strong> o modelo só <em>fabrica</em>. Quem decide a <strong>cor</strong> de cada
+            carro e faz ele <strong>animar</strong> é o próprio clone, assim que ele nasce. É disso que a gente cuida
+            nas próximas páginas.
+        </div>
+        <h2>Aleatoriedade</h2>
+        
+        <div class="concept-box">
+            <span class="concept-title">Conceito</span>
+            <p>Se todo carro nascesse da mesma cor, a avenida ficaria sem graça. A solução é o
+                <strong>sorteio</strong>: toda vez que um carro novo nasce, o jogo <strong>joga um dado</strong> para
+                decidir a cor dele.</p>
+            <p>Esse dado é o bloco <span class="object">número aleatório entre __ e __</span>. Como você carregou
+                <b>6 cores</b> de carro na parte 1, o dado vai de <b>1 a 6</b>. E como ele é jogado de novo a cada
+                clone, <strong>cada partida fica diferente</strong> da anterior.</p>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px 0; flex-wrap: wrap;">
+            <div style="font-size: 30px;">🎲</div>
+            <div style="font-size: 22px; color: #90A4AE;">➜</div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                <span style="background:#1E88E5;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">1 azul</span>
+                <span style="background:#43A047;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">2 verde</span>
+                <span style="background:#E53935;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">3 vermelho</span>
+                <span style="background:#FB8C00;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">4 laranja</span>
+                <span style="background:#757575;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">5 cinza</span>
+                <span style="background:#283593;color:#fff;padding:3px 9px;border-radius:999px;font-size:12px;">6 azul-escuro</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>Guardando o resultado do dado</h2>
+        <p>O número que sai no dado precisa ficar guardado em algum lugar, senão o carro esquece qual cor tirou. Esse
+            lugar é uma variável! Crie a variável <span class="object">carro_sorteado</span> na aba laranja de
+            Variáveis e marque a opção <b>"Somente para este ator"</b>: assim <strong>cada clone tem o seu próprio
+                sorteio</strong> e um carro não bagunça a cor do outro.</p>
+
+        <div class="code-block">
+            <span class="code-title">JOGANDO O DADO</span><br>
+            <span class="keyword">Quando eu começar como um clone</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">carro_sorteado</span> <span
+                class="action">para</span> <span class="object">número aleatório entre</span> <span
+                class="value">1</span> <span class="object">e</span> <span class="value">6</span>
+        </div>
+
+        <div class="note">
+            <strong>Conte as suas cores!</strong> O <span class="value">6</span> é o número de fantasias de cor que a
+            gente carregou. Se o seu carro tiver 4 cores, o sorteio vai de <b>1 a 4</b>. Sortear um número maior do que
+            a quantidade de cores faz o jogo escolher uma cor que não existe!
+        </div>
+
+        <p>Perfeito, o carro já tem um número sorteado. Mas o que a gente <strong>faz</strong> com esse número? É aí que
+            entra a estrela da aula de hoje: os <strong>blocos personalizados</strong>.</p>
+         <h2>Blocos Personalizados</h2>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title" style="color: #5E35B1;">Relembrando</span>
+            <p>Você já conhece os <strong>blocos personalizados</strong>: são comandos novos, com um nome escolhido por
+                você, que guardam uma <strong>sequência de passos</strong> para reusar. <strong>Deu nome, dá para
+                    chamar quantas vezes quiser</strong>, sem repetir tudo. Hoje a gente usa essa ideia para a
+                <strong>animação de cada carro</strong>.</p>
+        </div>
+
+        <p>Cada cor de carro não é uma fantasia só: são <b>várias fantasias em sequência</b> (spr1, spr2, spr3...) que,
+            trocadas rapidinho, dão a impressão de que o carro está <strong>vivo</strong>. Esse vaivém de trocar
+            fantasia é a <b>animação</b>. Em vez de repetir esses mesmos comandos para cada uma das 6 cores, a gente
+            cria <strong>um bloco por cor</strong> e depois é só chamá-lo pelo nome. Bora montar!</p>  
+        
+                <h2>Criando os Blocos de Cor</h2>
+        <p>Vamos criar <b>um bloco para cada cor</b>. Cada um guarda a animação daquela cor: qual fantasia começar e o
+            vaivém de trocas.</p>
+
+        <ul class="step-list">
+            <li>No sprite do <b>carro</b>, vá até a aba rosa <b>Meus Blocos</b> e clique em <b>"Criar um Bloco"</b>.</li>
+            <li>Dê o nome <span class="object">sprites_red_car</span> e clique em <b>OK</b>.</li>
+            <li>Apareceu o bloco roxo <span class="keyword">defina sprites_red_car</span>. É embaixo dele que a gente
+                escreve a animação do carro vermelho.</li>
+            <li>Repita para as outras cores: <span class="object">sprites_green_car</span>, <span
+                    class="object">sprites_blue_car</span>, <span class="object">sprites_orange_car</span>, <span
+                    class="object">sprites_gray_car</span> e <span class="object">sprites_dark_blue_car</span>.</li>
+        </ul>
+        </div>
+
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="two-columns" style="align-items: flex-start;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O BLOCO DO CARRO VERMELHO</span><br>
+                    <span class="keyword">defina sprites_red_car</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mude para a fantasia</span> <span class="object">red_car_spr1</span><br>
+                        ➜ <span class="action">espere</span> <span class="value">0.3</span> <span
+                            class="action">seg</span><br>
+                        ➜ <span class="keyword">repita</span> <span class="value">3</span> <span
+                            class="keyword">vezes</span><br>
+                        <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                            ➜ <span class="action">próxima fantasia</span><br>
+                            ➜ <span class="action">espere</span> <span class="value">0.3</span> <span
+                                class="action">seg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">O BLOCO DO CARRO AZUL</span><br>
+                    <span class="keyword">defina sprites_blue_car</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mude para a fantasia</span> <span class="object">blue_car_spr1</span><br>
+                        ➜ <span class="action">espere</span> <span class="value">0.3</span> <span
+                            class="action">seg</span><br>
+                        ➜ <span class="keyword">repita</span> <span class="value">3</span> <span
+                            class="keyword">vezes</span><br>
+                        <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                            ➜ <span class="action">próxima fantasia</span><br>
+                            ➜ <span class="action">espere</span> <span class="value">0.3</span> <span
+                                class="action">seg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-title">Lendo a animação passo a passo</span>
+            <p>Os dois blocos são <strong>idênticos</strong>, só muda a fantasia inicial! Por dentro, cada bloco:</p>
+            <ul class="custom-list">
+                <li><b>mude para a fantasia __car_spr1:</b> volta para o primeiro quadrinho daquela cor.</li>
+                <li><b>espere 0.3 seg</b> e <b>repita 3 vezes → próxima fantasia:</b> troca para os quadrinhos
+                    seguintes (spr2, spr3, spr4), esperando um tiquinho entre eles. É isso que dá a sensação de
+                    movimento.</li>
+                <li><b>sempre:</b> quando termina a última fantasia, volta tudo do começo, para o carro nunca parar de
+                    animar enquanto está na tela.</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Dica:</strong> monte o bloco vermelho com calma, depois clique com o botão direito nele
+            e use <b>"duplicar"</b> para criar os outros. Aí é só trocar o nome e a fantasia inicial de cada um, sem
+            refazer tudo do zero.
+        </div>
+
+        <h2>Chamando os Blocos</h2>
+        <p>Agora vem a recompensa. Com os seis blocos prontos, a vida do clone fica <strong>curtinha</strong>: ele
+            joga o dado (o <span class="object">carro_sorteado</span>) e, dependendo do número que saiu,
+            <strong>chama o bloco daquela cor</strong>. Só isso!</p>
+
+        <div class="two-columns" style="align-items: flex-start;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">A VIDA DO CLONE</span><br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">carro_sorteado</span> <span
+                        class="action">para</span> <span class="object">nº aleatório entre</span> <span
+                        class="value">1</span> <span class="object">e</span> <span class="value">6</span><br>
+                    <br>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">1</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_blue_car</span>
+                    </div>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">2</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_green_car</span>
+                    </div>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">3</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_red_car</span>
+                    </div>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">4</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_orange_car</span>
+                    </div>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">5</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_gray_car</span>
+                    </div>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">carro_sorteado</span> = <span
+                        class="value">6</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="keyword">sprites_dark_blue_car</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <p>Compare com o código repetido da página anterior: é a <strong>mesma coisa</strong>, mas cabe num
+                    piscar de olhos. Toda a animação sumiu de vista, porque ela está guardada dentro dos blocos de cor.
+                </p>
+                <p>Cada <span class="action">se</span> pergunta <em>"o dado deu esse número?"</em> e, se deu, chama o
+                    bloco da cor certa. Como o <span class="object">carro_sorteado</span> só tem um valor, só
+                    <strong>um</strong> desses blocos é chamado por clone, e é ele que vai animar aquele carro.</p>
+                
+        <div class="note">
+            <strong>Repare no par número→cor:</strong> o número que sai no dado não tem cor nenhuma sozinho; é a nossa
+            lista de <span class="action">se</span> que decide que <b>1 é azul</b>, <b>2 é verde</b>, <b>3 é
+                vermelho</b>, e assim por diante. Você pode trocar essa ordem do jeito que quiser!
+        </div>
+                </div>
+            
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>A Batida</h1>
+        <p>Os carros já passam coloridos e animados, mas ainda atravessam o goblin como se ele fosse um fantasma. Falta
+            o <strong>perigo</strong>: o jogo precisa ficar <strong>o tempo todo</strong> se perguntando <em>"o goblin
+                encostou em algum carro?"</em>.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>No sprite do <b>goblin</b>, monte um ciclo <b>sempre</b>: a checagem não pode parar nunca, ou
+                        um carro passa despercebido bem na hora da batida.</li>
+                    <li>Dentro dele, use o <b>se</b> com o sensor <span class="object">tocando em Carro?</span>.</li>
+                    <li>Se a resposta for sim, o goblin <b>volta para o ponto de partida</b> (aquele x: 0, y: -150 da
+                        parte 1)...</li>
+                    <li>...e o jogo <b>termina</b> ali mesmo, com o bloco <span class="object">pare tudo</span>.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">COLISÃO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">tocando em Carro?</span> <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                                class="action">y:</span> <span class="value">-150</span><br>
+                            ➜ <span class="action">pare</span> <span class="value">tudo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

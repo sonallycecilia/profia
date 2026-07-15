@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Prepare to Attack - Parte 1</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Prepare to <span><br>Attack</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-crossy.png" alt="Cenário Prepare to Attack"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Prepare to Attack: Primeiros Passos</h1>
+
+        <div class="concept-box">
+            <span class="concept-title">Conceito do Jogo</span>
+            <p>Um goblin solitário precisa atravessar uma avenida movimentada. Os carros passam sem parar, para a
+                esquerda e para a direita, e um encostão no carro já é o suficiente para acabar com a travessia. Mas aqui está
+                a sacada: <strong>cada travessia bem-sucedida traz um novo goblin para o seu lado</strong>. Um a um,
+                eles vão se enfileirando lá no topo, formando um exército. Quanto mais você atravessa, maior fica o
+                seu bando, e a missão é montar o exército inteiro!</p>
+        </div>
+
+        <h2>Carregando os Assets</h2>
+        <ul class="step-list">
+            <li>Carregue o cenário da <b>avenida</b>: é nele que toda a ação acontece.</li>
+            <li>Carregue os sprites do jogo: o <b>goblin</b> (nosso herói) e o <b>carro</b>.</li>
+            <li>Posicione o goblin lá embaixo, na calçada de partida, e ajuste o tamanho dele para caber
+                confortavelmente entre as faixas da avenida.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Dica:</strong> carregue <strong>todas</strong> as fantasias de cor do carro agora, mesmo que a
+            gente só vá usar essa variedade depois. Assim você não precisa parar no meio do caminho depois!
+        </div>
+
+        <h2>As Fantasias de Cada Personagem</h2>
+        <ul class="custom-list">
+            <li><b>Goblin:</b> um único ator com a fantasia de movimentação e nosso guerreirinho. Ele é o único sprite que
+                <strong>você</strong> controla no jogo inteiro.</li>
+            <li><b>Carro:</b> várias fantasias, uma para cada cor. Por enquanto, deixe todas carregadas.</li>
+        </ul>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title">Relembrando: Clones</span>
+            <p>Você já conhece esse conceito, mas vale a notinha rápida: o carro que você carregou é só o
+                <strong>modelo</strong>. Ele fica escondido e a função dele é <strong>gerar as cópias</strong> que a
+                gente vê passando na tela. E o goblin vai usar a mesma ideia para montar o exército!</p>
+        </div>
+        <h2>A Posição Inicial do Goblin</h2>
+        <p>Toda partida começa do mesmo jeito: o goblin lá embaixo, na calçada, olhando para a avenida. Também é para
+            cá que ele volta sempre que completa uma travessia (e, mais para frente, quando um carro o atinge).</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Posicione o goblin em <b>x: 0</b> (no meio da tela) e <b>y: -150</b> (na calçada de baixo).</li>
+                    <li>Guarde bem esses dois números: eles são o <strong>ponto de partida</strong> e vão reaparecer
+                        várias vezes no código.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">POSIÇÃO INICIAL</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                        class="action">y:</span> <span class="value">-150</span><br>
+                    &nbsp;➜ <span class="action">mostre</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <h2>Subindo e Descendo a Avenida</h2>
+        <p>A movimentação do goblin é bem direta: ele só anda para <strong>cima</strong> e para <strong>baixo</strong>.
+            Nada de esquerda e direita, o desafio aqui não é desviar andando de lado, é escolher a
+            <strong>hora certa</strong> de avançar!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>Seta para cima:</b> o goblin avança um passo em direção ao topo (soma no <span
+                            class="object">y</span>).</li>
+                    <li><b>Seta para baixo:</b> ele recua um passo, voltando para a segurança (subtrai do <span
+                            class="object">y</span>).</li>
+                    <li>Use um passo de <b>10</b>. Se ficar rápido ou lento demais para a sua turma, é só ajustar esse
+                        número!</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">MOVIMENTAÇÃO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> tecla <span class="value">seta para cima</span> pressionada?
+                        <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">10</span> a <span
+                                class="object">y</span>
+                        </div>
+                        ➜ <span class="action">se</span> tecla <span class="value">seta para baixo</span> pressionada?
+                        <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">-10</span> a <span
+                                class="object">y</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Teste agora:</strong> clique na bandeira verde e suba e desça com o goblin algumas vezes. Ele
+            precisa conseguir ir da calçada de baixo até o topo da tela sem travar no caminho!
+        </div>
+        <h2>O Recado que Todo Mundo Escuta</h2>
+        <div class="concept-box">
+            <span class="concept-title">Transmissão de Mensagem</span>
+            <p>Antes de programar a travessia, precisamos de um jeito de um ator <strong>avisar</strong> que alguma
+                coisa aconteceu. Pense num <strong>apito no meio do campo</strong>: quem apita não precisa saber quem
+                está ouvindo, e quem ouve não precisa ficar de olho em quem apitou. O apito toca, e todo mundo que
+                estava esperando por ele entra em ação na hora certa.</p>
+            <p>No Scratch esse apito se chama <strong>transmissão de mensagem</strong>. Um lado <strong>fala</strong>,
+                o outro <strong>escuta</strong>. É assim que os atores combinam as coisas entre eles sem ficar
+                vigiando uns aos outros o tempo todo.</p>
+        </div>
+
+        <div style="display: flex; align-items: stretch; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 18px 0;">
+            <div
+                style="flex: 1; min-width: 190px; background: #E0F2F1; border: 2px solid #00897B; border-radius: 12px; padding: 10px 14px; text-align: center;">
+                <div style="font-size: 11px; font-weight: bold; color: #00897B; letter-spacing: 1px;">QUEM FALA</div>
+                <div style="font-size: 24px; line-height: 1.4;">📣</div>
+                <div style="font-size: 14px; color: var(--primary-dark);"><b>transmita</b>
+                    <span class="value">travessia</span>
+                </div>
+                <div style="font-size: 12px; color: #78909C; line-height: 1.4; margin-top: 4px;">o goblin chega no topo
+                    e grita: <em>"consegui!"</em></div>
+            </div>
+            <div style="display: flex; align-items: center; font-size: 26px; color: #90A4AE; font-weight: bold;">➜</div>
+            <div
+                style="flex: 1; min-width: 190px; background: #F3E5F5; border: 2px solid #7E57C2; border-radius: 12px; padding: 10px 14px; text-align: center;">
+                <div style="font-size: 11px; font-weight: bold; color: #7E57C2; letter-spacing: 1px;">QUEM ESCUTA</div>
+                <div style="font-size: 24px; line-height: 1.4;">👂</div>
+                <div style="font-size: 14px; color: var(--primary-dark);"><b>quando eu receber</b>
+                    <span class="value">travessia</span>
+                </div>
+                <div style="font-size: 12px; color: #78909C; line-height: 1.4; margin-top: 4px;">quem estava esperando
+                    o aviso age <em>na mesma hora</em></div>
+            </div>
+        </div>
+
+        <h3>Criando a mensagem no Scratch</h3>
+        <ul class="step-list">
+            <li>Na aba de <b>Eventos</b>, pegue o bloco <span class="object">transmita</span> e clique na setinha dele.
+            </li>
+            <li>Escolha <b>"Nova mensagem"</b> e dê o nome <span class="value">travessia</span>. O nome é só para a
+                gente se entender, então vale a pena escolher um que <strong>descreva o que aconteceu</strong>.</li>
+            <li>Pronto! A partir de agora a mensagem <span class="value">travessia</span> aparece na listinha dos dois
+                blocos, em <strong>todos os atores</strong> do projeto.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Fique ligado:</strong> o <span class="object">transmita</span> e o
+            <span class="object">quando eu receber</span> são blocos irmãos, e um não vive sem o outro. Uma mensagem
+            transmitida que ninguém escuta é um apito no vazio; e um <span class="object">quando eu receber</span> sem
+            ninguém transmitindo nunca dispara.
+        </div>
+    </div>
+
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>A Travessia Bem-Sucedida: Quem Fala</h2>
+        <p>Agora vem o coração do jogo. Quando o goblin chega lá no topo, três coisas acontecem de uma vez:</p>
+        <ul class="step-list">
+            <li>Ele <strong>ganha um ponto</strong>, a variável <span class="object">pontos</span> aumenta em 1.</li>
+            <li>Ele <strong>transmite</strong> a mensagem <span class="value">travessia</span>: é o apito avisando o
+                jogo inteiro que a travessia deu certo.</li>
+            <li>Ele <strong>volta para o ponto de partida</strong>, pronto para atravessar de novo.</li>
+        </ul>
+
+        <p>Antes de programar, vá na aba laranja de Variáveis e crie a variável <span class="object">pontos</span>.
+            Ela precisa começar em <b>0</b> toda vez que a bandeira verde for clicada, senão o exército da partida
+            passada continua contando!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <p>O goblin fica o tempo todo se perguntando: <em>"já cheguei no topo?"</em>. Assim que a resposta é
+                    sim (quando o <span class="object">y</span> passa de <b>140</b>), ele soma o ponto,
+                    <strong>dá o apito</strong> e volta correndo para a calçada.</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CHEGOU NO TOPO!</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">pontos</span> <span
+                        class="action">para</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">posição y</span> &gt; <span
+                            class="value">140</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">1</span> a <span
+                                class="object">pontos</span><br>
+                            ➜ <span class="action">transmita</span> <span class="value">travessia</span><br>
+                            ➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                                class="action">y:</span> <span class="value">-150</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Montando o Exército: Quem Escuta</h2>
+        <p>Quem <strong>escuta</strong> o recado é o próprio goblin: ao receber a mensagem
+            <span class="object">travessia</span>, ele <strong>cria um clone de si mesmo</strong>. Esse clone não volta
+            para a calçada, ele sobe para o topo e <strong>fica parado lá, em formação</strong>, esperando os próximos
+            companheiros chegarem.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Ao receber <span class="object">travessia</span>, o goblin original cria um clone.</li>
+                    <li>O clone vai direto para a fileira do topo (<b>y: 160</b>) e para de se mexer.</li>
+                    <li>Mas... <strong>em qual x</strong> cada clone deve parar, para eles não se empilharem todos no
+                        mesmo lugar?</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CRIANDO O EXÉRCITO</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">travessia</span><br>
+                    &nbsp;➜ <span class="action">crie clone de</span> <span class="object">este ator</span><br>
+                    <br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">210</span> - (<span
+                        class="object">pontos</span> * <span class="value">25</span>) <span class="action">y:</span>
+                    <span class="value">160</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Repare numa coisa curiosa:</strong> quem transmite e quem recebe a
+            <span class="value">travessia</span> é o <strong>mesmo ator</strong>, o goblin! Isso é totalmente
+            permitido: um script dele dá o apito, e outro script dele escuta e reage. Os dois blocos não precisam
+            estar em atores diferentes, eles só precisam <strong>combinar o nome da mensagem</strong>.
+        </div>
+                <h2>A Matemática por Trás da Fileira</h2>
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title">A Conta Mágica</span>
+            <p>A posição de cada goblin no exército não é escolhida na mão, ela é <strong>calculada</strong>! A conta
+                parte de um ponto fixo (o <b>210</b>, bem na direita do topo) e anda um tanto para a esquerda a cada
+                travessia:</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+
+
+        <div
+            style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 18px 0; font-size: 14px;">
+            <span
+                style="background: #00897B; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">posição
+                x</span>
+            <span style="color: #90A4AE; font-weight: bold;">=</span>
+            <span
+                style="background: #F57F17; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">210</span>
+            <span style="color: #90A4AE; font-weight: bold;">−</span>
+            <span style="color: #90A4AE; font-weight: bold;">(</span>
+            <span
+                style="background: #1E88E5; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">pontos</span>
+            <span style="color: #90A4AE; font-weight: bold;">×</span>
+            <span
+                style="background: #F57F17; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">25</span>
+            <span style="color: #90A4AE; font-weight: bold;">)</span>
+        </div>
+
+        <p>Ou seja: cada goblin novo nasce <b>25 passos à esquerda</b> do anterior. É por isso que eles ficam
+            <strong>enfileiradinhos</strong>, um do lado do outro, em vez de nascerem todos grudados no mesmo ponto.
+            Vamos fazer a conta juntos:</p>
+
+        <div class="two-columns">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">FAZENDO A CONTA</span><br>
+                    <span class="object">1º goblin</span> ➜ 210 - (<span class="value">1</span> × 25) = <span
+                        class="value">185</span><br>
+                    <span class="object">2º goblin</span> ➜ 210 - (<span class="value">2</span> × 25) = <span
+                        class="value">160</span><br>
+                    <span class="object">3º goblin</span> ➜ 210 - (<span class="value">3</span> × 25) = <span
+                        class="value">135</span><br>
+                    <span class="object">4º goblin</span> ➜ 210 - (<span class="value">4</span> × 25) = <span
+                        class="value">110</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>Repare no que a conta faz: primeiro ela <strong>multiplica</strong> os pontos por 25 (esse é o
+                    "espaço" que cada goblin ocupa na fila), e depois <strong>subtrai</strong> esse resultado do 210
+                    (o ponto de partida da fileira). Quanto mais pontos, maior o valor subtraído, e mais para a
+                    esquerda o goblin aparece.</p>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>A variável que comanda tudo:</strong> quem controla a criação dos clones é a
+            <span class="object">pontos</span>! É ela que muda a cada travessia e faz a conta dar um resultado
+            diferente toda vez. Sem ela, todos os goblins nasceriam exatamente no mesmo x, um em cima do outro,
+            e a gente nem veria o exército crescer.
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

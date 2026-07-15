@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Prepare to Attack - Parte 3</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Prepare to <span><br>Attack</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-crossy.png" alt="Cenário Prepare to Attack"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Ganhar ou Perder</h1>
+
+        <p>Na <b>aula anterior</b> a avenida ficou perigosa: os carros nascem de clones, cada um sorteia a sua cor e a sua
+            pista, e a animação toda já está configurada. Além disso, encostar num
+            carro já encerra a partida.</p>
+
+        <p>Só que o jogo ainda não tem <strong>começo, meio e fim</strong>. Ele não sabe dizer quando você
+            <strong>venceu</strong> ou <strong>perdeu</strong>.</p>
+
+        <div class="concept-box">
+            <span class="concept-title">Toda partida precisa de um fim</span>
+            <p>Um jogo é feito de <strong>regras que decidem quando ele acaba</strong>. Sem isso, o goblin fica
+                atravessando a avenida para sempre e nada nunca acontece. São duas perguntas que a gente vai ensinar o
+                Scratch a responder:</p>
+            <p><b>1. Quando o jogador ganha?</b> Quando o <strong>exército estiver completo</strong>.<br>
+                <b>2. Quando o jogador perde?</b> Quando as <strong>vidas acabarem</strong>.
+            </p>
+        </div>
+
+        <h2>O Objetivo: o Exército Completo</h2>
+        <p>Lembra da fileira de goblins lá no topo? Cada travessia bem-sucedida traz um companheiro novo. Só falta
+            combinar <strong>quantos goblins</strong> fecham o exército. Vamos dizer que a missão é reunir
+            <b>8 goblins</b>.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <p>E como o jogo sabe que chegou lá? Ele só precisa <strong>olhar a variável</strong>
+                    <span class="object">pontos</span>! Se cada travessia soma 1 ponto e traz 1 goblin, então
+                    <span class="object">pontos</span> = <b>8</b> quer dizer <em>"exército completo"</em>.</p>
+                <p>Essa checagem entra no <b>goblin</b>, logo depois de ele somar o ponto e transmitir a mensagem
+                    <span class="value">travessia</span> (aquele script que você montou na parte 1).</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">CHEGOU NO TOPO! (atualizado)</span><br>
+                    &nbsp;➜ <span class="action">se</span> <span class="object">posição y</span> &gt; <span
+                        class="value">140</span> <span class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">adicione</span> <span class="value">1</span> a <span
+                            class="object">pontos</span><br>
+                        ➜ <span class="action">transmita</span> <span class="value">travessia</span><br>
+                        ➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                            class="action">y:</span> <span class="value">-150</span><br>
+                        ➜ <span class="action">se</span> <span class="object">pontos</span> = <span
+                            class="value">8</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">vitória</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Atenção!</strong> Repare que a gente <b>não</b> escreveu aqui o que acontece na vitória. O
+            goblin só <strong>avisa</strong> que venceu, transmitindo a mensagem <span class="value">vitória</span>.
+            Quem cuida da tela é o <b>palco</b>, que está escutando esse aviso. Cada um faz a sua parte.
+        </div>
+
+        <h2>A Tela de Vitória</h2>
+        <p>Vá até o <b>palco</b> e crie um <b>cenário novo</b> de vitória (pode ser uma tela escrita "VITÓRIA!",
+            desenhada por você no editor de pintura). O palco fica esperando o recado e, quando ele chega, troca o
+            cenário e encerra a partida.</p>
+
+        <div class="code-block">
+            <span class="code-title">NO PALCO</span><br>
+            <span class="keyword">Quando eu receber</span> <span class="value">vitória</span><br>
+            &nbsp;➜ <span class="action">mude para o cenário</span> <span class="object">vitória</span><br>
+            &nbsp;➜ <span class="action">pare</span> <span class="value">tudo</span>
+        </div>
+                <h2>O Sistema de Vidas</h2>
+
+        <p>Do jeito que está, o primeiro carro que encosta no goblin acaba com tudo. É <strong>frustrante</strong>: o
+            jogador nem teve tempo de aprender o ritmo do trânsito. A solução que quase todo jogo usa é dar
+            <strong>algumas chances</strong>.</p>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+
+        <div class="concept-box">
+            <span class="concept-title">Vidas: um contador que anda para trás</span>
+            <p>A variável <span class="object">pontos</span> é um contador que <strong>sobe</strong>: cada travessia
+                <b>soma 1</b>. A variável <span class="object">vidas</span> é o contrário, um contador que
+                <strong>desce</strong>: cada batida <b>subtrai 1</b>.</p>
+            <p>E o jogo só acaba quando esse contador chega no <strong>fundo</strong>, ou seja, quando
+                <span class="object">vidas</span> vale <b>0</b>. É a mesma ideia dos coraçõezinhos no canto da tela dos
+                jogos que você já conhece!</p>
+        </div>
+
+        <h2>Criando a variável</h2>
+        <ul class="step-list">
+            <li>Na aba laranja de <b>Variáveis</b>, crie a variável <span class="object">vidas</span> (para
+                <b>todos os atores</b>, porque o palco também vai querer olhar para ela).</li>
+            <li>Deixe ela <b>marcadinha</b> para aparecer na tela: o jogador precisa ver quantas chances ainda tem.</li>
+            <li>No script da bandeira verde do goblin, <b>mude vidas para 3</b>, do mesmo jeito que a gente zera os
+                <span class="object">pontos</span>.</li>
+        </ul>
+
+        <div class="code-block">
+            <span class="code-title">COMEÇANDO A PARTIDA</span><br>
+            <span class="keyword">Quando bandeira verde for clicado</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">pontos</span> <span class="action">para</span>
+            <span class="value">0</span><br>
+            &nbsp;➜ <span class="action">mude</span> <span class="object">vidas</span> <span class="action">para</span>
+            <span class="value">3</span><br>
+            &nbsp;➜ <span class="action">mude para o cenário</span> <span class="object">avenida</span><br>
+            &nbsp;➜ <span class="action">vá para x:</span> <span class="value">0</span> <span class="action">y:</span>
+            <span class="value">-150</span>
+        </div>
+
+        <div class="note">
+            <strong>Não esqueça o cenário!</strong> Se a partida passada terminou na tela de derrota, o jogo precisa
+            <strong>voltar para a avenida</strong> quando a bandeira verde for clicada. Senão o jogador começa a
+            partida nova olhando para a tela de "FIM DE JOGO"!
+        </div>
+
+        <h2>A Batida, versão justa</h2>
+        <p>Agora vamos <strong>trocar</strong> aquele <span class="object">pare tudos</span> que fizemos anteriormente. Quando o carro
+            atinge o goblin, três coisas acontecem:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Ele <b>perde uma vida</b>: adicione <b>-1</b> a <span class="object">vidas</span>.</li>
+                    <li>Ele <b>volta para a calçada</b>, para não levar a segunda batida do mesmo carro.</li>
+                    <li>E só <b>se as vidas chegarem a 0</b> é que ele transmite <span class="value">fim de
+                            jogo</span>.</li>
+                </ul>
+                <p>Repare que agora existe um <b>se dentro de outro se</b>: o de fora pergunta <em>"bateu?"</em>, e o de
+                    dentro pergunta <em>"e era a última vida?"</em>.</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">COLISÃO COM VIDAS</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="keyword">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">tocando em Carro?</span> <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                            ➜ <span class="action">adicione</span> <span class="value">-1</span> a <span
+                                class="object">vidas</span><br>
+                            ➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                                class="action">y:</span> <span class="value">-150</span><br>
+                            ➜ <span class="action">espere</span> <span class="value">0.5</span> <span
+                                class="action">seg</span><br>
+                            ➜ <span class="action">se</span> <span class="object">vidas</span> = <span
+                                class="value">0</span> <span class="action">então</span><br>
+                            <div style="margin-left: 20px;">
+                                ➜ <span class="action">transmita</span> <span class="value">fim de jogo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        </div>
+      <div class="note">
+            <strong>Por que esperar 0.5 segundo?</strong> Sem essa pausinha, o jogo checa a colisão tão rápido que, se
+            o carro ainda estiver passando por cima do goblin, ele leva <b>várias batidas de uma vez só</b> e perde as
+            3 vidas num piscar de olhos. Essa pausa é o "momento de invencibilidade" que os jogos dão ao jogador para
+            ele se recuperar.
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+
+        <h2>A Tela de Derrota</h2>
+
+        <p>O goblin já sabe <strong>avisar</strong> que perdeu (a mensagem <span class="value">fim de jogo</span>).
+            Falta alguém <strong>escutar</strong>.</p>
+
+        <ul class="step-list">
+            <li>No <b>palco</b>, crie um <b>cenário novo</b> de derrota. Use o editor de pintura para escrever algo como
+                <b>"FIM DE JOGO"</b>, ou desenhe o goblin derrotado no meio da avenida.</li>
+            <li>Adicione o script que <b>escuta</b> a mensagem, troca o cenário e para tudo.</li>
+        </ul>
+
+        <div class="two-columns" style="align-items: flex-start;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO PALCO: DERROTA</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">fim de jogo</span><br>
+                    &nbsp;➜ <span class="action">mude para o cenário</span> <span class="object">derrota</span><br>
+                    &nbsp;➜ <span class="action">pare</span> <span class="value">tudo</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO PALCO: VITÓRIA</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">vitória</span><br>
+                    &nbsp;➜ <span class="action">mude para o cenário</span> <span class="object">vitória</span><br>
+                    &nbsp;➜ <span class="action">pare</span> <span class="value">tudo</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>O Mapa Completo do Jogo das Transmissões do Jogo</h2>
+        <div class="code-block">
+            <span class="code-title">AS 3 MENSAGENS</span><br>
+            📣 <span class="value">travessia</span> — o goblin chegou no topo &nbsp;➜&nbsp; 👂 nasce mais um goblin no
+            exército<br>
+            📣 <span class="value">vitória</span> — o exército chegou a 8 &nbsp;➜&nbsp; 👂 o palco mostra a tela de
+            vitória<br>
+            📣 <span class="value">fim de jogo</span> — as vidas chegaram a 0 &nbsp;➜&nbsp; 👂 o palco mostra a tela de
+            derrota
+        </div>
+        <h2>Resumo do Jogo</h2>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title" style="color: #5E35B1;">Cada ator no seu papel</span>
+            <p>Olhe o que a gente construiu: o <b>goblin</b> cuida de <strong>jogar</strong> (andar, contar pontos,
+                perder vidas), o <b>carro</b> cuida de <strong>atrapalhar</strong>, e o <b>palco</b> cuida das
+                <strong>telas</strong>. Nenhum deles fica vigiando o outro: eles só <strong>transmitem
+                    mensagens</strong>.</p>
+            <p>Isso tem nome em programação: cada parte do projeto tem <strong>uma responsabilidade só</strong>. Assim o código
+                organizado é código fácil de arrumar.</p>
+        </div>
+
+        <div class="note">
+            <strong>Teste a partida inteira:</strong> tome 3 batidas de propósito e veja a tela de derrota aparecer.
+            Depois clique na bandeira verde e confira se tudo <strong>volta ao normal</strong>: cenário da avenida,
+            3 vidas, 0 pontos e nenhum goblin sobrando lá no topo do exército da partida passada!
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Seção Desafio</h1>
+        <p>O jogo está completo e ele é <strong>seu</strong>. Escolha um (ou mais!) dos desafios abaixo e deixe o
+            <b>Prepare to Attack</b> com a sua cara. Aqui não tem código pronto de propósito: é você quem decide como
+            resolver!</p>
+
+        <h2>1. A Tela Inicial</h2>
+        <p>Todo jogo bom começa com uma tela de abertura. Crie um <b>cenário de menu</b> com o nome do jogo e um
+            convite do tipo <em>"aperte ESPAÇO para começar"</em>. <i>Pense: o goblin e os carros precisam ficar
+            <strong>escondidos</strong> enquanto o menu está na tela. E o que faz o jogo <strong>realmente
+            começar</strong>? Talvez uma mensagem nova (que tal <span class="value">começar</span>?) transmitida
+            quando a tecla for pressionada...</i></p>
+
+        <h2>2. Aumentando a Dificuldade</h2>
+        <p>Quanto mais o jogador avança, mais difícil deveria ficar. Duas ideias: <b>mais carros</b>, diminuindo o
+            tempo de espera da fábrica conforme os <span class="object">pontos</span> sobem; ou <b>carros mais
+            rápidos</b> — lembra do <span class="object">passo</span> que a gente entrega para o bloco
+            <span class="object">Atravessar</span>? E se, em vez de um <b>10</b> fixo, ele <strong>crescesse</strong>
+            junto com os pontos? Foi exatamente para isso que a gente fez dele uma <strong>entrada</strong> do bloco!</p>
+
+        <h2>3. O Item Bônus</h2>
+        <p>Crie um sprite novo (uma moeda, uma poção, um tesouro) que aparece de vez em quando no meio da avenida.
+            Se o goblin encostar nele, ganha <strong>pontos extras</strong>... ou quem sabe uma <strong>vida a
+            mais</strong>! <i>Cuidado: se o item mexer nos <span class="object">pontos</span>, ele também mexe na
+            <strong>posição do próximo goblin</strong> do exército. Lembra da conta <b>210 − (pontos × 25)</b>? Pense
+            se isso vira um bug ou um efeito legal!</i></p>
+
+        <h2>4. Uma Nova Fase</h2>
+        <p>Depois de completar o exército, por que parar? Busque (ou desenhe!) uma <b>avenida nova</b>, com outro
+            visual e outras faixas, e faça a vitória levar o jogador para <strong>a fase 2</strong> em vez de
+            encerrar o jogo. <i>Dica: os <span class="object">y</span> das pistas provavelmente vão mudar no cenário
+            novo. Como você faria o carro usar um conjunto de pistas <strong>diferente</strong> em cada fase?</i></p>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
