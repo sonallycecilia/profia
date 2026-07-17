@@ -8,6 +8,7 @@
     --code-bg: #263238;
     --accent-orange: #FF7043;
     --concept-purple: #7E57C2;
+    --mode-blue: #1E88E5;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 
 /* Elementos que ficam acima da marca d'água da página */
 .header, h1, h2, h3, p, li, .code-block, .two-columns,
-.concept-box, .note, .cover-main-title, .cover-subtitle-pro,
+.concept-box, .mode-box, .note, .cover-main-title, .cover-subtitle-pro,
 .notes-area, .score-container, .feedback-area {
     position: relative;
     z-index: 1;
@@ -178,6 +179,17 @@ p, li {
 }
 .concept-title {
     color: var(--concept-purple); font-weight: bold; font-size: 14px;
+    display: block; margin-bottom: 5px; text-transform: uppercase;
+}
+
+/* CAIXA DE MODO DE JOGO (azul): variações 1 player / 2 players de uma missão */
+.mode-box {
+    background-color: #E3F2FD; border-left: 5px solid var(--mode-blue);
+    padding: 15px; border-radius: 8px; margin: 15px 0;
+    font-size: 14px; line-height: 1.5; color: #546E7A;
+}
+.mode-title {
+    color: #1565C0; font-weight: bold; font-size: 14px;
     display: block; margin-bottom: 5px; text-transform: uppercase;
 }
 

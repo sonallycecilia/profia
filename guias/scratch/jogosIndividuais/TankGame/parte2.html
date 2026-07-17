@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Tank Game - Parte 2</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Tank <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-tank.png" alt="Cenário Tank Game"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Modo PvP: a Batalha Começa!</h1>
+
+        <p>Na <b>aula anterior</b> a gente montou a base do Tank Game: os dois tanks já andam pelo campo (WASD e
+            setas), já giram para onde vão e já atiram, cada um com a sua bala e as suas variáveis. Mas repare numa
+            coisa: a bala <strong>passa por cima do tank inimigo e não acontece nada</strong>! Nosso trabalho hoje
+            é ensinar o jogo a saber <strong>quando alguém foi atingido</strong>.</p>
+
+        <div class="concept-box">
+            <span class="concept-title">O que vamos construir</span>
+            <p><strong>PvP</strong> quer dizer <em>"Player versus Player"</em>: jogador contra jogador! Para o duelo
+                funcionar de verdade, faltam três coisas: a bala precisa <strong>causar dano</strong> quando acerta
+                o inimigo, cada tank precisa de <strong>vidas</strong> para aguentar alguns tiros, e o jogo precisa
+                de um <strong>fim</strong>, com um grande vencedor!</p>
+        </div>
+
+        <h2>Dando Vidas aos Tanks</h2>
+        <p>Um duelo que acaba no primeiro tiro é curto demais. Vamos dar <b>3 vidas</b> para cada guerreiro! E
+            claro: cada tank tem a <strong>sua própria</strong> variável de vida, do mesmo jeitinho que cada bala
+            tem as suas. Lembra da regra da mochila? Ninguém mexe na mochila do outro!</p>
+
+        <ul class="step-list">
+            <li>Na aba laranja de <b>Variáveis</b>, crie a variável <span class="object">vidas_vermelho</span>.</li>
+            <li>Crie também a <span class="object">vidas_azul</span>. As duas <b>"Para todos os atores"</b>.</li>
+            <li>Deixe as duas <b>marcadas</b> (com o ✓), assim elas aparecem na tela e viram o
+                <strong>placar</strong> da batalha!</li>
+        </ul>
+
+        <p>Agora, cada tank avisa que começa com 3 vidas toda vez que a bandeira verde é clicada. É um bloco solto,
+            novinho, em cada sprite:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO TANK VERMELHO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">vidas_vermelho</span> <span
+                        class="action">para</span> <span class="value">3</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO TANK AZUL</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">vidas_azul</span> <span
+                        class="action">para</span> <span class="value">3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Vocês decidem:</strong> 3 vidas é só uma sugestão! Com <b>5 vidas</b> a partida fica mais longa;
+            com <b>1 vida</b> vira "morte súbita", um tiro e acabou. Testem e escolham o número que deixa o duelo
+            mais divertido para a turma.
+        </div>
+                <h2>A Bala Descobre em Quem Bater</h2>
+     
+
+        <ul class="step-list">
+            <li>A bala nasce na posição de <strong>quem atirou</strong> (isso a gente já fez na parte 1).</li>
+            <li>Ela anda para a frente, <strong>um passinho de cada vez</strong>.</li>
+            <li>A <strong>cada passinho</strong>, ela pergunta: <em>"estou tocando no tank inimigo?"</em></li>
+            <li>Se <b>sim</b>: tira <b>1 vida</b> daquele tank e desaparece.</li>
+            <li>Se andar o caminho todo sem acertar ninguém: some sozinha, como já fazia.</li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+
+           <p>Aqui acontece toda a mágica do PvP! A regra do duelo é simples: <strong>a bala vermelha só machuca o
+                tank azul, e a bala azul só machuca o tank vermelho</strong>. Ninguém dá tiro no próprio pé! A ideia,
+            em palavras simples:</p>
+
+        <p>Para isso, vamos colocar a pergunta <strong>dentro do <span class="action">repita</span></strong> da
+            bala vermelha. O código do clone fica assim:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <p>Compare com o código da parte 1: a única novidade é o <span class="action">se... então</span>
+                    dentro do <span class="action">repita</span> do <strong>script do voo</strong>. Agora, entre um
+                    passo e outro, a bala <strong>olha em volta</strong> e confere se acertou o alvo!</p>
+                <p>Quando acerta, ela faz duas coisas: <strong>tira 1 vida</strong> do azul (adicionando
+                    <span class="value">-1</span>) e <strong>para este script</strong>, ou seja, para de voar. E
+                    quem termina o serviço? O <strong>script do pavio</strong>, que já estava contando o tempo:
+                    ele faz a bala <strong>explodir</strong> bem em cima do inimigo!</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">BALA VERMELHA — VOO COM DANO</span><br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">bullet</span><br>
+                    &nbsp;➜ <span class="action">mostre</span><br>
+                    &nbsp;➜ <span class="action">mude x para</span> <span class="object">x_vermelho</span><br>
+                    &nbsp;➜ <span class="action">mude y para</span> <span class="object">y_vermelho</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span
+                        class="object">dir_vermelho</span><br>
+                    &nbsp;➜ <span class="action">repita</span> <span class="value">10</span> vezes<br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mova</span> <span class="value">10</span> passos<br>
+                        ➜ <span class="action">se</span> tocando em <span class="object">tank azul</span>? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">-1</span> a <span
+                                class="object">vidas_azul</span><br>
+                            ➜ <span class="action">pare</span> <span class="object">este script</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title">Por que "repita 10" com "mova 10"?</span>
+            <p>A bala anda o caminho em <strong>10 pedacinhos</strong> em vez de dar um salto só. É por isso que ela
+                consegue <strong>"ver" o tank no meio do caminho</strong>! Se ela andasse tudo de uma vez, poderia
+                pular por cima do inimigo sem nem perceber que ele estava ali. E lembre: o
+                <span class="action">pare este script</span> só para o <strong>voo</strong>; o script do pavio
+                continua vivo e cuida da explosão e do <span class="action">apague este clone</span>.</p>
+        </div>
+
+        <div class="note">
+            <strong>A bala está acertando o próprio dono?</strong> Se o tiro descontar vida de quem atirou, coloque
+            um <span class="action">espere</span> <span class="value">0.1</span> seg logo depois do
+            <span class="action">mostre</span>: assim a bala sai de cima do dono antes de começar a perguntar em
+            quem está tocando.
+        </div>
+        <h2>Desafio: o Dano da Bala Azul!</h2>
+        <p>Você já sabe o que vem agora, né? A bala azul precisa aprender o <strong>mesmo truque</strong>. Monte o
+            código no sprite da <strong>bala azul</strong> seguindo as dicas:</p>
+
+        <ul class="custom-list">
+            <li>A estrutura é a <strong>mesma</strong> da bala vermelha: a pergunta entra <strong>dentro do
+                    <span class="action">repita</span></strong>, logo depois do <span class="action">mova</span>.</li>
+            <li>Troque o alvo: a bala azul pergunta se está tocando no <b>tank vermelho</b>.</li>
+            <li>Troque a vida que diminui: quem perde é a <span class="object">vidas_vermelho</span>.</li>
+            <li>Quando acertar, <strong>pare este script</strong>: o pavio da bala azul cuida da explosão!</li>
+        </ul>
+
+        <div class="note">
+            <strong>Teste dos dois lados:</strong> atire com o vermelho no azul e veja o placar
+            <span class="object">vidas_azul</span> descer. Depois atire com o azul no vermelho e confira a
+            <span class="object">vidas_vermelho</span>. Os dois placares têm que funcionar!
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        
+
+        <h2>Fim de Jogo: Temos um Vencedor!</h2>
+        <p>As vidas já descem, mas... e quando chegam a <strong>zero</strong>? Por enquanto, nada acontece! Cada
+            tank vai ficar <strong>vigiando a própria vida</strong>: quando ela acabar, ele dá o grito que anuncia
+            o vencedor. E quem vence é <strong>o adversário</strong>, claro!</p>
+
+        <ul class="step-list">
+            <li>Na aba de <b>Eventos</b>, crie duas mensagens novas: <span class="value">vermelho venceu</span> e
+                <span class="value">azul venceu</span>.</li>
+            <li>Cada tank ganha um script <strong>vigia</strong>: quando a própria vida chega a zero, ele
+                <strong>transmite</strong> a mensagem de vitória <strong>do adversário</strong>.</li>
+        </ul>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO TANK AZUL</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">vidas_azul</span> &lt; <span
+                            class="value">1</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">vermelho venceu</span><br>
+                            ➜ <span class="action">pare</span> <span class="object">este script</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO TANK VERMELHO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">vidas_vermelho</span> &lt; <span
+                            class="value">1</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">azul venceu</span><br>
+                            ➜ <span class="action">pare</span> <span class="object">este script</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Repare na pegadinha:</strong> quando a vida do <b>azul</b> acaba, quem venceu foi o
+            <b>vermelho</b>, e vice-versa! Cada tank vigia a própria vida, mas grita a vitória <strong>do
+                adversário</strong>. E você já conhece esse truque de outros jogos: transmitir uma mensagem é dar um
+            apito, agora precisamos de alguém <strong>escutando</strong> para montar a festa!
+        </div>
+
+        
+        <h2>A Tela de Vitória</h2>
+        <p>Quem escuta o apito? <strong>Três atores ao mesmo tempo</strong>: o Palco troca o cenário, o tank
+            campeão vai para o <strong>centro do palco</strong> posar para a foto, e o perdedor sai de fininho.
+            Primeiro, prepare o cenário:</p>
+
+        <ul class="step-list">
+            <li>Vá no <b>Palco</b> e <strong>duplique</strong> o cenário do campo de batalha (clique com o botão
+                direito nele). Dê o nome de <span class="value">vitória</span>.</li>
+            <li>Na aba de pintura, escreva bem grande: <b>VITÓRIA!</b> Capriche nas cores e nos desenhos, essa é a
+                tela da glória!</li>
+        </ul>
+
+        <p>Agora os três scripts que escutam a mensagem <span class="value">vermelho venceu</span>:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO PALCO</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">vermelho venceu</span><br>
+                    &nbsp;➜ <span class="action">mude para o cenário</span> <span class="value">vitória</span>
+                </div>
+                <div class="code-block">
+                    <span class="code-title">NO TANK AZUL (o perdedor)</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">vermelho venceu</span><br>
+                    &nbsp;➜ <span class="action">esconda</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO TANK VERMELHO (o campeão!)</span><br>
+                    <span class="keyword">Quando eu receber</span> <span class="value">vermelho venceu</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">0</span> <span
+                        class="action">y:</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="action">mude o tamanho para</span> <span class="value">200</span>%<br>
+                    &nbsp;➜ <span class="action">diga</span> <span class="value">"Venci!"</span> por <span
+                        class="value">3</span> segundos<br>
+                    &nbsp;➜ <span class="action">pare</span> <span class="object">todos</span>
+                </div>
+            </div>
+        </div>
+
+        <p>O campeão vai para o meio da tela de vitória, fica <strong>grandão</strong> (200% do tamanho!), solta o
+            grito de guerra e então o <span class="action">pare todos</span> encerra a partida.</p>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h3>Desafio: a vitória do azul!</h3>
+        <ul class="custom-list">
+            <li>Monte os <strong>mesmos três scripts</strong> escutando a mensagem <span class="value">azul
+                    venceu</span>.</li>
+            <li>No Palco, o cenário de vitória é o mesmo. Só muda a mensagem escutada!</li>
+            <li>Agora quem vai para o centro e cresce é o <b>tank azul</b>, e quem se esconde é o
+                <b>vermelho</b>.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Muito importante, o reset!</strong> Depois de uma vitória, o campeão fica gigante e o perdedor
+            fica invisível... para sempre! Volte no início de <strong>cada tank</strong> (o script da bandeira
+            verde, junto do <span class="action">vá para</span>) e adicione: <span class="action">mostre</span> e
+            <span class="action">mude o tamanho para</span> <span class="value">100</span>%. E o <b>Palco</b>
+            também precisa: <span class="keyword">quando bandeira verde for clicado</span> ➜
+            <span class="action">mude para o cenário</span> <span class="value">campo de batalha</span>. Assim toda
+            partida nova começa arrumadinha!
+        </div>
+    </div>
+
+
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

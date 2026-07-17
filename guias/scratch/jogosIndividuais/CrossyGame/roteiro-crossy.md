@@ -1,4 +1,4 @@
-# Prepare to Attack — Roteiro dos Guias
+# Crossy Road — Roteiro dos Guias
 
 > Roteiro de referência para produção dos guias do Crossy Game.
 

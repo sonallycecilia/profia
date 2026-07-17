@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Tank Game - Parte 1</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Tank <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-tank.png" alt="Cenário Tank Game"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Tank Game: Montando a Base</h1>
+
+        <div class="concept-box">
+            <span class="concept-title">Conceito do Jogo</span>
+            <p>Dois tanks entram no campo de batalha: o <strong>vermelho</strong> de um lado e o
+                <strong>azul</strong> do outro. Cada um é controlado por um jogador diferente, no mesmo teclado!
+                Este é um jogo de <strong>dois jogadores</strong>: cada um pilota o seu tank, mira no adversário e
+                dispara. Nesta primeira parte, vamos montar a base de tudo: colocar os tanks para andar pelo campo
+                e fazer cada um deles <strong>atirar a sua própria bala</strong>.</p>
+        </div>
+
+        <div class="note">
+            <strong>O melhor de tudo:</strong> essa base serve para vários jogos diferentes! Duelo, modo cooperativo,
+            caça aos itens... Depois de montá-la, dá para transformar o Tank Game em muitas coisas. Mas uma missão de
+            cada vez: primeiro, vamos construir a base!
+        </div>
+
+        <h2>Carregando os Assets</h2>
+        <ul class="step-list">
+            <li>Carregue o <b>cenário</b> do campo de batalha: é nele que o duelo acontece.</li>
+            <li>Carregue os sprites dos dois guerreiros: o <b>tank vermelho</b> e o <b>tank azul</b>.</li>
+            <li>Carregue também os sprites das <b>bullets</b> (as balas): uma para cada tank.</li>
+            <li>Posicione cada tank no seu lado do campo: o <b>vermelho à esquerda</b> e o <b>azul à direita</b>,
+                um de frente para o outro.</li>
+        </ul>
+
+        <h2>Quem é Quem no Jogo</h2>
+        <ul class="custom-list">
+            <li><b>Tank vermelho:</b> o guerreiro do <strong>jogador 1</strong>. Começa do lado esquerdo, olhando
+                para a direita.</li>
+            <li><b>Tank azul:</b> o guerreiro do <strong>jogador 2</strong>. Começa do lado direito, olhando para
+                a esquerda.</li>
+            <li><b>Bala vermelha:</b> o disparo do tank vermelho. É só um <strong>modelo escondido</strong>: cada
+                tiro de verdade é um <strong>clone</strong> dela!</li>
+            <li><b>Bala azul:</b> o disparo do tank azul. Também é um modelo escondido que gera clones.</li>
+        </ul>
+
+        <h2>A Posição Inicial dos Tanks</h2>
+        <p>Toda batalha começa do mesmo jeito: cada tank no seu canto, um encarando o outro. Vamos programar isso
+            para que o campo fique arrumado toda vez que a bandeira verde for clicada.</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Tank <b>vermelho</b> em <b>x: -180</b>, <b>y: 0</b>, apontando para a <b>direita (90°)</b>.
+                    </li>
+                    <li>Tank <b>azul</b> em <b>x: 180</b>, <b>y: 0</b>, apontando para a <b>esquerda (-90°)</b>.</li>
+                    <li>Guarde esses números: eles são os <strong>pontos de partida</strong> de cada guerreiro.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">TANK VERMELHO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">-180</span> <span
+                        class="action">y:</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span class="value">90</span>
+                </div>
+                <div class="code-block">
+                    <span class="code-title">TANK AZUL</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">vá para x:</span> <span class="value">180</span> <span
+                        class="action">y:</span> <span class="value">0</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span class="value">-90</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2>Como um Tank Anda de Verdade</h2>
+        <p>Um tank não desliza de lado como um fantasma: ele <strong>vira para a direção</strong> que quer ir e
+            <strong>anda para a frente</strong>. É assim que vamos programar! Cada tecla faz duas coisas:
+            primeiro <strong>aponta</strong> o tank, depois manda ele <strong>mover</strong>.</p>
+
+        <div class="concept-box">
+            <span class="concept-title">As Direções do Scratch</span>
+            <p>No Scratch, cada direção tem um número. É como uma <strong>bússola</strong>: o zero fica em cima e
+                os números giram como um relógio. Decore esses quatro, eles vão aparecer o tempo todo:</p>
+        </div>
+
+        <div
+            style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0; font-size: 14px;">
+            <span
+                style="background: #00897B; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">⬆
+                cima = 0</span>
+            <span
+                style="background: #1E88E5; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">➡
+                direita = 90</span>
+            <span
+                style="background: #F57F17; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">⬇
+                baixo = 180</span>
+            <span
+                style="background: #7E57C2; color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: bold;">⬅
+                esquerda = -90</span>
+        </div>
+
+        <h2>Pilotando o Tank Vermelho: WASD</h2>
+        <p>O jogador 1 pilota o tank vermelho com as teclas <b>W</b>, <b>A</b>, <b>S</b> e <b>D</b>. Repare que elas
+            formam uma <strong>cruzinha no teclado</strong>, igualzinho às setas: o <b>W</b> fica em cima, o
+            <b>S</b> embaixo, o <b>A</b> na esquerda e o <b>D</b> na direita!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>W:</b> aponta para <b>cima (0)</b> e anda.</li>
+                    <li><b>S:</b> aponta para <b>baixo (180)</b> e anda.</li>
+                    <li><b>A:</b> aponta para a <b>esquerda (-90)</b> e anda.</li>
+                    <li><b>D:</b> aponta para a <b>direita (90)</b> e anda.</li>
+                </ul>
+                <p>Percebeu? O tank sempre fica <strong>olhando para onde andou por último</strong>. Guarde essa
+                    informação: ela vai ser <strong>superimportante</strong> na hora do tiro!</p>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">MOVIMENTO — TANK VERMELHO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> tecla <span class="value">w</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">aponte para a direção</span> <span class="value">0</span><br>
+                            ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                        </div>
+                        ➜ <span class="action">se</span> tecla <span class="value">s</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">aponte para a direção</span> <span class="value">180</span><br>
+                            ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                        </div>
+                        ➜ <span class="action">se</span> tecla <span class="value">a</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">aponte para a direção</span> <span class="value">-90</span><br>
+                            ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                        </div>
+                        ➜ <span class="action">se</span> tecla <span class="value">d</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">aponte para a direção</span> <span class="value">90</span><br>
+                            ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Desafio: Pilote o Tank Azul!</h2>
+        <p>Agora é a sua vez de programar sozinho! O jogador 2 pilota o tank azul com as <b>teclas de seta</b>, e a
+            lógica é <strong>exatamente a mesma</strong> do tank vermelho. Monte o código nos scripts do
+            <strong>tank azul</strong> seguindo estas dicas:</p>
+
+        <ul class="custom-list">
+            <li>Copie a <strong>mesma estrutura</strong> do tank vermelho: um <span class="action">sempre</span> com
+                quatro <span class="action">se... então</span> dentro.</li>
+            <li>Troque cada tecla pela sua <strong>seta</strong>: W vira <b>seta para cima</b>, S vira <b>seta para
+                    baixo</b>, A vira <b>seta para a esquerda</b> e D vira <b>seta para a direita</b>.</li>
+            <li>As <strong>direções não mudam</strong>! Cima continua sendo <b>0</b>, baixo <b>180</b>, esquerda
+                <b>-90</b> e direita <b>90</b>. A bússola do Scratch é a mesma para todos os tanks.</li>
+            <li>Não esqueça: cada tecla faz <strong>duas coisas</strong>, primeiro <span class="action">aponte para a
+                    direção</span>, depois <span class="action">mova</span> <b>10</b> passos.</li>
+        </ul>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        
+        <h2>Hora do Disparo!</h2>
+        <p>Tank que não atira é só um carrinho blindado, certo? Vamos dar munição aos nossos guerreiros! Cada tank
+            tem o seu botão de tiro:</p>
+
+        <ul class="custom-list">
+            <li><b>Tank vermelho:</b> atira com a tecla <b>Espaço</b>.</li>
+            <li><b>Tank azul:</b> atira com a tecla <b>0</b> (zero).</li>
+        </ul>
+
+        <div class="concept-box">
+            <span class="concept-title">As Variáveis da Bala: x, y e direção</span>
+            <p>Quando o jogador aperta o botão de tiro, a bala precisa saber <strong>três coisas</strong> para
+                nascer no lugar certo: <strong>onde</strong> o tank está (o <span class="object">x</span> e o
+                <span class="object">y</span> dele) e <strong>para onde</strong> ele está olhando (a
+                <span class="object">direção</span>). É como entregar um bilhete para a bala:
+                <em>"nasça aqui e voe para lá!"</em>. Esse bilhete são <strong>três variáveis</strong>, que o tank
+                preenche no exato momento do tiro.</p>
+        </div>
+
+        <p>E atenção: <strong>cada bala precisa das suas próprias variáveis</strong>! A bala do tank vermelho usa
+            <span class="object">x_vermelho</span>, <span class="object">y_vermelho</span> e
+            <span class="object">dir_vermelho</span>; a bala do tank azul usa <span class="object">x_azul</span>,
+            <span class="object">y_azul</span> e <span class="object">dir_azul</span>.</p>
+
+        <div class="note">
+            <strong>Por que não dividir as mesmas variáveis?</strong> Pense assim: cada jogador tem a
+            <strong>sua própria mochila</strong>, e ninguém mexe na mochila do outro! Se as duas balas usassem as
+            mesmas variáveis e os dois jogadores atirassem quase juntos, uma bala ia <strong>roubar</strong> a
+            posição da outra e o tiro sairia do lugar errado. Com variáveis separadas, a batalha nunca embola.
+        </div>
+
+        <h3>Criando as variáveis</h3>
+        <ul class="step-list">
+            <li>Vá na aba laranja de <b>Variáveis</b> e clique em <b>"Criar uma variável"</b>.</li>
+            <li>Crie as três do vermelho: <span class="object">x_vermelho</span>, <span
+                    class="object">y_vermelho</span> e <span class="object">dir_vermelho</span>.</li>
+            <li>Crie as três do azul: <span class="object">x_azul</span>, <span class="object">y_azul</span> e
+                <span class="object">dir_azul</span>.</li>
+            <li>Todas devem ser <b>"Para todos os atores"</b>: o tank preenche, e a bala lê!</li>
+        </ul>
+
+        <h2>O Tiro do Tank Vermelho</h2>
+        <p>O disparo entra no <strong>mesmo</strong> <span class="action">sempre</span> da movimentação do tank
+            vermelho, como mais um <span class="action">se... então</span>. Na hora do tiro, o tank preenche o
+            bilhete (as três variáveis) e <strong>cria um clone da bala</strong>:</p>
+
+   <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">DISPARO — TANK VERMELHO</span><br>
+                    <span class="keyword">(dentro do mesmo "sempre" da movimentação)</span><br>
+                    &nbsp;➜ <span class="action">se</span> tecla <span class="value">espaço</span> pressionada? <span
+                        class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mude</span> <span class="object">x_vermelho</span> <span
+                            class="action">para</span> <span class="object">posição x</span><br>
+                        ➜ <span class="action">mude</span> <span class="object">y_vermelho</span> <span
+                            class="action">para</span> <span class="object">posição y</span><br>
+                        ➜ <span class="action">mude</span> <span class="object">dir_vermelho</span> <span
+                            class="action">para</span> <span class="object">direção</span><br>
+                        ➜ <span class="action">crie clone de</span> <span class="object">bala vermelha</span><br>
+                        ➜ <span class="action">espere</span> <span class="value">0.1</span> seg
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">BALA VERMELHA — O VOO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">esconda</span><br>
+                    <br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">bullet</span><br>
+                    &nbsp;➜ <span class="action">mostre</span><br>
+                    &nbsp;➜ <span class="action">mude x para</span> <span class="object">x_vermelho</span><br>
+                    &nbsp;➜ <span class="action">mude y para</span> <span class="object">y_vermelho</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span
+                        class="object">dir_vermelho</span><br>
+                    &nbsp;➜ <span class="action">repita</span> <span class="value">10</span> vezes<br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+        <p>Leia o código da bala com calma: o clone nasce, veste a fantasia <span class="value">bullet</span>,
+            aparece e <strong>lê o bilhete</strong>: vai para o x e o y do tank e aponta para a mesma direção dele.
+            Aí é só voar para a frente em <b>10 passinhos</b>!</p>
+
+        <div class="note">
+            <strong>Para que serve o "espere 0.1 seg"?</strong> Sem ele, segurar a tecla de tiro criaria uma
+            <strong>metralhadora de clones</strong>, dezenas de balas num piscar de olhos! A esperinha dá um
+            ritmo justo para o duelo.
+        </div>
+
+        <h2>A Explosão da Bala</h2>
+        <p>Mas espera... quem <strong>apaga</strong> o clone no fim do voo? É um <strong>segundo script</strong>,
+            no mesmo sprite da bala! Ele funciona como um <strong>pavio</strong>: assim que o clone nasce, os dois
+            scripts começam <strong>juntos</strong>. Enquanto um faz a bala voar, o outro conta o tempo, e quando
+            o pavio queima (0.3 segundos), a bala <strong>explode</strong> numa animação de fantasias e desaparece!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li>O <span class="action">espere 0.3 seg</span> é o <strong>pavio</strong>: dá tempo exato de a
+                        bala terminar o voo.</li>
+                    <li>A fantasia <span class="value">1</span> é o <strong>primeiro quadro</strong> da explosão.</li>
+                    <li>O <span class="action">repita 7 vezes</span> passa as fantasias bem rapidinho, criando o
+                        <strong>efeito de "bum"</strong>!</li>
+                    <li>No fim, o <span class="action">apague este clone</span> limpa o palco para os próximos
+                        tiros.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">BALA VERMELHA — A EXPLOSÃO</span><br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">espere</span> <span class="value">0.3</span> seg<br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">1</span><br>
+                    &nbsp;➜ <span class="action">repita</span> <span class="value">7</span> vezes<br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">próxima fantasia</span><br>
+                        ➜ <span class="action">espere</span> <span class="value">0.01</span> seg
+                    </div>
+                    &nbsp;➜ <span class="action">apague este clone</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title">Dois Scripts, Um Clone Só!</span>
+            <p>Repare que o sprite da bala tem <strong>dois</strong> blocos <span class="keyword">quando eu começar
+                    como um clone</span>, e isso é permitido! Quando o clone nasce, os dois disparam <strong>ao mesmo
+                    tempo</strong>: um cuida do <strong>voo</strong> e o outro cuida do <strong>pavio e da
+                    explosão</strong>. Cada script faz um trabalho, e juntos eles formam o tiro completo.</p>
+        </div>
+
+        <h2>O Tiro do Tank Azul: a Mesma Ideia, a Mochila Dele</h2>
+        <p>Agora é a vez do jogador 2! A estrutura é <strong>igualzinha</strong> à do vermelho, só que com a tecla
+            <b>0</b> e com as <strong>variáveis do azul</strong>. O disparo entra no <span
+                class="action">sempre</span> da movimentação do <strong>tank azul</strong>, e o código do clone vai
+            na <strong>bala azul</strong>:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">DISPARO — TANK AZUL</span><br>
+                    <span class="keyword">(dentro do mesmo "sempre" da movimentação)</span><br>
+                    &nbsp;➜ <span class="action">se</span> tecla <span class="value">0</span> pressionada? <span
+                        class="action">então</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mude</span> <span class="object">x_azul</span> <span
+                            class="action">para</span> <span class="object">posição x</span><br>
+                        ➜ <span class="action">mude</span> <span class="object">y_azul</span> <span
+                            class="action">para</span> <span class="object">posição y</span><br>
+                        ➜ <span class="action">mude</span> <span class="object">dir_azul</span> <span
+                            class="action">para</span> <span class="object">direção</span><br>
+                        ➜ <span class="action">crie clone de</span> <span class="object">bala azul</span><br>
+                        ➜ <span class="action">espere</span> <span class="value">0.1</span> seg
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">BALA AZUL — O VOO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">esconda</span><br>
+                    <br>
+                    <span class="keyword">Quando eu começar como um clone</span><br>
+                    &nbsp;➜ <span class="action">mude para a fantasia</span> <span class="value">bullet</span><br>
+                    &nbsp;➜ <span class="action">mostre</span><br>
+                    &nbsp;➜ <span class="action">mude x para</span> <span class="object">x_azul</span><br>
+                    &nbsp;➜ <span class="action">mude y para</span> <span class="object">y_azul</span><br>
+                    &nbsp;➜ <span class="action">aponte para a direção</span> <span class="object">dir_azul</span><br>
+                    &nbsp;➜ <span class="action">repita</span> <span class="value">10</span> vezes<br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">mova</span> <span class="value">10</span> passos
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Não esqueça a explosão!</strong> A bala azul também precisa do <strong>segundo script</strong>,
+            o do pavio, igualzinho ao da bala vermelha: <span class="action">espere 0.3</span>, fantasia
+            <span class="value">1</span>, <span class="action">repita 7 vezes</span> passando as fantasias e
+            <span class="action">apague este clone</span>.
+        </div>
+
+        <div class="concept-box" style="background-color: #F3E5F5; border-left-color: #7E57C2;">
+            <span class="concept-title">Repare no Padrão!</span>
+            <p>Compare os dois disparos lado a lado: a <strong>lógica é a mesma</strong>, só mudam a tecla e os
+                nomes das variáveis. Em programação isso acontece o tempo todo: quando uma ideia funciona, a gente
+                <strong>reaproveita o padrão</strong> trocando só os detalhes. Quem entendeu o tiro do vermelho já
+                sabe fazer o tiro do azul, e de qualquer outro tank que inventar depois!</p>
+        </div>
+
+        <div class="note">
+            <strong>A mágica da direção:</strong> como a bala nasce apontando para a <strong>mesma direção do
+                tank</strong>, ela voa para onde o tank estava olhando na hora do tiro. Tank virado para cima?
+            Tiro para cima! Virado para a esquerda? Tiro para a esquerda. É por isso que guardamos a
+            <span class="object">direção</span> no bilhete, e não só o x e o y!
+        </div>
+
+        <div class="note">
+            <strong>Teste final da dupla:</strong> um jogador atira com <b>Espaço</b>, o outro com <b>0</b>. Andem,
+            virem para lados diferentes e atirem <strong>ao mesmo tempo</strong>. Cada bala deve sair do seu tank,
+            voar na direção que ele estava olhando e <strong>explodir</strong> no fim do caminho, sem uma
+            atrapalhar a outra. Se tudo isso funcionar, a base do Tank Game está pronta!
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

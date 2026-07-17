@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch - Tank Game - Parte 3</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <div class="cover-main-title">
+            Tank <span>Game</span>
+        </div>
+        <div class="cover-subtitle-pro">Scratch</div><br><br><br>
+
+        <div class="cover-banner">
+            <img src="./assets/capa-tank.png" alt="Cenário Tank Game"
+                style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Seu Jogo, Suas Regras!</h1>
+
+        <p>O duelo PvP está <strong>completo</strong>: os tanks andam, atiram, perdem vidas e o campeão posa na
+            tela de vitória. Parabéns, você construiu um jogo inteiro! Mas aqui vem o segredo dos bons criadores de
+            jogos: <strong>a base que você montou serve para muitos jogos diferentes</strong>. Hoje é dia de
+            ajustar, experimentar e <strong>inventar</strong>!</p>
+
+        <h2>Testar e Ajustar: a Parte Mais Divertida</h2>
+        <p>Antes de criar modos novos, deixe o duelo <strong>redondinho</strong>. Clique na bandeira verde, joguem
+            em dupla e observem. Um bom jogo nasce dos <strong>ajustes</strong>:</p>
+
+        <ul class="custom-list">
+            <li><b>A bala está rápida demais e "atravessa" o tank?</b> Aumente o <span class="action">repita</span>
+                (ex.: <b>20</b>) e diminua o <span class="action">mova</span> (ex.: <b>5</b>). Ah, e o pavio pode
+                precisar de mais tempo: teste um <span class="action">espere</span> maior no script da explosão.</li>
+            <li><b>A partida acaba rápido demais?</b> Aumente as vidas para <b>5</b>.</li>
+            <li><b>Quer mais emoção?</b> Vá na aba <b>Sons</b> e adicione um "bum" na hora que a bala acerta!</li>
+        </ul>
+
+        <h2>A Base Versátil</h2>
+        <p>Lembra do que dissemos lá na parte 1? O mesmo Tank Game vira <strong>4 jogos diferentes</strong>
+            trocando só duas coisas: <strong>quem é o alvo</strong> e <strong>o que conta ponto</strong>. As
+            próximas páginas são <strong>missões</strong>: escolha a sua favorita (ou encare todas!). Quase tudo
+            reaproveita o que você já sabe fazer, clones, variáveis, mensagens e colisões.</p>
+
+        <ul class="custom-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#00897B"
+                    style="vertical-align: -3px; margin-right: 4px;">
+                    <path d="M12 2l8 3v6c0 4.8-3.2 8.6-8 11-4.8-2.4-8-6.2-8-11V5l8-3z" />
+                </svg><b>Cooperativo contra inimigos:</b> os dois tanks viram <strong>amigos</strong>! Crie um sprite
+                inimigo que nasce em posição aleatória e persegue os tanks. A bala dos dois machuca o inimigo, e os
+                pontos vão para um placar único da equipe.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#F57F17"
+                    style="vertical-align: -3px; margin-right: 4px;">
+                    <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z" />
+                </svg><b>Coleta de itens:</b> espalhe moedas ou estrelas pelo mapa. Cada item que encosta num tank dá
+                ponto para ele e some. Ganha quem juntar mais antes do tempo acabar!</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#1E88E5"
+                    style="vertical-align: -3px; margin-right: 4px;">
+                    <path d="M4 21V8h3V5h2.5v3h5V5H17v3h3v13h-6.5v-4a1.5 1.5 0 0 0-3 0v4H4z" />
+                </svg><b>Defesa de base:</b> um ponto central precisa ser protegido. Inimigos andam em direção à base,
+                e os dois tanks atiram para defender. Fim de jogo quando a vida da base acaba.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#7E57C2"
+                    style="vertical-align: -3px; margin-right: 4px;">
+                    <path d="M6 3v18h2v-7h9.5L15 9.5 17.5 5H8V3H6z" />
+                </svg><b>Captura de território:</b> cada tank "pinta" o chão por onde passa (use o bloco
+                <b>carimbar</b> da Caneta, na cor do tank). No fim, ganha quem dominou mais o mapa!</li>
+        </ul>
+
+        <h2>Dois Modos no Mesmo Jogo</h2>
+        <p>E se o seu jogo perguntasse, logo no início: <strong>"quantos jogadores?"</strong> Com a
+            <strong>transmissão de mensagem</strong>, o mesmo projeto pode ter um modo para <b>1 player</b> e outro
+            para <b>2 players</b>! O truque: os scripts de cada modo não começam mais com a bandeira verde, e sim
+            com um <span class="keyword">quando eu receber</span>. Quem escolhe o modo dá o apito e inicia o jogo, e só o modo
+            escolhido acorda!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>Tecla 1</b> ➜ transmite <span class="value">modo 1 player</span>: um tank sozinho
+                        <strong>pega itens</strong> contra o relógio.</li>
+                    <li><b>Tecla 2</b> ➜ transmite <span class="value">modo 2 players</span>: o
+                        <strong>PvP</strong> que você já construiu!</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO PALCO — O MENU</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> tecla <span class="value">1</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">modo 1 player</span>
+                        </div>
+                        ➜ <span class="action">se</span> tecla <span class="value">2</span> pressionada? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">modo 2 players</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+                <h1>Desafios</h1>
+
+        <p>Em cada missão das próximas páginas você vai encontrar uma observação de <strong>modo de jogo</strong>,
+            mostrando como ela funciona com 1 player e com 2 players. Escolha uma combinação, ligue cada modo a uma
+            mensagem do menu, e monte o Tank Game <strong>do seu jeito</strong>!</p>
+
+        <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="#00897B"
+                style="vertical-align: -3px; margin-right: 6px;">
+                <path d="M12 2l8 3v6c0 4.8-3.2 8.6-8 11-4.8-2.4-8-6.2-8-11V5l8-3z" />
+            </svg>Missão 1: Cooperativo Contra Inimigos</h2>
+        <p>Chega de brigar entre si: agora os dois tanks são <strong>parceiros de equipe</strong> enfrentando
+            inimigos que não param de chegar! A novidade aqui é o <strong>inimigo perseguidor</strong>:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Crie um sprite <b>inimigo</b> (pode ser outro tank, um robô, um monstro...).</li>
+                    <li>Ele nasce num lugar <strong>surpresa</strong> com o bloco <span class="action">vá para
+                            posição aleatória</span>.</li>
+                    <li>Para perseguir, ele fica o tempo todo <strong>apontando</strong> para um tank e
+                        <strong>andando</strong> devagarinho.</li>
+                    <li>As balas dos <strong>dois</strong> tanks machucam o inimigo: dentro do
+                        <span class="action">repita</span> do voo, pergunte também se está tocando no
+                        <span class="object">inimigo</span>!</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO INIMIGO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">vá para posição aleatória</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">aponte para</span> <span class="object">tank vermelho</span><br>
+                        ➜ <span class="action">mova</span> <span class="value">2</span> passos
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>E como o inimigo é <strong>derrotado</strong>? Ele mesmo fica vigiando se uma bala o acertou. Quando
+            isso acontece, ele soma um ponto para a equipe e <strong>renasce</strong> em outro lugar surpresa,
+            pronto para a próxima rodada:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>Placar da equipe:</b> aqui não tem mochila separada! Crie uma variável única, a
+                        <span class="object">pontos_equipe</span>, que sobe a cada inimigo derrotado. Vitória em
+                        equipe é vitória em dobro!</li>
+                    <li><b>E o perigo?</b> Se o inimigo <strong>encostar</strong> num tank, use as vidas da parte
+                        2: tira 1 vida de quem foi tocado. A perseguição fica de verdade!</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO INIMIGO — SENDO DERROTADO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> tocando em <span class="object">bala vermelha</span>? ou
+                        tocando em <span class="object">bala azul</span>? <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">1</span> a <span
+                                class="object">pontos_equipe</span><br>
+                            ➜ <span class="action">vá para posição aleatória</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Pergunta de criador de jogos:</strong> quantos inimigos ao mesmo tempo deixam o jogo divertido,
+            mas <strong>não impossível</strong>? Use clones do inimigo (você já sabe: um modelo escondido criando
+            cópias!) e teste com 2, 3, 5... até achar o número perfeito para a sua turma.
+        </div>
+
+        <div class="mode-box">
+            <span class="mode-title">Modo de Jogo</span>
+            <p>Essa missão nasceu para <b>2 players</b> cooperando! Mas também vira um ótimo <b>1 player</b>: um
+                tank sozinho contra os inimigos, sobreviver fica bem mais difícil! Ligue a versão em dupla à
+                mensagem <span class="value">modo 2 players</span> e a versão solo à
+                <span class="value">modo 1 player</span>.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="#F57F17"
+                style="vertical-align: -3px; margin-right: 6px;">
+                <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z" />
+            </svg>Missão 2: Coleta de Itens</h2>
+        <p>Agora o campo de batalha vira uma <strong>caça ao tesouro</strong>: moedas e estrelas espalhadas pelo
+            mapa, e os dois tanks correndo para pegá-las primeiro! Dá para jogar atirando (para atrapalhar o
+            adversário) ou desligar os tiros e deixar só a corrida, vocês escolhem as regras.</p>
+
+        <p>Cada item é um sprite que fica <strong>vigiando</strong> quem encostou nele. Quando um tank chega, o
+            item dá o ponto para o dono da mochila certa e <strong>reaparece</strong> em outro cantinho do mapa:</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="step-list">
+                    <li>Crie as variáveis <span class="object">pontos_vermelho</span> e
+                        <span class="object">pontos_azul</span>, e deixe as duas <strong>marcadas</strong>: elas
+                        são o placar da corrida!</li>
+                    <li>Desenhe ou carregue o sprite do <b>item</b> (moeda, estrela, diamante...).</li>
+                    <li>Monte o vigia do item: um <span class="action">se... então</span> para cada tank, cada um
+                        somando na mochila certa.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO ITEM</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">vá para posição aleatória</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> tocando em <span class="object">tank vermelho</span>? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">1</span> a <span
+                                class="object">pontos_vermelho</span><br>
+                            ➜ <span class="action">vá para posição aleatória</span>
+                        </div>
+                        ➜ <span class="action">se</span> tocando em <span class="object">tank azul</span>? <span
+                            class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">adicione</span> <span class="value">1</span> a <span
+                                class="object">pontos_azul</span><br>
+                            ➜ <span class="action">vá para posição aleatória</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p><b>Corrida contra o relógio:</b> para a partida ter um fim, crie a variável
+            <span class="object">tempo</span>. O Palco cuida do cronômetro: começa em <b>60</b> e desce 1 a cada
+            segundo. Quando zerar, ganha quem coletou mais!</p>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NO PALCO — CRONÔMETRO</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">tempo</span> <span
+                        class="action">para</span> <span class="value">60</span><br>
+                    &nbsp;➜ <span class="action">repita até</span> <span class="object">tempo</span> = <span
+                        class="value">0</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">espere</span> <span class="value">1</span> seg<br>
+                        ➜ <span class="action">adicione</span> <span class="value">-1</span> a <span
+                            class="object">tempo</span>
+                    </div>
+                    &nbsp;➜ <span class="action">pare</span> <span class="object">todos</span>
+                </div>
+            </div>
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>Item dourado:</b> crie um item raro que vale <b>5 pontos</b> e aparece de vez em
+                        quando. Todo mundo vai correr atrás dele!</li>
+                    <li><b>Item fujão:</b> e se o item <strong>fugisse</strong> devagarinho do tank mais próximo?
+                        Use o truque da perseguição da Missão 1... ao contrário!</li>
+                    <li><b>Versão cooperativa:</b> um placar só, e a meta é a dupla coletar <b>20 itens</b> antes
+                        de o tempo acabar!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mode-box">
+            <span class="mode-title">Modo de Jogo</span>
+            <p>Com <b>2 players</b>, é uma <strong>corrida</strong>: cada mochila é um placar, e vale até atirar
+                para atrapalhar! Com <b>1 player</b>, vira um desafio contra o relógio: quantos itens você coleta
+                em 60 segundos? Essa missão é perfeita para ser o
+                <span class="value">modo 1 player</span> do seu menu!</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="#1E88E5"
+                style="vertical-align: -3px; margin-right: 6px;">
+                <path d="M4 21V8h3V5h2.5v3h5V5H17v3h3v13h-6.5v-4a1.5 1.5 0 0 0-3 0v4H4z" />
+            </svg>Missão 3: Defesa de Base</h2>
+        <p>No meio do campo existe algo <strong>precioso</strong>: a base da equipe! Os inimigos marcham na direção
+            dela sem parar, e os dois tanks precisam defendê-la a todo custo. Essa missão junta
+            <strong>tudo</strong> o que você já construiu: perseguição, vidas, vigias e tiros!</p>
+
+        <ul class="step-list">
+            <li>Crie um sprite <b>base</b> no centro do palco (um castelo, uma bandeira, um quartel...) e a
+                variável <span class="object">vida_base</span> começando com <b>10</b>.</li>
+            <li>Os inimigos usam o truque da perseguição da Missão 1, mas agora <span class="action">apontando
+                    para</span> a <span class="object">base</span>. Eles ignoram os tanks: o alvo é o tesouro!</li>
+            <li>Quando um inimigo <strong>encosta</strong> na base: <span class="action">adicione</span>
+                <span class="value">-1</span> a <span class="object">vida_base</span>, e o inimigo renasce longe
+                (o <span class="action">vá para posição aleatória</span> de novo!).</li>
+            <li>A base ganha um <strong>vigia</strong>, igualzinho ao das vidas dos tanks na parte 2: quando a
+                <span class="object">vida_base</span> chega a zero, transmita uma mensagem de
+                <span class="value">derrota</span> e <span class="action">pare todos</span>.</li>
+        </ul>
+
+        <div class="two-columns" style="align-items: center;">
+            <div class="col">
+                <ul class="custom-list">
+                    <li><b>Base machucada:</b> desenhe fantasias da base com <strong>rachaduras</strong>: quanto
+                        menos vida, mais destruída ela aparece. Só trocar a fantasia conforme a
+                        <span class="object">vida_base</span> desce!</li>
+                    <li><b>Ondas de ataque:</b> crie a variável <span class="object">onda</span>. A cada 30
+                        segundos, ela sobe 1 e chegam <strong>mais inimigos</strong> (ou inimigos mais rápidos!).
+                        Até que onda a dupla aguenta?</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="code-block">
+                    <span class="code-title">NA BASE — O VIGIA</span><br>
+                    <span class="keyword">Quando bandeira verde for clicado</span><br>
+                    &nbsp;➜ <span class="action">mude</span> <span class="object">vida_base</span> <span
+                        class="action">para</span> <span class="value">10</span><br>
+                    &nbsp;➜ <span class="action">sempre</span><br>
+                    <div style="margin-left: 20px; border-left: 2px solid var(--bg-light); padding-left: 10px;">
+                        ➜ <span class="action">se</span> <span class="object">vida_base</span> &lt; <span
+                            class="value">1</span> <span class="action">então</span><br>
+                        <div style="margin-left: 20px;">
+                            ➜ <span class="action">transmita</span> <span class="value">derrota</span><br>
+                            ➜ <span class="action">pare</span> <span class="object">todos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>Reaproveite a tela de vitória!</strong> Lembra da tela que você montou na parte 2? Ela pode
+            virar uma <strong>tela de derrota</strong>: quem escutar a mensagem <span class="value">derrota</span>
+            troca o cenário e mostra até onde a dupla chegou. Dá até para exibir a variável
+            <span class="object">onda</span> como recorde!
+        </div>
+
+        <div class="mode-box">
+            <span class="mode-title">Modo de Jogo</span>
+            <p>Com <b>2 players</b>, a dupla divide os lados do campo e defende junto. Com <b>1 player</b>, você é
+                o <strong>último defensor</strong>: sozinho contra as ondas! Para equilibrar o modo solo, diminua
+                os inimigos ou aumente a <span class="object">vida_base</span>. Nos dois casos, o recorde de ondas
+                é o troféu!</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="#7E57C2"
+                style="vertical-align: -3px; margin-right: 6px;">
+                <path d="M6 3v18h2v-7h9.5L15 9.5 17.5 5H8V3H6z" />
+            </svg>Missão 4: Captura de Território</h2>
+        <p>Nessa variação, os tanks viram <strong>pintores</strong>: cada um deixa um rastro da sua cor por onde
+            passa, e o campo vai sendo dominado pedacinho por pedacinho. No fim, um olhar para o mapa já conta a
+            história da batalha!</p>
+
+        <ul class="step-list">
+            <li>Adicione a extensão <b>Caneta</b>: clique no botãozinho azul no canto inferior esquerdo do Scratch
+                e escolha a Caneta. Blocos novinhos vão aparecer!</li>
+            <li>Em cada tank, dentro do <span class="action">sempre</span> da movimentação, coloque o bloco
+                <span class="action">carimbar</span>: a cada passo, o tank deixa a marca dele no chão.</li>
+            <li>Quer um rastro mais bonito? Crie uma <strong>fantasia extra</strong> no tank: um quadradinho
+                (vermelho num tank, azul no outro). Troque para ela, <span class="action">carimbe</span> e volte
+                para a fantasia do tank, tudo dentro do mesmo <span class="action">sempre</span>!</li>
+            <li>No <b>Palco</b> (ou em qualquer sprite), coloque o bloco <span class="action">apague tudo</span>
+                na bandeira verde, senão a pintura da partida passada continua lá!</li>
+        </ul>
+
+        <ul class="custom-list">
+            <li><b>Quem venceu?</b> Contar a área pintada certinha é coisa de programador avançado, então vale o
+                <strong>olhômetro</strong>: no fim da partida, o professor olha o mapa dominado e declara o
+                vencedor. O efeito visual é o que importa!</li>
+            <li><b>Tinta que acaba:</b> crie uma variável <span class="object">tinta</span> para cada tank, que
+                desce a cada carimbada. Para pintar mais, o tank precisa buscar <strong>recargas</strong>
+                espalhadas pelo mapa, olha a Missão 2 aparecendo aqui dentro!</li>
+            <li><b>Roubo de território:</b> como o carimbo novo cobre o antigo, passar por cima da cor do
+                adversário <strong>rouba o pedaço</strong>! A partida só termina quando o cronômetro (o da Missão
+                2!) chegar a zero.</li>
+        </ul>
+
+        <div class="mode-box">
+            <span class="mode-title">Modo de Jogo</span>
+            <p>A disputa de território foi feita para <b>2 players</b>. Mas em <b>1 player</b> ela vira um desafio
+                de pintura: quanto do mapa você consegue dominar antes de o tempo zerar? Anote o recorde da turma
+                e deixe todo mundo tentar bater!</p>
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-title">Desafio Aberto: Invente a Sua Regra!</span>
+            <p>O melhor desafio de todos: cada dupla <strong>inventa a própria regra</strong>. E se a bala deixasse
+                o tank lento? E se pegar um item desse um <strong>escudo</strong>? E se existisse uma bala gigante
+                que gasta 3 tiros? A base do Tank Game aguenta todas essas ideias, é aqui que a
+                <strong>criatividade</strong> de vocês aparece!</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="../../../scratch/assets/logo-profia.png" alt="Mascote" class="mascot">
+            <img src="../../../scratch/assets/horizontal-sem-fundo.png" alt="Logo Texto" class="logotype">
+        </div>
+
+        <h1>Diário de Bordo</h1>
+        <div class="notes-area"></div>
+
+        <h2>Observações</h2>
+        <div class="feedback-area"></div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <h4>Nota</h4>
+                <span class="score-input">&nbsp;</span> / 10
+            </div>
+
+            <div class="score-box" style="border-color: #FFD700;">
+                <h4>Profia Coin</h4>
+                <span class="score-input" style="color: #FBC02D;">&nbsp;</span> / 10
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
